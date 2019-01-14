@@ -11,6 +11,9 @@
 |
 */
 
+Route::any('/usuarios/perfil', 'Usuarios@index');
+Route::any('/usuarios', 'Usuarios@index');
+
 Route::get('/', 'Inicio@index');
 Route::get('/inicio', 'Inicio@index');
 Route::get('/inicio/load_start', 'Inicio@load_start');

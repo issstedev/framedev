@@ -18,7 +18,7 @@ $("#breadcrumb-title").append(' / Administración de usuarios y roles');
 							</a>
 
 							<?php
-							if(($this->help->tiene_permiso('Usuarios|desbloquear_usuarios'))&&($bloqueados > 0)){
+							if((Helpme::tiene_permiso('Usuarios|desbloquear_usuarios'))&&($bloqueados > 0)){
 							?>
 
 							<button
