@@ -1,7 +1,7 @@
 <!--Section: Team v.1-->
 <script>
 $("#breadcrumb-title").html('Perfil');
-$("#breadcrumb-title").append(' / <?=$usuario_name?>');
+$("#breadcrumb-title").append(' / <?=$datos['usuario']['usuario_name']?>');
 </script>
 
 <div class="row">
@@ -15,10 +15,10 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
           <div class="m-card-profile__pic">
             <div class="m-card-profile__pic-wrapper">
               <?php
-              if ($perfil['avatar']){
+              if ($datos['perfil']['avatar']){
               ?>
                     <div class="profile-userpic" id="avatar_actual">
-                      <img src="../plugs/timthumb.php?src=tmp/<?=$avatar?>&w=300&h=300">
+                      <img src="../plugs/timthumb.php?src=tmp/<?=$datos['avatar']?>&w=300&h=300">
                     </div>
               <?php
               }else{
@@ -33,16 +33,16 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
           </div>
           <div class="m-card-profile__details">
             <span class="m-card-profile__name">
-              <?=$usuario_name?>
+              <?=$datos['usuario']['usuario_name']?>
             </span>
             <a href="" class="m-card-profile__email m-link">
-              <?=$rol->descripcion?>
+              <?=$datos['rol']['descripcion']?>
             </a>
           </div>
         </div>
 
         <?php
-        if($this->help->tiene_permiso('Usuarios|upload_avatar')){
+        if(Helpme::tiene_permiso('Usuarios|upload_avatar')){
         ?>
         <form class="m-form m-form--fit m-form--label-align-right">
           <div class="m-portlet__body">
@@ -91,7 +91,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
           </ul>
         </div>
 
-        <?php //include('perfil_float_menu.php'); ?>
+        <?php //@include('plantilla/perfil_float_menu') ?>
       </div>
       <div class="tab-content">
         <div class="tab-pane active" id="m_user_profile_tab_1">
@@ -102,7 +102,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
                   Nombre (s)
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre (s)" value="<?=$usuario['nombres']?>">
+                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre (s)" value="<?=$datos['usuario']['nombres']?>">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -110,7 +110,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
                   Apellido paterno
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_paterno" name="apellido_paterno" placeholder="apellido paterno" value="<?=$usuario['apellido_paterno']?>">
+                  <input class="form-control m-input" type="text" id="apellido_paterno" name="apellido_paterno" placeholder="apellido paterno" value="<?=$datos['usuario']['apellido_paterno']?>">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -118,7 +118,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
                   Apellido materno
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_materno" name="apellido_materno" placeholder="apellido materno" value="<?=$usuario['apellido_materno']?>">
+                  <input class="form-control m-input" type="text" id="apellido_materno" name="apellido_materno" placeholder="apellido materno" value="<?=$datos['usuario']['apellido_materno']?>">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -126,7 +126,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
                   Usuario
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" disabled id="usuario" name="usuario" value="<?=$usuario['usuario']?>">
+                  <input class="form-control m-input" type="text" disabled id="usuario" name="usuario" value="<?=$datos['usuario']['usuario']?>">
                   <span class="m-form__help">
                     Su nombre de usuario no puede ser editado
                   </span>
@@ -137,7 +137,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
                   Correo
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="correo" name="correo" placeholder="Correo" value="<?=$usuario['correo']?>">
+                  <input class="form-control m-input" type="text" id="correo" name="correo" placeholder="Correo" value="<?=$datos['usuario']['correo']?>">
                 </div>
               </div>
 
@@ -147,7 +147,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
                   Contraseña
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password" name="password" value="no_seas_miron">
+                  <input class="form-control m-input" type="password" id="password" name="password" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -155,7 +155,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
                   Repetir contraseña
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password2" name="password2" value="no_seas_miron">
+                  <input class="form-control m-input" type="password" id="password2" name="password2" value="">
                 </div>
               </div>
 
@@ -166,7 +166,7 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
                   <div class="col-2"></div>
                   <div class="col-7">
                     <?php
-                    if($this->help->tiene_permiso('Usuarios|editar_perfil')){
+                    if(Helpme::tiene_permiso('Usuarios|editar_perfil')){
                     ?>
                       <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
@@ -193,7 +193,8 @@ $("#breadcrumb-title").append(' / <?=$usuario_name?>');
 <script>
 $(document).ready(function() {
   $("#m-dropzone-one").dropzone({
-    url: "usuarios/upload_dropzone/perfiles/upload_avatar",<?php //usuarios/upload_dropzone/estructura|del|directorio/permisos ?>
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    url: "usuarios/upload_dropzone/perfiles/upload_avatar",
     paramName: "file",
     maxFiles: 5,
     maxFilesize: 5, // MB

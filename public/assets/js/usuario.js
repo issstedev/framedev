@@ -1,5 +1,8 @@
 $("body").on("click", "#usr_js_fn_01", function() {
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'usuarios/modal_add_usr',
 			dataType: 'html',
 				success: function(resp_success){
@@ -26,9 +29,14 @@ $("body").on("click", "#usr_js_fn_01", function() {
     var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
     if (!regex.test($('#correo').val().trim())) msj_error+='El correo tiene un formato inválido.<br />';
 
-	if( $('#password').get(0).value == "" )	msj_error+='Olvidó ingresar Contraseña.<br />';
-	if( $('#password2').get(0).value == "") msj_error+='Olvidó ingresar Confimación de contraseña.<br />';
-	if( $('#password').get(0).value != $('#password2').get(0).value) msj_error+='Las contraseñas no empatan.<br />';
+	if(($('#password').get(0).value != "")&&($('#password2').get(0).value != "")){
+
+			if( $('#password').get(0).value == "" )	msj_error+='Olvidó ingresar Contraseña.<br />';
+			if( $('#password2').get(0).value == "") msj_error+='Olvidó ingresar Confimación de contraseña.<br />';
+
+			if( $('#password').get(0).value != $('#password2').get(0).value) msj_error+='Las contraseñas no empatan.<br />';
+
+	}
 
 	if( !msj_error == "" ){
 		alerta('Faltan datos', msj_error);
@@ -36,6 +44,9 @@ $("body").on("click", "#usr_js_fn_01", function() {
 	}
 
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: url_app + 'usuarios/editar_perfil',
 			type: 'POST',
 			data: $("#editar_perfil").serialize(),
@@ -56,12 +67,15 @@ $("body").on("click", "#usr_js_fn_01", function() {
 $("body").on("click", ".usr_js_fn_03", function() {
 		id_usuario = $(this).attr('data-function');
 			$.ajax({
+				headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
 				url: 'usuarios/datos_usuario/' + id_usuario,
 				dataType: 'html',
 				success: function(resp_success){
 					var modal =  resp_success;
 					$(modal).modal().on('shown.bs.modal',function(){
-						
+
 					}).on('hidden.bs.modal',function(){
 						$(this).remove();
 					});
@@ -90,6 +104,9 @@ $("body").on("click", ".usr_js_fn_03", function() {
 
 
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'usuarios/agregar_usuario',
 			type: 'POST',
 			data: $("#nuevo_usuario").serialize(),
@@ -136,6 +153,9 @@ function alerta_div(id_div,error_head,error_content){
 	}
 
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'usuarios/editar_usuario',
 			type: 'POST',
 			data: $("#edita_usuario").serialize(),
@@ -174,6 +194,9 @@ function alerta_div(id_div,error_head,error_content){
 
 		var id = $('#id_usuario').get(0).value;
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'usuarios/baja_usuario/' + id,
 			dataType: 'json',
 			success: function(resp_success){
@@ -192,6 +215,9 @@ function alerta_div(id_div,error_head,error_content){
 $("body").on("click", "#usr_js_fn_07", function() {
 		id_usuario = $(this).attr('data-function');
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'usuarios/desbloquea_usuario/' + id_usuario,
 			dataType: 'json',
 			success: function(resp_success){
@@ -209,6 +235,9 @@ $("body").on("click", "#usr_js_fn_07", function() {
 function tyc(stat) {
 	if(stat == 'SI'){
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'usuarios/tyc/' + stat,
 			dataType: 'json',
 			success: function(resp_success){
@@ -232,6 +261,9 @@ function tyc(stat) {
 }
 function cambiar_pass(){
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'usuarios/cambiar_password',
 			type: 'POST',
 			data: $("#chge_pass").serialize(),

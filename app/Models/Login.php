@@ -218,6 +218,7 @@ class Login extends Model
   }
 
   static function logear($request){
+    \Debugbar::info($request->input());
     $stat = self::getStatusUser($request->input('usuario'));
     if($stat == 9){
       $array[]=array('resp'=>"inhabilitado");

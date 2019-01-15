@@ -149,31 +149,29 @@ class Usuarios extends Model
             ]);
   }
 
-  static function editar_perfil($arreglo){
-
-    foreach ($arreglo as $key => $value) {
-      $post[$key] = $value;
-    }
-    if(($post['password'] == $post['password2'])&&($post['password'])){
-      DB::table('fw_usuarios')
-              ->where('id_usuario', $_SESSION['id_usuario'])
-              ->update(['password'=> md5($post['password'])]);
+  static function editar_perfil($request){
+    if(($request->input('password') != '') && ($request->input('password2') != '')){
+      if(($request->input('password') == $request->input('password2'))&&($request->input('password'))){
+        DB::table('fw_usuarios')
+                ->where('id_usuario', $_SESSION['id_usuario'])
+                ->update(['password'=> md5($request->input('password'))]);
+      }
     }
 
         DB::table('fw_usuarios')
                 ->where('id_usuario', $_SESSION['id_usuario'])
                 ->update([
-                    'correo'=> $post['correo'],
-                    'nombres'=> $post['nombres'],
-                    'apellido_paterno'=> $post['apellido_paterno'],
-                    'apellido_materno'=> $post['apellido_materno'],
+                    'correo'=> $request->input('correo'),
+                    'nombres'=> $request->input('nombres'),
+                    'apellido_paterno'=> $request->input('apellido_paterno'),
+                    'apellido_materno'=> $request->input('apellido_materno'),
                     'user_mod'=> $_SESSION['id_usuario']
                 ]);
 
         if(self::crear_perfil($_SESSION['id_usuario'])){
 
-          $activar_paginado = (!empty ($post['activar_paginado'])) ? 1 : 0;
-          $paginacion = $post['paginacion'] ? $post['paginacion'] : 0;
+          $activar_paginado = (!empty ($request->input('activar_paginado'))) ? 1 : 0;
+          $paginacion = $request->input('paginacion') ? $request->input('paginacion') : 0;
 
           DB::table('fw_usuarios_config')
                 ->where('id_usuario', $_SESSION['id_usuario'])
@@ -184,36 +182,33 @@ class Usuarios extends Model
                 ]);
         }
 
-        $respuesta = array('resp' => true , 'mensaje' => 'El perfil guardado correctamente.', 'chackbox' => $activar_paginado, 'new_name' => $post['nombres'] );
+        $respuesta = array('resp' => true , 'mensaje' => 'El perfil guardado correctamente.', 'chackbox' => $activar_paginado, 'new_name' => $request->input('nombres') );
 
     return $respuesta;
   }
 
-  static function editar_usuario($arreglo){
-    foreach ($arreglo as $key => $value) {
-      $post[$key] = $value;
-    }
-    if(($post['password'] == $post['password2'])&&($post['password'])){
+  static function editar_usuario($request){
+    if(($request->input('password') == $request->input('password2'))&&($request->input('password'))){
       DB::table('fw_usuarios')
-              ->where('id_usuario', $post['id_usuario'])
-              ->update(['password'=> md5($post['password'])]);
+              ->where('id_usuario', $request->input('id_usuario'))
+              ->update(['password'=> md5($request->input('password'))]);
     }
         $query_resp = DB::table('fw_usuarios')
-                          ->where('id_usuario', $post['id_usuario'])
+                          ->where('id_usuario', $request->input('id_usuario'))
                           ->update([
-                              'id_ubicacion' => $post['id_ubicacion'],
-                              'cat_status'=> $post['cat_status'],
-                              'cat_pass_chge'=> $post['change_pass'],
-                              'correo'=> $post['correo'],
-                              'id_rol'=> $post['id_rol'],
-                              'nombres'=> $post['nombres'],
-                              'apellido_paterno'=> $post['apellido_paterno'],
-                              'apellido_materno'=> $post['apellido_materno'],
+                              'id_ubicacion' => $request->input('id_ubicacion'),
+                              'cat_status'=> $request->input('cat_status'),
+                              'cat_pass_chge'=> $request->input('change_pass'),
+                              'correo'=> $request->input('correo'),
+                              'id_rol'=> $request->input('id_rol'),
+                              'nombres'=> $request->input('nombres'),
+                              'apellido_paterno'=> $request->input('apellido_paterno'),
+                              'apellido_materno'=> $request->input('apellido_materno'),
                               'user_mod'=> $_SESSION['id_usuario']
                           ]);
 
     if($query_resp){
-      self::updateIngreso($post['fecha_ingreso'],$post['id_usuario']);
+      self::updateIngreso($request->input('fecha_ingreso'),$request->input('id_usuario'));
       $respuesta = array('resp' => true , 'mensaje' => 'Registro guardado correctamente.' );
     }else{
       $respuesta = array('resp' => false , 'mensaje' => 'Error en el sistema.' , 'error' => 'Error al insertar registro.' );
@@ -303,38 +298,34 @@ class Usuarios extends Model
     return array('resp' => $resp, 'mensaje' => $mensaje, 'error' => $error );
   }
 
-  static function guardar_usuario($arreglo){
+  static function guardar_usuario($request){
 
-    foreach ($arreglo as $key => $value) {
-      $post[$key] = $value;
-    }
-
-    $respuesta = self::valida_login_correo($post['usuario'],$post['correo']);
+    $respuesta = self::valida_login_correo($request->input('usuario'),$request->input('correo'));
 
     if($respuesta['resp'] == true ){
 
       $id_usuario = DB::table('fw_usuarios')->insertGetId(
           [
-              'id_ubicacion' => $post['id_ubicacion'],
-              'password' => md5($post['password']),
-              'cat_pass_chge' => $post['change_pass'],
-              'cat_status' => $post['cat_status'],
-              'usuario' => trim($post['usuario']),
-              'correo' => $post['correo'],
-              'id_rol' => $post['id_rol'],
-              'nombres' => $post['nombres'],
-              'apellido_paterno' => $post['apellido_paterno'],
-              'apellido_materno' => $post['apellido_materno'],
+              'id_ubicacion' => $request->input('id_ubicacion'),
+              'password' => md5($request->input('password')),
+              'cat_pass_chge' => $request->input('change_pass'),
+              'cat_status' => $request->input('cat_status'),
+              'usuario' => trim($request->input('usuario')),
+              'correo' => $request->input('correo'),
+              'id_rol' => $request->input('id_rol'),
+              'nombres' => $request->input('nombres'),
+              'apellido_paterno' => $request->input('apellido_paterno'),
+              'apellido_materno' => $request->input('apellido_materno'),
               'user_alta' => $_SESSION['id_usuario'],
               'fecha_alta' => date("Y-m-d H:i:s")
           ]
       );
 
       self::crear_perfil($id_usuario);
-      self::updateIngreso($post['fecha_ingreso'],$id_usuario);
+      self::updateIngreso($request->input('fecha_ingreso'),$id_usuario);
 
       if($id_usuario){
-        $respuesta = array('resp' => true , 'mensaje' => 'Registro guardado correctamente.', 'id_rol' =>  $post['id_rol'], 'id_usuario' => $id_usuario);
+        $respuesta = array('resp' => true , 'mensaje' => 'Registro guardado correctamente.', 'id_rol' =>  $request->input('id_rol'), 'id_usuario' => $id_usuario);
       }else{
         $respuesta = array('resp' => false , 'mensaje' => 'Error en el sistema.' , 'error' => 'Error al insertar registro.' );
       }
