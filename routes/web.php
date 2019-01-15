@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('my-datatables', 'MyDatatablesController@index');
+Route::get('get-data-my-datatables', ['as'=>'get.data','uses'=>'MyDatatablesController@getData']);
+
 Route::any('usuarios/upload_dropzone/{ruta}/{permisos}', 'Usuarios@upload_dropzone');
 Route::post('usuarios/editar_perfil', 'Usuarios@editar_perfil');
 Route::any('/usuarios/perfil', 'Usuarios@perfil');
