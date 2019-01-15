@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Viewsistemas;
 use App\Models\Usuarios;
+use App\Models\Catalogo;
 use App\Models\Sistemas as ModelSistemas;
 use Helpme;
 
@@ -13,6 +14,8 @@ class Sistemas extends Controller
   {
       $this->middleware('permiso:Sistemas|index', ['only' => ['index','listado_sistemas']]);
       $this->middleware('permiso:Sistemas|relacionar_sistemas', ['only' => ['modal_relacionar_sistemas','vincular_sistema']]);
+      $this->middleware('permiso:Sistemas|agregar_sistema', ['only' => ['modal_add_sys','agregar_sistema']]);
+      $this->middleware('permiso:Sistemas|editar_sistema', ['only' => ['modal_editar_sistema','editar_sistema']]);
   }
 
   public function modal_relacionar_sistemas($id_usuario){
@@ -48,34 +51,27 @@ class Sistemas extends Controller
 
 
   public function modal_add_sys(){
-    $this->se_requiere_logueo(true,'Sistemas|agregar_sistema');
-    $sistema = $this->loadEloquent('Sistemas');
+    $status_sistema = Catalogo::selectCatalog('status_sistema');
+    $datos = [
+        'status_sistema' => $status_sistema
 
-    $catalogo = $this->loadEloquent('Catalogo');
-    $status_sistema = $catalogo->selectCatalog($this->help, 'status_sistema');
-
-    require URL_VISTA.'modales/sistemas/nuevo_sistema.php';
+    ];
+    return view('modales/sistemas/nuevo_sistema')->with('datos', $datos);
   }
-  public function agregar_sistema(){
-    $this->se_requiere_logueo(true,'Sistemas|agregar_sistema');
-    $add_sistema = $this->loadEloquent('Sistemas');
-    $inserta_sistema = $add_sistema->agregar_sistema($_POST);
-    print json_encode($inserta_sistema);
+  public function agregar_sistema(Request $request){
+    print json_encode(ModelSistemas::agregar_sistema($request));
   }
   public function modal_editar_sistema($id_sistema){
-    $this->se_requiere_logueo(true,'Sistemas|editar_sistema');
-    $sistema = $this->loadEloquent('Sistemas');
-    $sis_data = $sistema->datos_sistema($id_sistema);
+    $sis_data = ModelSistemas::datos_sistema($id_sistema);
+    $status_sistema = Catalogo::selectCatalog('status_sistema', $sis_data->cat_status_sistema);
+    $datos = [
+        'status_sistema' => $status_sistema,
+        'sis_data' => $sis_data
 
-    $catalogo = $this->loadEloquent('Catalogo');
-    $status_sistema = $catalogo->selectCatalog($this->help, 'status_sistema', $sis_data->cat_status_sistema);
-
-    require URL_VISTA.'modales/sistemas/editar_sistema.php';
+    ];
+    return view('modales/sistemas/editar_sistema')->with('datos', $datos);
   }
-  public function editar_sistema(){
-    $this->se_requiere_logueo(true,'Sistemas|editar_sistema');
-    $add_sistema = $this->loadEloquent('Sistemas');
-    $editar_sistema = $add_sistema->editar_sistema($_POST);
-    print json_encode($editar_sistema);
+  public function editar_sistema(Request $request){
+    print json_encode(ModelSistemas::editar_sistema($request));
   }
 }

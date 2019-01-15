@@ -4,6 +4,9 @@ function accion_controller(){
 		$('#controllers tbody').on('click', 'tr', function () {
 			var id = $('td', this).eq(0).text();
 			$.ajax({
+				headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
 				url: 'controllers/data_controller/' + id,
 				dataType: 'html',
 				success: function(resp_success){
@@ -29,6 +32,9 @@ $("body").on("click", "#cntr_js_fn_02", function() {
 	}
 	$(document).ready(function() {
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'controllers/editar_metodo',
 			type: 'POST',
 			data: $("#edita_modelo").serialize(),
@@ -49,6 +55,9 @@ $("body").on("click", "#cntr_js_fn_03", function() {
 	$(document).ready(function() {
 		var id = $('#id_metodo').get(0).value;
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'controllers/eliminar_par/' + id,
 			dataType: 'json',
 			success: function(resp_success){
@@ -65,6 +74,9 @@ $("body").on("click", "#cntr_js_fn_03", function() {
 });
 $("body").on("click", "#cntr_js_fn_04", function() {
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'controllers/modal_add_metodo',
 			dataType: 'html',
 			success: function(resp_success){
@@ -87,6 +99,9 @@ $("body").on("click", "#cntr_js_fn_05", function() {
 		return false;
 	}
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'controllers/agregar_metodo',
 			type: 'POST',
 			data: $("#nuevo_modelo").serialize(),

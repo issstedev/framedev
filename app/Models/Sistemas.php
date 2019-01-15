@@ -64,17 +64,13 @@ class Sistemas extends Model
     return $dataTable->make();
   }
 
-  static function agregar_sistema($arreglo){
-    foreach ($arreglo as $key => $value) {
-      $post[$key] = $value;
-    }
-
+  static function agregar_sistema($request){
     $store = new Sistemas;
 
-    if(isset($post['nombre'])) { $store->nombre = $post['nombre']; }
-    if(isset($post['nombre_largo'])) { $store->nombre_largo = $post['nombre_largo']; }
-    if(isset($post['descripcion'])) { $store->descripcion = $post['descripcion']; }
-    if(isset($post['cat_status_sistema'])) { $store->cat_status_sistema = $post['cat_status_sistema']; }
+    if(null !== ($request->input('nombre'))) { $store->nombre = $request->input('nombre'); }
+    if(null !== ($request->input('nombre_largo'))) { $store->nombre_largo = $request->input('nombre_largo'); }
+    if(null !== ($request->input('descripcion'))) { $store->descripcion = $request->input('descripcion'); }
+    if(null !== ($request->input('cat_status_sistema'))) { $store->cat_status_sistema = $request->input('cat_status_sistema'); }
 
     $store->user_alta = $_SESSION['id_usuario'];
     $store->fecha_alta = date("Y-m-d H:i:s");
@@ -90,17 +86,14 @@ class Sistemas extends Model
   static function datos_sistema($id_sistema){
     return Sistemas::find($id_sistema);
   }
-  static function editar_sistema($arreglo){
-    foreach ($arreglo as $key => $value) {
-      $post[$key] = $value;
-    }
+  static function editar_sistema($request){
     $query_resp = DB::table('sistemas')
-            ->where('id_sistema', $post['id_sistema'])
+            ->where('id_sistema', $request->input('id_sistema'))
             ->update([
-                'nombre'=> $post['nombre'],
-                'nombre_largo'=> $post['nombre_largo'],
-                'descripcion'=> $post['descripcion'],
-                'cat_status_sistema'=> $post['cat_status_sistema'],
+                'nombre'=> $request->input('nombre'),
+                'nombre_largo'=> $request->input('nombre_largo'),
+                'descripcion'=> $request->input('descripcion'),
+                'cat_status_sistema'=> $request->input('cat_status_sistema'),
                 'user_mod'=> $_SESSION['id_usuario'],
                 'fecha_mod'=> date("Y-m-d H:i:s")
             ]);

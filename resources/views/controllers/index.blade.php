@@ -43,13 +43,16 @@ $(document).ready(function() {
         /**/
       },
     "language": {
-        "url": "<?=URL_APP?>assets/plugins/datatables/Spanish.json"
+        "url": "<?=env('URL_APP')?>assets/plugins/datatables/Spanish.json"
     },
 		"searching": true,
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
     "processing": true,
     "serverSide": true,
 		"ajax": {
+						"headers": {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
             "url": "controllers/obtener_controllers",
             "type": "POST"
         }
@@ -57,7 +60,7 @@ $(document).ready(function() {
 } );
 accion_controller();
 
-var pusher = new Pusher('<?=PUSHER_KEY?>', {
+var pusher = new Pusher('<?=env('PUSHER_APP_KEY')?>', {
 	encrypted: true
 });
 

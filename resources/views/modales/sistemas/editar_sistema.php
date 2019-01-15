@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="myModalLabel">
-										Edición de <?php echo $sis_data->nombre; ?>
+										Edición de <?php echo $datos['sis_data']->nombre; ?>
 								</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -17,21 +17,21 @@
 											<div class="col-md-12">
 												  <div class="form-group">
 													<label for="nombre">Nombre</label>
-													<input  id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" value="<?php echo $sis_data->nombre; ?>">
+													<input  id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" value="<?php echo $datos['sis_data']->nombre; ?>">
 												  </div>
 												  <div class="form-group">
 													<label for="nombre_largo">Nombre largo</label>
-													<input id="nombre_largo" name="nombre_largo" type="text" class="form-control" placeholder="Nombre Largo" value="<?php echo $sis_data->nombre_largo; ?>">
+													<input id="nombre_largo" name="nombre_largo" type="text" class="form-control" placeholder="Nombre Largo" value="<?php echo $datos['sis_data']->nombre_largo; ?>">
 												  </div>
 												  <div class="form-group">
 													<label for="descripcion">Descripción</label>
-													<textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción" ><?php echo $sis_data->descripcion; ?></textarea>
+													<textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción" ><?php echo $datos['sis_data']->descripcion; ?></textarea>
 												  </div>
 
                           <div class="form-group">
 													<label for="cat_status_sistema">Estado del sistema</label>
 													  <select  class="form-control m-input" id="cat_status_sistema" name="cat_status_sistema">
-														<?php echo $status_sistema; ?>
+														<?php echo $datos['status_sistema']; ?>
 													  </select>
 												  </div>
 
@@ -39,7 +39,7 @@
 										</div>
 									</div>
 								</div>
-								<input type="hidden" id="id_sistema" name="id_sistema" value="<?php echo $sis_data->id_sistema; ?>">
+								<input type="hidden" id="id_sistema" name="id_sistema" value="<?php echo $datos['sis_data']->id_sistema; ?>">
 							</form>
             </div>
 						<div class="modal-footer">

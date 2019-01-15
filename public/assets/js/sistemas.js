@@ -1,5 +1,8 @@
 $("body").on("click", "#sys_js_fn_01", function() {
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'sistemas/modal_add_sys',
 			dataType: 'html',
 				success: function(resp_success){
@@ -24,6 +27,9 @@ $("body").on("click", "#sys_js_fn_02", function() {
 		return false;
 	}
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'sistemas/agregar_sistema',
 			type: 'POST',
 			data: $("#nuevo_sistema").serialize(),
@@ -44,6 +50,9 @@ $("body").on("click", "#sys_js_fn_02", function() {
 $("body").on("click", ".sys_js_fn_03", function() {
 		id_sistema = $(this).attr('data-function');
 			$.ajax({
+				headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
 				url: 'sistemas/modal_editar_sistema/' + id_sistema,
 				dataType: 'html',
 				success: function(resp_success){
@@ -68,6 +77,9 @@ $("body").on("click", "#sys_js_fn_04", function() {
 		return false;
 	}
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'sistemas/editar_sistema',
 			type: 'POST',
 			data: $("#edita_sistema").serialize(),
@@ -87,6 +99,9 @@ $("body").on("click", "#sys_js_fn_04", function() {
 $("body").on("click", ".sys_js_fn_05", function() {
 		id_usuario = $(this).attr('data-function');
 			$.ajax({
+				headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
 				url: 'sistemas/modal_relacionar_sistemas/' + id_usuario,
 				dataType: 'html',
 				success: function(resp_success){
@@ -106,6 +121,9 @@ function vincular_sistema(id_sistema) {
 		var estado = document.getElementById("system_access_" + id_sistema).checked;
 		var id_usuario = document.getElementById("id_usuario").value;
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: url_app + 'sistemas/vincular_sistema/' + id_usuario + '/' + id_sistema + '/' + estado ,
 			dataType: 'json',
 			success: function(resp_success){
@@ -125,6 +143,9 @@ function vincular_sistema(id_sistema) {
 $("body").on("click", "#sys_js_fn_06", function() {
 	  id_sistema = $(this).attr('data-function');
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'systemroles/modal_roles/' + id_sistema,
 			dataType: 'html',
 			success: function(resp_success){
@@ -154,6 +175,9 @@ $("body").on("click", "#sys_js_fn_06", function() {
 $("body").on("click", "#sys_js_fn_07", function() {
 	  id_sistema = $(this).attr('data-function');
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'systemroles/agregar_rol/' + id_sistema,
 			type: 'POST',
 			data: $("#nuevo_rol").serialize(),
@@ -170,6 +194,9 @@ $("body").on("click", "#sys_js_fn_07", function() {
 $("body").on("click", "#sys_js_fn_08", function() {
 	  id_sistema = $(this).attr('data-function');
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'permisos/modal_add_metodo/' + id_sistema,
 			dataType: 'html',
 			success: function(resp_success){
@@ -192,6 +219,9 @@ $("body").on("click", "#sys_js_fn_09", function() {
 		return false;
 	}
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'permisos/agregar_metodo',
 			type: 'POST',
 			data: $("#nuevo_modelo").serialize(),

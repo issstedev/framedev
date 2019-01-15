@@ -10,4 +10,8 @@ class Site extends Controller
   {
       return view('site/plantilla/index');
   }
+  public function site()
+  {
+      return view('site/plantilla/index');
+  }
 }

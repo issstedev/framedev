@@ -8,7 +8,7 @@ use Helpme;
 
 class Viewsistemas extends Model
 {
-  protected $table = DB_NAME . '.view_sistemas';
+  protected $table = 'view_sistemas';
   protected $primaryKey = 'id_sistema';
   public $timestamps = false;
 

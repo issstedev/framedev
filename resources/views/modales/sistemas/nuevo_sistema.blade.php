@@ -29,7 +29,7 @@
                           <div class="form-group">
 													<label for="cat_status_sistema">Estado del sistema</label>
 													  <select  class="form-control m-input" id="cat_status_sistema" name="cat_status_sistema">
-														<?php echo $status_sistema; ?>
+														<?php echo $datos['status_sistema']; ?>
 													  </select>
 												  </div>
 

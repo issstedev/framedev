@@ -32,8 +32,8 @@
 												</tr>
 												<tbody>
 												<?php
-                        if($roles){
-  												foreach ($roles as $row) {
+                        if($datos['roles']){
+  												foreach ($datos['roles'] as $row) {
   													echo "
   													<tr>
   														<td>".$row->id_rol."</td>
@@ -73,7 +73,7 @@
 
   														<label for="cat_tiporol">Tipo Rol</label>
   														<select class="form-control m-input" id="cat_tiporol" name="cat_tiporol">
-  														<?php echo $tiporol; ?>
+  														<?php echo $datos['tiporol']; ?>
   														</select>
 
                           </div>

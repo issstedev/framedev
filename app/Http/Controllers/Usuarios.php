@@ -44,9 +44,6 @@ class Usuarios extends Controller
      print json_encode(Viewusuarios::obtener_usuarios());
   }
 
-
-
-
   public function desbloquea_usuario($id)
   {
       print json_encode(ModelUsuarios::desbloquea_usuario($id));

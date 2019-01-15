@@ -3,6 +3,9 @@
 		var id_rol = $('#id_rol_clone').get(0).value;
 		var transfer = $('#role').get(0).value;
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'roles/clonar/' + id_rol + '/' + transfer,
 			dataType: 'html',
 			success: function(resp_success){
@@ -16,6 +19,9 @@
 ﻿$("body").on("click", "#rls_js_fn_02", function() {
 
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'roles/modal_roles',
 			dataType: 'html',
 			success: function(resp_success){
@@ -43,6 +49,9 @@
 
 ﻿$("body").on("click", "#rls_js_fn_03", function() {
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'roles/agregar_rol',
 			type: 'POST',
 			data: $("#nuevo_rol").serialize(),
@@ -63,6 +72,9 @@ function setPermission(id_metodo) {
 		var estado = document.getElementById("permission_" + metodo).checked;
 		var role = document.getElementById("role").value;
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: url_app + 'roles/establecer_permiso/' + role + '/' + metodo + '/' + estado ,
 			dataType: 'json',
 			success: function(resp_success){
@@ -81,6 +93,9 @@ function vincular_rol(rol) {
 		var estado = document.getElementById("accessrol" + access).checked;
 		var id_rol = document.getElementById("role").value;
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: url_app + 'roles/establecer_acceso/' + id_rol + '/' + access + '/' + estado ,
 			dataType: 'json',
 			success: function(resp_success){

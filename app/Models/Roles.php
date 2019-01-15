@@ -21,8 +21,7 @@ class Roles extends Model
   }
 
   static function select_roles(){
-    $array = self::check_roles();
-    return self::setOption_U($array);
+    return self::setOption_U(self::check_roles());
   }
 
   static function check_roles(){
@@ -152,15 +151,12 @@ class Roles extends Model
     }
   }
 
-  static function agregar_rol($arreglo){
+  static function agregar_rol($request){
 
-    foreach ($arreglo as $key => $value) {
-      $post[$key] = $value;
-    }
     $query_resp = DB::table('fw_roles')->insert([
         [
-          'descripcion' => $post['descripcion'],
-          'cat_tiporol' => $post['cat_tiporol'],
+          'descripcion' => $request->input('descripcion'),
+          'cat_tiporol' => $request->input('cat_tiporol'),
           'id_sistema' => 1,
           'user_alta' => $_SESSION['id_usuario'],
           'fecha_alta' => date("Y-m-d H:i:s")

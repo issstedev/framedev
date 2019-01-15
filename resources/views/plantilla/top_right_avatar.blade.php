@@ -75,7 +75,7 @@
 
             <?php if(isset($_SESSION['token'])){ ?>
             <li class="m-nav__item">
-              <a href="<?=env('URL_APP')?>site" target="_blank" class="m-nav__link">
+              <a href="<?=env('URL_APP')?>" target="_blank" class="m-nav__link">
                 <i class="m-nav__link-icon flaticon-browser"></i>
                 <span class="m-nav__link-text">
                   Site

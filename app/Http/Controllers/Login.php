@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Login as ModelLogin;
 use App\Models\Usuarios;
+use App\Models\Viewlog;
 use Helpme;
 
 class Login extends Controller
@@ -28,6 +29,26 @@ class Login extends Controller
 
     public function error404() { return view('plantilla/404_full'); }
 
+    public function salir(){return ModelLogin::salir();}
+
+    public function verifica_session() {return ModelLogin::verificarSession();}
+
+    public function keepAliveReset() { print json_encode(ModelLogin::keepAlive());}
+
+    public function keepAlive() {print json_encode(ModelLogin::keepAlive());}
+
+    public function modal_all_sign_out() { return view('modales/login/sign-all-out'); }
+
+    public function sign_out($id_usuario){ print ModelLogin::signout($id_usuario); }
+
+    public function modal_sign_out($id_usuario) {return view('modales/login/sign-out'); }
+
+    public function loginlogger() { return view('login/logger'); }
+
+    public function loginlogger_get(){ print json_encode(Viewlog::logger()); }
+
+    public function salirAlternativo() { return ModelLogin::salir();}
+
     public function lockSession()
     {
         $usuario = Usuarios::datos_usuario($_SESSION['id_usuario']);
@@ -50,25 +71,16 @@ class Login extends Controller
         return view('login/lock')->with('datos', $datos);
     }
 
-    public function salir(){return ModelLogin::salir();}
 
-    public function verifica_session() {return ModelLogin::verificarSession();}
-
-    public function keepAliveReset() { print json_encode(ModelLogin::keepAlive());}
-
-    public function keepAlive() {print json_encode(ModelLogin::keepAlive());}
-
-
-    public function recuperar_datos()
+    public function recuperar_datos(Request $request)
     {
         $token = Helpme::token(62);
-        D::bug($_POST['correo']);
-        $recuperar = ModelLogin::recuperar_datos($_POST['correo'],$token);
+        $recuperar = ModelLogin::recuperar_datos($request->input('correo'),$token);
 
         $datamail['subject'] = 'Recuperación de cuenta';
         $datamail['plantilla'] = 'lostpassword';
         $datamail['destinatarios'] = array(
-          $_POST['correo']
+          $request->input('correo')
         );
         $datamail['body'] = array(
           'token' => $token,
@@ -80,44 +92,12 @@ class Login extends Controller
         print json_encode($recuperar);
     }
 
-    public function modal_all_sign_out()
-    {
-        require URL_VISTA.'modales/login/sign-all-out.php';
-    }
     public function sign_all_out()
     {
-        $login = $this->loadEloquent('Login');
-        $whosLogin = $login->whoisLogged();
+        $whosLogin = ModelLogin::whoisLogged();
 
         foreach ($whosLogin as $logged){
-            $login->signout($logged['id_usuario'], $this->help);
+            ModelLogin::signout($logged['id_usuario']);
         }
-    }
-
-    public function sign_out($id_usuario)
-    {
-        $login = $this->loadEloquent('Login');
-        print $login->signout($id_usuario, $this->help);
-    }
-
-    public function modal_sign_out($id_usuario)
-    {
-        require URL_VISTA.'modales/login/sign-out.php';
-    }
-
-    public function loginlogger()
-    {
-        include (URL_VISTA.'login/logger.php');
-    }
-
-    public function loginlogger_get()
-    {
-        $login = $this->loadEloquent('Viewlog');
-        print json_encode($login->logger($this->help));
-    }
-
-    public function salirAlternativo()
-    {
-        return ModelLogin::salir($this->help);
     }
 }

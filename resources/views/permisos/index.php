@@ -17,17 +17,17 @@
 
 
 
-	<input type="hidden" name="role" id="role" value="<?php echo $rol; ?>">
+	<input type="hidden" name="role" id="role" value="<?php echo $datos['rol']; ?>">
 		<?php
-		if($this->help->tiene_permiso('Roles|clonar')){
+		if(Helpme::tiene_permiso('Roles|clonar')){
 		?>
 			<h3 class="header lighter wow fadeInUp animated" style="font-size:2.5em !important; line-height:70px;">
-				Clonar para <?=$descripcion?>:
+				Clonar para <?=$datos['descripcion']?>:
 			</h3>
 			<div class="row wow fadeInUp animated">
 				<div class="col-md-4">
 					<select class="form-control m-input m-input--square wow fadeInUp animated" id="id_rol_clone" name="id_rol_clone">
-						<?php echo $roles; ?>
+						<?php echo $datos['roles']; ?>
 					</select>
 				</div>
 				<div class="col-md-2">
@@ -38,21 +38,20 @@
 		}else{
 		?>
 			<h3 class="header lighter wow fadeInUp animated" style="font-size:2.5em !important; line-height:70px;">
-			Definir <?=$descripcion?>:
+			Definir <?=$datos['descripcion']?>:
 			</h3>
 		<?php
 		}
 		$printhead = 1;
 		$titulo = '';
-		foreach ($metodos as $num => $metodo){
+		foreach ($datos['metodos'] as $num => $metodo){
 			if($metodo->controlador != $titulo){$printhead = 1;}
 			if($printhead == 1){
 				echo '<h3 class="header lighter wow fadeInUp animated" style="font-size:2.5em !important; line-height:70px;">'.$metodo->controlador.'</h3>';
 				$printhead = 0;
 				$titulo = $metodo->controlador;
 			}
-				$permiso = $roles_data->getPermisos($rol,$metodo->id_metodo);
-				if($permiso == 1){$checked = 'checked';}else{$checked = '';}
+			if($datos{'permisos'}[$num] == 1){$checked = 'checked';}else{$checked = '';}
 			?>
 
 				<div class="text-icon wow fadeInUp animated">
@@ -92,10 +91,9 @@
 								<table>
 								<?php
 									$j=0;
-									for($i=0;$i < count($roles_ck); $i++){
+									for($i=0;$i < count($datos['roles_ck']); $i++){
 
-										$acceso = $roles_data->getAccesos($rol,$roles_ck[$i]['value'],'fw_roles','fw_roles');
-										if($acceso == 1){$checked_ac = 'checked';}else{$checked_ac = '';}
+										if($datos{'accesos'}[$i] == 1){$checked_ac = 'checked';}else{$checked_ac = '';}
 
 										echo ($j == 0)?'<tr>':'';
 										echo '<td>';
@@ -104,10 +102,10 @@
 											<!-- Switch -->
 											<span class="m-switch m-switch--icon">
 												<label>
-													<input id="accessrol<?=$roles_ck[$i]['value']?>" name="accessrol<?=$roles_ck[$i]['value']?>" type="checkbox"  <?php echo $checked_ac; ?>  onchange='vincular_rol(<?=$roles_ck[$i]['value']?>)'>
+													<input id="accessrol<?=$datos['roles_ck'][$i]['value']?>" name="accessrol<?=$datos['roles_ck'][$i]['value']?>" type="checkbox"  <?php echo $checked_ac; ?>  onchange='vincular_rol(<?=$datos['roles_ck'][$i]['value']?>)'>
 													<span></span>
 												</label>
-												<span class="lbl">&nbsp;&nbsp;<?=$roles_ck[$i]['valor']?>&nbsp;&nbsp;(<?=$roles_ck[$i]['etiqueta']?>)</span>
+												<span class="lbl">&nbsp;&nbsp;<?=$datos['roles_ck'][$i]['valor']?>&nbsp;&nbsp;(<?=$datos['roles_ck'][$i]['etiqueta']?>)</span>
 											</span>
 
 										<?php

@@ -40,20 +40,23 @@ $("#breadcrumb-title").append(' / Administración de sistemas');
               /**/
             },
             "language": {
-                "url": "<?=URL_APP?>assets/plugins/datatables/Spanish.json"
+                "url": "<?=env('URL_APP')?>assets/plugins/datatables/Spanish.json"
             },
 						"searching": true,
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             "processing": true,
             "serverSide": true,
     		    "ajax": {
+								"headers": {
+										'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								},
                 "url": "sistemas/listado_sistemas",
                 "type": "POST"
             }
         } );
 
     } );
-		var pusher = new Pusher('<?=PUSHER_KEY?>', {
+		var pusher = new Pusher('<?=env('PUSHER_APP_KEY')?>', {
 			encrypted: true
 		});
 
