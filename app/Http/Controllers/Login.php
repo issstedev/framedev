@@ -41,7 +41,7 @@ class Login extends Controller
 
     public function sign_out($id_usuario){ print ModelLogin::signout($id_usuario); }
 
-    public function modal_sign_out($id_usuario) {return view('modales/login/sign-out'); }
+    public function modal_sign_out($id_usuario) {return view('modales/login/sign-out')->with('id_usuario', $id_usuario); }
 
     public function loginlogger() { return view('login/logger'); }
 

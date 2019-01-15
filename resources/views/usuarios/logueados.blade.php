@@ -10,7 +10,7 @@ $("#breadcrumb-title").append(' / Logins y manejo de sesiones');
 						<div class="col-xl-12 order-1 order-xl-2 m--align-right">
 
 							<?php
-							if($this->help->tiene_permiso('Roles|modal_roles')){
+							if(Helpme::tiene_permiso('Roles|modal_roles')){
 							?>
 
 							<a id="comm_js_fn_07" href="javascript:;" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
@@ -56,12 +56,15 @@ $(document).ready(function() {
           /**/
         },
         "language": {
-          "url": "<?=URL_APP?>assets/plugins/datatables/Spanish.json"
+          "url": "<?=env('URL_APP')?>assets/plugins/datatables/Spanish.json"
         },
 				"searching": true,
         "processing": true,
         "serverSide": true,
         "ajax": {
+					"headers": {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
           "url": "usuarios/logueados_get",
           "type": "POST"
         },
@@ -83,7 +86,7 @@ $(document).ready(function() {
       } );
 } );
 
-var pusher = new Pusher('<?=PUSHER_KEY?>', {
+var pusher = new Pusher('<?=env('PUSHER_APP_KEY')?>', {
 	encrypted: true
 });
 

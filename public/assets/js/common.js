@@ -20,6 +20,9 @@ $("body").on("click", "#comm_js_fn_01", function() {
 
 function salirAlternativo(){
 	$.ajax({
+		headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},
 		url: url_app + 'login/salirAlternativo',
 		type: 'POST',
 		dataType: "json",
@@ -83,6 +86,9 @@ $("body").on("click", ".loginfn", function() {
 $("body").on("click", "#comm_js_fn_04", function() {
     id_usuario = $(this).attr('data-function');
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'login/modal_sign_out/' + id_usuario,
 			dataType: 'html',
 				success: function(resp_success){
@@ -100,6 +106,9 @@ $("body").on("click", "#comm_js_fn_04", function() {
 $("body").on("click", "#comm_js_fn_06", function() {
     id_usuario = $(this).attr('data-function');
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'login/sign_out/' + id_usuario,
 			dataType: 'json',
 				success: function(resp_success){
@@ -118,6 +127,9 @@ $("body").on("click", "#comm_js_fn_06", function() {
 $("body").on("click", "#comm_js_fn_07", function() {
 
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'login/modal_all_sign_out',
 			dataType: 'html',
 				success: function(resp_success){
@@ -135,6 +147,9 @@ $("body").on("click", "#comm_js_fn_07", function() {
 $("body").on("click", "#comm_js_fn_09", function() {
 
 		$.ajax({
+			headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
 			url: 'login/sign_all_out',
 			dataType: 'json',
 				success: function(resp_success){
@@ -180,6 +195,9 @@ function valida_logeo(e,decReq,boton){
 			return false;
 		}else{
 			$.ajax({
+				headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
 				url: url_app + 'login/logear',
 				type: 'POST',
 				data: 'usuario='+$('#usuario').get(0).value+"&password="+$('#password').get(0).value,

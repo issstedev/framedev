@@ -50,6 +50,8 @@ Route::any('/usuarios/datos_usuario/{id_usuario}', 'Usuarios@datos_usuario');
 Route::any('/usuarios/desbloquea_usuario/{id_usuario}', 'Usuarios@desbloquea_usuario');
 Route::any('/usuarios/desbloquear_usuarios', 'Usuarios@desbloquear_usuarios');
 Route::any('/usuarios/editar_usuario', 'Usuarios@editar_usuario');
+Route::any('/usuarios/logueados', 'Usuarios@logueados');
+Route::any('/usuarios/logueados_get', 'Usuarios@logueados_get');
 
 
 
@@ -67,8 +69,12 @@ Route::get('/login/pass_chge', 'Login@pass_chge');
 Route::get('/login/lockSession', 'Login@lockSession');
 Route::any('/login/salir', 'Login@salir');
 Route::any('/login/verifica_session', 'Login@verifica_session');
-Route::post('/login/keepAliveReset', 'Login@keepAliveReset');
-Route::post('/login/keepAlive', 'Login@keepAlive');
+Route::any('/login/keepAliveReset', 'Login@keepAliveReset');
+Route::any('/login/keepAlive', 'Login@keepAlive');
+Route::any('/login/modal_sign_out/{id_usuario}', 'Login@modal_sign_out');
+Route::any('/login/sign_out/{id_usuario}', 'Login@sign_out');
+Route::any('/login/loginlogger', 'Login@loginlogger');
+Route::any('/login/loginlogger_get', 'Login@loginlogger_get');
 
 
 
