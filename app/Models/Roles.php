@@ -175,7 +175,7 @@ class Roles extends Model
 
     return $respuesta;
   }
-  static function selectRoles(HelpersMiddleware $help, $id){
+  static function selectRoles($id){
     $array = array();
     $roles = Roles::all();
     if(count($roles)>=1){
@@ -186,7 +186,7 @@ class Roles extends Model
         $cont++;
       }
     }
-    return $help->setOption($array,$id);
+    return Helpme::setOption($array,$id);
   }
 
   static function obtenerRoles(){
@@ -269,7 +269,7 @@ class Roles extends Model
         ]
     ]);
   }
-  static function selectUsersByRoles(HelpersMiddleware $help, $ids_roles,$id_usuario){
+  static function selectUsersByRoles($ids_roles,$id_usuario){
     $array = array();
     $access = DB::table('fw_usuarios')
               ->join('fw_roles','fw_roles.id_rol','=','fw_usuarios.id_rol')
@@ -284,10 +284,10 @@ class Roles extends Model
           $cont++;
       }
     }
-    return $help->setOption($array,$id_usuario);
+    return Helpme::setOption($array,$id_usuario);
   }
 
-  static function selectRolesByTipo(HelpersMiddleware $help, $cat_tiporol,$id_rol,$select = NULL){
+  static function selectRolesByTipo($cat_tiporol,$id_rol,$select = NULL){
     $accesos = self::selectRolesByAccess($id_rol);
     //Controlador::bug('selectRolesByAccess >> '.$accesos);
 
@@ -304,7 +304,7 @@ class Roles extends Model
         $cont++;
       }
     }
-    return $help->setOption($array,$select);
+    return Helpme::setOption($array,$select);
   }
 
   static function selectRolesByAccess($id_rol){

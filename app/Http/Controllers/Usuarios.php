@@ -27,62 +27,71 @@ class Usuarios extends Controller
       $this->middleware('permiso:Usuarios|baja_usuario', ['only' => ['baja_usuario']]);
       $this->middleware('permiso:Usuarios|perfil', ['only' => ['se_requiere_logueo']]);
   }
-  public function upload_dropzone($folder,$permisos){
-    if(Helpme::tiene_permiso('Usuarios|'.$permisos)){
-      $newfldr = str_replace('|', '/', $folder);
-      $upload_dir = '../storage/'.$newfldr.'/';
 
-      if(!is_dir($upload_dir)){
-        if(!mkdir($upload_dir, 0777, true)) {
-            Debugbar::info('Error al crear la estructura del directorio');
-            exit();
-        }
-      }
-
-      $allowed_ext = array('jpg','jpeg','png','gif','pdf');
-
-      if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
-        Debugbar::info('Error! Error en el metodo HTTP!'.$_SERVER['REQUEST_METHOD']);
-      }
-
-      if(((strpos($_FILES['file']['type'], 'image') !== false) ||
-          (strpos($_FILES['file']['type'], 'application/pdf') !== false)) && $_FILES['file']['error'] == 0 ){
-        $pic = $_FILES['file'];
-
-
-        /*
-        $allowed_ext = array('jpg','jpeg','png','gif');
-
-        if(!in_array(self::get_extension($pic['name']),$allowed_ext)){
-          Debugbar::info('Solo las extensiones '.implode(',',$allowed_ext).' son permitidas!');
-        }
-        */
-        $extension_or = pathinfo($pic['name']);
-        $destino_final = $upload_dir.Helpme::token(6).'.'.$extension_or['extension'];
-        if (file_exists($destino_final)){
-          $destino_final = self::smart_rename($destino_final);
-        }
-        if(move_uploaded_file($pic['tmp_name'], $destino_final)){
-          $elemento = pathinfo($destino_final);
-          $extension = $elemento['extension'];
-          $nombre = $elemento['filename'];
-          $original = $nombre.'.'.$extension;
-          $temporal =  Helpme::duplicatePublic($original,$newfldr);
-          echo $temporal.'|'.$original;
-        }
-      }else{
-        Debugbar::info('Algunos errores ocurrieron al actualizar el avatar: '.strpos($_FILES['file']['type'], 'image'));
-      }
-    }else{
-      return redirect()->action('Login@error403');
-      exit();
-    }
+  public function desbloquear_usuarios()
+  {
+      print json_encode(ModelUsuarios::desbloquear_usuarios());
   }
+
   public function index()
   {
       $bloqueados = ModelUsuarios::usuarios_bloqueados();
-      return view('usuarios/usuarios');
+      return view('usuarios/usuarios')->with('bloqueados', $bloqueados);
   }
+
+  public function obtener_usuarios()
+  {
+     print json_encode(Viewusuarios::obtener_usuarios());
+  }
+
+
+
+
+  public function desbloquea_usuario($id)
+  {
+      print json_encode(ModelUsuarios::desbloquea_usuario($id));
+  }
+
+  public function datos_usuario($user_id)
+  {
+      $usuario = ModelUsuarios::datos_usuario($user_id);
+      $ubicacion = Ubicacion::select_ubicaciones($usuario['id_ubicacion']);
+      $roles = Roles::selectRolesByTipo('8,6',$_SESSION['id_rol'],$usuario['id_rol']);
+      if(($usuario['cat_status'])==3){$chk_cat_status = "checked";$cat_status = 3;}else{$chk_cat_status = "";$cat_status = $usuario['cat_status'];}
+      if(($usuario['cat_pass_chge'])==10){$chk_change_pass = "checked";$change_pass = 10;}else{$chk_change_pass = "";$change_pass = $usuario['cat_pass_chge'];}
+      $datos = [
+          'usuario' => $usuario,
+          'ubicacion' => $ubicacion,
+          'roles' => $roles,
+          'chk_cat_status' => $chk_cat_status,
+          'cat_status' => $cat_status,
+          'chk_change_pass' => $chk_change_pass,
+          'change_pass' => $change_pass
+      ];
+      return view('modales/usuarios/editar_usuario')->with('datos', $datos);
+  }
+
+  public function editar_usuario(Request $request)
+  {
+      print json_encode(ModelUsuarios::editar_usuario($request));
+  }
+
+  public function modal_add_usr()
+  {
+      $ubicacion = Ubicacion::select_ubicaciones('');
+      $roles = Roles::selectRolesByTipo('8,6',$_SESSION['id_rol']);
+      $datos = [
+          'ubicacion' => $ubicacion,
+          'roles' => $roles
+      ];
+      return view('modales/usuarios/nuevo_usuario')->with('datos', $datos);
+  }
+
+  public function agregar_usuario(Request $request)
+  {
+      print json_encode(ModelUsuarios::agregar_usuario($request));
+  }
+
   public function logueados()
   {
       return view('usuarios/logueados');
@@ -94,22 +103,7 @@ class Usuarios extends Controller
   public function tyc($stat){
       print json_encode(ModelUsuarios::acceptTyc($stat));
   }
-  public function obtener_usuarios()
-  {
-     print json_encode(Viewusuarios::obtener_usuarios());
-  }
 
-  public function desbloquea_usuario($id)
-  {
-      $desbloquea_user = ModelUsuarios::desbloquea_usuario($id);
-      print json_encode($desbloquea_user);
-  }
-
-  public function desbloquear_usuarios()
-  {
-      $desbloquea_user = ModelUsuarios::desbloquear_usuarios();
-      print json_encode($desbloquea_user);
-  }
   public function update_avatar($file)
   {
       $out = ModelUsuarios::set_avatar($file);
@@ -143,26 +137,7 @@ class Usuarios extends Controller
       }
     }
   }
-  public function datos_usuario($user_id)
-  {
-      $usuario = ModelUsuarios::datos_usuario($user_id);
-      $ubicacion = Ubicacion::select_ubicaciones($this->help, $usuario['id_ubicacion']);
-      $roles = Roles::selectRolesByTipo($this->help, '8,6',$_SESSION['id_rol'],$usuario['id_rol']);
-      if(($usuario['cat_status'])==3){$chk_cat_status = "checked";$cat_status = 3;}else{$chk_cat_status = "";$cat_status = $usuario['cat_status'];}
-      if(($usuario['cat_pass_chge'])==10){$chk_change_pass = "checked";$change_pass = 10;}else{$chk_change_pass = "";$change_pass = $usuario['cat_pass_chge'];}
-      return view('modales/usuarios/editar_usuario');
-  }
-  public function modal_add_usr()
-  {
-      $ubicacion = Ubicacion::select_ubicaciones($this->help, '');
-      $roles = Roles::selectRolesByTipo($this->help, '8,6',$_SESSION['id_rol']);
-      return view('modales/usuarios/nuevo_usuario');
-  }
-  public function agregar_usuario()
-  {
-      $inserta_usuario = ModelUsuarios::agregar_usuario($_POST);
-      print json_encode($inserta_usuario);
-  }
+
   public function resetpassword($token)
   {
       if(!$token){Header("Location: ".URL_APP."login"); exit();}
@@ -172,11 +147,6 @@ class Usuarios extends Controller
       }else{
         return redirect()->action('Login@index');
       }
-  }
-  public function editar_usuario()
-  {
-      $edita_usuario = ModelUsuarios::editar_usuario($_POST);
-      print json_encode($edita_usuario);
   }
 
   public function cambiar_password()
@@ -227,5 +197,56 @@ class Usuarios extends Controller
           'perfil' => $perfil
       ];
       return view('usuarios/perfil')->with('datos', $datos);
+  }
+  public function upload_dropzone($folder,$permisos){
+    if(Helpme::tiene_permiso('Usuarios|'.$permisos)){
+      $newfldr = str_replace('|', '/', $folder);
+      $upload_dir = '../storage/'.$newfldr.'/';
+
+      if(!is_dir($upload_dir)){
+        if(!mkdir($upload_dir, 0777, true)) {
+            Debugbar::info('Error al crear la estructura del directorio');
+            exit();
+        }
+      }
+
+      $allowed_ext = array('jpg','jpeg','png','gif','pdf');
+
+      if(strtolower($_SERVER['REQUEST_METHOD']) != 'post'){
+        Debugbar::info('Error! Error en el metodo HTTP!'.$_SERVER['REQUEST_METHOD']);
+      }
+
+      if(((strpos($_FILES['file']['type'], 'image') !== false) ||
+          (strpos($_FILES['file']['type'], 'application/pdf') !== false)) && $_FILES['file']['error'] == 0 ){
+        $pic = $_FILES['file'];
+
+
+        /*
+        $allowed_ext = array('jpg','jpeg','png','gif');
+
+        if(!in_array(self::get_extension($pic['name']),$allowed_ext)){
+          Debugbar::info('Solo las extensiones '.implode(',',$allowed_ext).' son permitidas!');
+        }
+        */
+        $extension_or = pathinfo($pic['name']);
+        $destino_final = $upload_dir.Helpme::token(6).'.'.$extension_or['extension'];
+        if (file_exists($destino_final)){
+          $destino_final = self::smart_rename($destino_final);
+        }
+        if(move_uploaded_file($pic['tmp_name'], $destino_final)){
+          $elemento = pathinfo($destino_final);
+          $extension = $elemento['extension'];
+          $nombre = $elemento['filename'];
+          $original = $nombre.'.'.$extension;
+          $temporal =  Helpme::duplicatePublic($original,$newfldr);
+          echo $temporal.'|'.$original;
+        }
+      }else{
+        Debugbar::info('Algunos errores ocurrieron al actualizar el avatar: '.strpos($_FILES['file']['type'], 'image'));
+      }
+    }else{
+      return redirect()->action('Login@error403');
+      exit();
+    }
   }
 }

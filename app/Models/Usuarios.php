@@ -188,10 +188,12 @@ class Usuarios extends Model
   }
 
   static function editar_usuario($request){
-    if(($request->input('password') == $request->input('password2'))&&($request->input('password'))){
-      DB::table('fw_usuarios')
-              ->where('id_usuario', $request->input('id_usuario'))
-              ->update(['password'=> md5($request->input('password'))]);
+    if(($request->input('password') != '') && ($request->input('password2') != '')){
+      if(($request->input('password') == $request->input('password2'))&&($request->input('password'))){
+        DB::table('fw_usuarios')
+                ->where('id_usuario', $request->input('id_usuario'))
+                ->update(['password'=> md5($request->input('password'))]);
+      }
     }
         $query_resp = DB::table('fw_usuarios')
                           ->where('id_usuario', $request->input('id_usuario'))
@@ -334,10 +336,10 @@ class Usuarios extends Model
     return $respuesta;
   }
 
-  static function agregar_usuario($arreglo){
+  static function agregar_usuario($request){
 
-    if( $arreglo['password'] == $arreglo['password2'] ){
-      $respuesta = self::guardar_usuario($arreglo);
+    if( $request->input('password') == $request->input('password2') ){
+      $respuesta = self::guardar_usuario($request);
     }else{
       $respuesta = array('resp' => false , 'mensaje' => 'Error en captura de datos.' , 'error' => 'Las contraseñas ingresadas no son iguales.' );
     }
