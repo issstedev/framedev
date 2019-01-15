@@ -2,6 +2,8 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
+use LiveControl\EloquentDataTable\DataTable as DT;
+use LiveControl\EloquentDataTable\ExpressionWithName;
 use Helpme;
 use DB;
 

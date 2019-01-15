@@ -31,6 +31,12 @@ class Permisos
               return $next($request);
           }
 
+          if((isset($_SESSION['token']))&&($rol == true)){
+              $_SESSION['hora_acceso']=time();
+              Config::updateLogin();
+              return $next($request);
+          }
+
           if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&($_SESSION['tyc'] != 'SI')){
               return redirect()->action('Login@tyc');
               exit();

@@ -10,6 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::any('/systemusers', 'Systemusers@index');
+Route::any('/systemusers/listado/{id_sistema}', 'Systemusers@listado');
+Route::any('/systemusers/obtener_usuarios/{id_sistema}', 'Systemusers@obtener_usuarios');
+Route::any('/systemusers/loginlogger/{id_sistema}', 'Systemusers@loginlogger');
+Route::any('/systemusers/loginlogger_get/{id_sistema}', 'Systemusers@loginlogger_get');
+
+
+Route::any('/catalogo', 'Catalogo@index');
+Route::any('/catalogo/obtener_catalogo', 'Catalogo@obtener_catalogo');
+Route::any('/catalogo/editar_catalogo', 'Catalogo@editar_catalogo');
+Route::any('/catalogo/eliminar_elemento/{ID}', 'Catalogo@eliminar_elemento');
+Route::any('/catalogo/modal_add_elemento', 'Catalogo@modal_add_elemento');
+Route::any('/catalogo/agregar_elemento', 'Catalogo@agregar_elemento');
+Route::any('/catalogo/getCatalogoSecundario/{id_padre}/{nombre_cat}/{other?}', 'Catalogo@getCatalogoSecundario');
+Route::any('/catalogo/data_catalogo/{id}', 'Catalogo@data_catalogo');
+
+
 Route::any('/roles/index', 'Roles@index');
 Route::any('/roles/establecer_permiso/{role}/{metodo}/{estado}', 'Roles@establecer_permiso');
 Route::any('/roles/establecer_acceso/{id_rol}/{access}/{estado}', 'Roles@establecer_acceso');
@@ -40,7 +57,7 @@ Route::any('/sistemas/vincular_sistema/{id_usuario}/{id_sistema}/{estado}', 'Sis
 
 
 Route::any('/usuarios/upload_dropzone/{ruta}/{permisos}', 'Usuarios@upload_dropzone');
-Route::post('/usuarios/editar_perfil', 'Usuarios@editar_perfil');
+Route::any('/usuarios/editar_perfil', 'Usuarios@editar_perfil');
 Route::any('/usuarios/perfil', 'Usuarios@perfil');
 Route::any('/usuarios', 'Usuarios@index');
 Route::any('/usuarios/obtener_usuarios', 'Usuarios@obtener_usuarios');
@@ -60,13 +77,13 @@ Route::get('/inicio/load_start', 'Inicio@load_start');
 
 
 
-Route::get('/login', 'Login@index');
+Route::any('/login', 'Login@index');
 Route::any('/login/logear', 'Login@logear');
-Route::get('/login/recuperar_datos', 'Login@recuperar_datos');
-Route::get('/login/403', 'Login@error403');
-Route::get('/login/tyc', 'Login@tyc');
-Route::get('/login/pass_chge', 'Login@pass_chge');
-Route::get('/login/lockSession', 'Login@lockSession');
+Route::any('/login/recuperar_datos', 'Login@recuperar_datos');
+Route::any('/login/403', 'Login@error403');
+Route::any('/login/tyc', 'Login@tyc');
+Route::any('/login/pass_chge', 'Login@pass_chge');
+Route::any('/login/lockSession', 'Login@lockSession');
 Route::any('/login/salir', 'Login@salir');
 Route::any('/login/verifica_session', 'Login@verifica_session');
 Route::any('/login/keepAliveReset', 'Login@keepAliveReset');
