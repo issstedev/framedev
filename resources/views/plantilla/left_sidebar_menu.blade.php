@@ -171,7 +171,7 @@
             if(Helpme::tiene_permiso('Usuarios|logueados')){ ?>
 
               <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-                <a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('URL_APP ')?>usuarios/logueados');" class="m-menu__link m-menu__toggle">
+                <a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('URL_APP ')?>systemusers/logueados/<?=$datos['lista_sistemas'][$i]->id_sistema?>');" class="m-menu__link m-menu__toggle">
                 <i class="m-menu__link-icon flaticon-logout"></i><span class="m-menu__link-text">Control de sesiones</span></a>
               </li>
 

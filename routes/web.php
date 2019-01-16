@@ -31,6 +31,8 @@ Route::any('/systemusers/listado/{id_sistema}', 'Systemusers@listado');
 Route::any('/systemusers/obtener_usuarios/{id_sistema}', 'Systemusers@obtener_usuarios');
 Route::any('/systemusers/loginlogger/{id_sistema}', 'Systemusers@loginlogger');
 Route::any('/systemusers/loginlogger_get/{id_sistema}', 'Systemusers@loginlogger_get');
+Route::any('/systemusers/logueados/{id_sistema}', 'Systemusers@logueados');
+Route::any('/systemusers/logueados_get/{id_sistema}', 'Systemusers@logueados_get');
 
 
 Route::any('/catalogo', 'Catalogo@index');

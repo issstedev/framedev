@@ -17,7 +17,13 @@ class Login extends Controller
         $this->middleware('permiso:Login|loginlogger', ['only' => ['loginlogger','loginlogger_get']]);
     }
 
-    public function index() {return view('login/index'); }
+    public function index() {
+      if(isset($_SESSION['token'])){
+          return redirect()->action('Inicio@index');
+          exit();
+      }
+      return view('login/index');
+    }
 
     public function error403() { return view('plantilla/403'); }
 

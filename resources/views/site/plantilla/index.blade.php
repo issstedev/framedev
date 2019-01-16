@@ -38,6 +38,8 @@ div.btnbg {
 }
 
 .main-title {
+   font-family: sans-serif;
+   font-size: 2em;
    position: absolute;
    margin: 0;
    padding: 0;
@@ -55,8 +57,25 @@ div.btnbg {
    letter-spacing: 0.1em;
 }
 
+.lara_tittle{
+  font-size: .6em;
+  font-weight: 100;
+  display: block;
+  text-align: right;
+}
+
+.laraimg{
+  position:relative;
+  top:3px;
+}
+
+.inter_larimg{
+  width: 20px;
+}
+
 .main-title .thin {
    font-weight: 200;
+       font-size: 1.5em;
 }
 
 @media only screen and (max-width: 768px) {
@@ -1157,4 +1176,10 @@ void main(void) {
     gl_FragColor.a = 1.0;
 }
 </script>
-<h1 class="main-title"><span class="thin"><?=env('SITE_NAME')?></span> <?=env('SLOGAN_NAME')?></h1>
+<h1 class="main-title">
+    <span class="thin"><?=env('SITE_NAME')?></span>
+    <span class="lara_tittle">
+        <span class="laraimg"><img class="inter_larimg" src="img/laravel.svg"></span>
+        <?=env('SLOGAN_NAME')?>
+    </span>
+</h1>
