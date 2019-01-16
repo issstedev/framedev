@@ -32,8 +32,8 @@
 												</tr>
 												<tbody>
 												<?php
-                        if($roles){
-  												foreach ($roles as $row) {
+                        if($datos['roles']){
+  												foreach ($datos['roles'] as $row) {
   													echo "
   													<tr>
   														<td>".$row->id_rol."</td>
@@ -41,7 +41,7 @@
   														<td>".$row->etiqueta."</td>
   														<td>
   														<center>
-  														<a data-dismiss='modal' onclick=\"carga_archivo('contenedor_principal','systemroles/permisos/".$row->id_rol."/".$id_sistema."')\"
+  														<a data-dismiss='modal' onclick=\"carga_archivo('contenedor_principal','systemroles/permisos/".$row->id_rol."/".$datos['id_sistema']."')\"
   														href=\"javascript:;\"><i style='font-size:1.5em; color:#97c95d !important;' class='fa fa-key'></i></a>
   														</center>
   														</td>
@@ -73,12 +73,12 @@
 
   														<label for="cat_tiporol">Tipo Rol</label>
   														<select class="form-control m-input" id="cat_tiporol" name="cat_tiporol">
-  														<?php echo $tiporol; ?>
+  														<?php echo $datos['tiporol']; ?>
   														</select>
 
                           </div>
 													<div class="col align-bottom">
-														<span data-function="<?=$id_sistema?>" id="sys_js_fn_07" class="btn btn-ar btn-primary" type="button">Agregar</span>
+														<span data-function="<?=$datos['id_sistema']?>" id="sys_js_fn_07" class="btn btn-ar btn-primary" type="button">Agregar</span>
 													</div>
 
                         </div>

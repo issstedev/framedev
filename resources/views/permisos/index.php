@@ -51,7 +51,8 @@
 				$printhead = 0;
 				$titulo = $metodo->controlador;
 			}
-			if($datos{'permisos'}[$num] == 1){$checked = 'checked';}else{$checked = '';}
+
+			if($datos['permisos'][$num] == 1){$checked = 'checked';}else{$checked = '';}
 			?>
 
 				<div class="text-icon wow fadeInUp animated">
@@ -93,7 +94,7 @@
 									$j=0;
 									for($i=0;$i < count($datos['roles_ck']); $i++){
 
-										if($datos{'accesos'}[$i] == 1){$checked_ac = 'checked';}else{$checked_ac = '';}
+										if($datos['accesos'][$i] == 1){$checked_ac = 'checked';}else{$checked_ac = '';}
 
 										echo ($j == 0)?'<tr>':'';
 										echo '<td>';

@@ -9,7 +9,7 @@ $("#breadcrumb-title").append(' / Administración de usuarios y roles');
 						<div class="col-xl-12 order-1 order-xl-2 m--align-right">
 
 							<?php
-							if(($this->help->tiene_permiso('Usuarios|desbloquear_usuarios'))&&($bloqueados > 0)){
+							if((Helpme::tiene_permiso('Usuarios|desbloquear_usuarios'))&&($datos['bloqueados'] > 0)){
 							?>
 
 							<button
@@ -124,20 +124,23 @@ $("#usr_js_fn_08").each(function() {
               /**/
             },
             "language": {
-                "url": "<?=URL_APP?>assets/plugins/datatables/Spanish.json"
+                "url": "<?=env('URL_APP')?>assets/plugins/datatables/Spanish.json"
             },
 						"searching": true,
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             "processing": true,
             "serverSide": true,
     		    "ajax": {
-                "url": "systemusers/obtener_usuarios/<?=$id_sistema?>",
+								"headers": {
+								'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								},
+                "url": "systemusers/obtener_usuarios/<?=$datos['id_sistema']?>",
                 "type": "POST"
             }
         } );
 
     } );
-		var pusher = new Pusher('<?=PUSHER_KEY?>', {
+		var pusher = new Pusher('<?=env('PUSHER_APP_KEY')?>', {
 			encrypted: true
 		});
 

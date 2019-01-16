@@ -10,6 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::any('/systemroles', 'Systemroles@index');
+Route::any('/systemroles/modal_roles/{id_sistema}', 'Systemroles@modal_roles');
+Route::any('/systemroles/agregar_rol/{id_sistema}', 'Systemroles@agregar_rol');
+Route::any('/systemroles/permisos/{id_rol}/{id_sistema}', 'Systemroles@permisos');
+
+
+Route::any('/permisos', 'Permisos@index');
+Route::any('/permisos/main/{id_sistema}', 'Permisos@main');
+Route::any('/permisos/obtener_controllers/{id_sistema}', 'Permisos@obtener_controllers');
+Route::any('/permisos/modal_add_metodo/{id_sistema}', 'Permisos@modal_add_metodo');
+Route::any('/permisos/agregar_metodo', 'Permisos@agregar_metodo');
+Route::any('/permisos/data_controller/{id}', 'Permisos@data_controller');
+Route::any('/permisos/editar_metodo', 'Permisos@editar_metodo');
+Route::any('/permisos/eliminar_par/{id}', 'Permisos@eliminar_par');
+
+
 Route::any('/systemusers', 'Systemusers@index');
 Route::any('/systemusers/listado/{id_sistema}', 'Systemusers@listado');
 Route::any('/systemusers/obtener_usuarios/{id_sistema}', 'Systemusers@obtener_usuarios');

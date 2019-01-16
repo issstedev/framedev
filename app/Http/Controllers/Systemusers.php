@@ -17,11 +17,17 @@ class Systemusers extends Controller
   }
   public function index()  {/*nothing :(*/}
 
-  public function listado($id_sistema){return view('sistemas/usuarios')->with('bloqueados', ModelSystemusers::usuarios_bloqueados());}
+  public function listado($id_sistema){
+    $datos = [
+        'bloqueados' => ModelSystemusers::usuarios_bloqueados(),
+        'id_sistema' => $id_sistema
+    ];
+    return view('sistemas/usuarios')->with('datos', $datos);
+  }
 
   public function obtener_usuarios($id_sistema){print json_encode(Viewsystemusers::obtener_usuarios($id_sistema));  }
 
-  public function loginlogger($id_sistema){return view('sistemas/logger');}
+  public function loginlogger($id_sistema){return view('sistemas/logger')->with('id_sistema', $id_sistema);}
 
   public function loginlogger_get($id_sistema){print json_encode(Viewsystemlog::logger($id_sistema));}
 

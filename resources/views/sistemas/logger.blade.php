@@ -28,20 +28,23 @@ $("#breadcrumb-title").append(' / registro de accesos');
               /**/
             },
             "language": {
-                "url": "<?=URL_APP?>assets/plugins/datatables/Spanish.json"
+                "url": "<?=env('URL_APP')?>assets/plugins/datatables/Spanish.json"
             },
 						"searching": true,
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             "processing": true,
             "serverSide": true,
     		    "ajax": {
+								"headers": {
+								'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								},
                 "url": "systemusers/loginlogger_get/<?=$id_sistema?>",
                 "type": "POST"
             }
         } );
 
     } );
-		var pusher = new Pusher('<?=PUSHER_KEY?>', {
+		var pusher = new Pusher('<?=env('PUSHER_APP_KEY')?>', {
 			encrypted: true
 		});
 
