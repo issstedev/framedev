@@ -1,6 +1,6 @@
 <script>
-$("#breadcrumb-title").html('Logger');
-$("#breadcrumb-title").append(' / registro de accesos');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Registro de accesos');
 </script>
 		<div class="m-portlet m-portlet--mobile">
 			<div class="m-portlet__body">
@@ -38,7 +38,7 @@ $("#breadcrumb-title").append(' / registro de accesos');
 								"headers": {
 								'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 								},
-                "url": "systemusers/loginlogger_get/<?=$id_sistema?>",
+                "url": "systemusers/loginlogger_get/<?=$datos['id_sistema']?>",
                 "type": "POST"
             }
         } );

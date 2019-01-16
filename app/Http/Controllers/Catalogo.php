@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Catalogo as ModelCatalogo;
+use App\Models\Sistemas;
 use Helpme;
 
 class Catalogo extends Controller
@@ -15,7 +16,13 @@ class Catalogo extends Controller
       $this->middleware('permiso:true', ['only' => ['getCatalogoSecundario']]);
   }
 
-  public function index(){return view('catalogo/index');}
+  public function index(){
+    $system_data = Sistemas::datos_sistema(1);
+    $datos = [
+        'system_data' => $system_data
+    ];
+    return view('catalogo/index')->with('datos', $datos);
+  }
 
   public function obtener_catalogo(Request $request){echo json_encode( ModelCatalogo::listaCatalogo($request) );}
 

@@ -1,4 +1,7 @@
-
+<script>
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Roles y permisos / Control de permisos de rol > <?=$datos['descripcion']?>');
+</script>
 <!--begin::Portlet-->
 <div class="m-portlet m-portlet--tab">
 	<div class="m-portlet__head">

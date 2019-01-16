@@ -42,7 +42,11 @@ class Sistemas extends Controller
 
   public function index()
   {
-    return view('sistemas/sistemas');
+    $system_data = ModelSistemas::datos_sistema(1);
+    $datos = [
+        'system_data' => $system_data
+    ];
+    return view('sistemas/sistemas')->with('datos', $datos);
   }
 
   public function listado_sistemas(){

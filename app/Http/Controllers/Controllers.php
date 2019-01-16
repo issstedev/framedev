@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Controllers as ModelController;
+use App\Models\Sistemas;
 
 class Controllers extends Controller
 {
@@ -18,7 +19,11 @@ class Controllers extends Controller
   }
   public function index()
   {
-      return view('controllers/index');
+      $system_data = Sistemas::datos_sistema(1);
+      $datos = [
+          'system_data' => $system_data
+      ];
+      return view('controllers/index')->with('datos', $datos);
   }
   public function obtener_controllers()
   {

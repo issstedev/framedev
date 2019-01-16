@@ -1,6 +1,6 @@
 ﻿<script>
-$("#breadcrumb-title").html('Controladores y métodos');
-$("#breadcrumb-title").append(' / Alta de pares controlador-método');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Roles y permisos / Permisos');
 </script>
 <div class="m-portlet m-portlet--mobile">
 

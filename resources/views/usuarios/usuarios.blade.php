@@ -1,6 +1,6 @@
 ﻿<script>
-$("#breadcrumb-title").html('Registro de usuarios');
-$("#breadcrumb-title").append(' / Administración de usuarios y roles');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Control de usuarios');
 </script>
 		<div class="m-portlet m-portlet--mobile">
 

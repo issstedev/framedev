@@ -7,6 +7,7 @@ use App\Models\Roles;
 use App\Models\Viewlogins;
 use App\Models\Viewusuarios;
 use App\Models\Ubicacion;
+use App\Models\Sistemas;
 use Helpme;
 
 class Usuarios extends Controller
@@ -27,17 +28,41 @@ class Usuarios extends Controller
       $this->middleware('permiso:Usuarios|baja_usuario', ['only' => ['baja_usuario']]);
       $this->middleware('permiso:Usuarios|perfil', ['only' => ['se_requiere_logueo']]);
   }
+
   public function editar_usuario(Request $request) { print json_encode(ModelUsuarios::editar_usuario($request)); }
-  public function logueados() {return view('usuarios/logueados');}
+
+  public function logueados() {
+    $system_data = Sistemas::datos_sistema(1);
+    $datos = [
+        'system_data' => $system_data
+    ];
+    return view('usuarios/logueados')->with('datos', $datos);
+  }
+
   public function logueados_get() { print json_encode(Viewlogins::logueados_get()); }
+
   public function tyc($stat){print json_encode(ModelUsuarios::acceptTyc($stat));}
+
   public function update_avatar($file){ return ModelUsuarios::set_avatar($file);}
+
   public function agregar_usuario(Request $request) {print json_encode(ModelUsuarios::agregar_usuario($request));}
+
   public function desbloquear_usuarios(){print json_encode(ModelUsuarios::desbloquear_usuarios());}
-  public function index(){return view('usuarios/usuarios')->with('bloqueados', ModelUsuarios::usuarios_bloqueados());}
+
+  public function index(){
+    $system_data = Sistemas::datos_sistema(1);
+    $datos = [
+        'system_data' => $system_data
+    ];
+    return view('usuarios/usuarios')->with('bloqueados', ModelUsuarios::usuarios_bloqueados())->with('datos', $datos);
+  }
+
   public function obtener_usuarios(){print json_encode(Viewusuarios::obtener_usuarios());}
+
   public function desbloquea_usuario($id){print json_encode(ModelUsuarios::desbloquea_usuario($id));}
+
   public function editar_perfil(Request $request){print json_encode(ModelUsuarios::editar_perfil($request));}
+
   public function baja_usuario($id){print json_encode(ModelUsuarios::baja_usuario($id));}
 
   public function datos_usuario($user_id)
@@ -140,12 +165,14 @@ class Usuarios extends Controller
         }
 
       $rol = Roles::rol();
+      $system_data = Sistemas::datos_sistema(1);
 
       $datos = [
           'usuario' => $usuario,
           'rol' => $rol,
           'avatar' => $avatar,
-          'perfil' => $perfil
+          'perfil' => $perfil,
+          'system_data' => $system_data
       ];
       return view('usuarios/perfil')->with('datos', $datos);
   }

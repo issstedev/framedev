@@ -1,6 +1,6 @@
 ﻿<script>
-$("#breadcrumb-title").html('Catálogo general');
-$("#breadcrumb-title").append(' / Listado catálogos');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Catálogo general / Catálogo');
 </script>
 
 <div class="m-portlet m-portlet--mobile">

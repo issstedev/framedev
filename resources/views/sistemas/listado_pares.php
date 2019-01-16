@@ -1,6 +1,6 @@
 <script>
-$("#breadcrumb-title").html('Controladores y métodos');
-$("#breadcrumb-title").append(' / Alta de pares controlador-método');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Roles y permisos / Permisos');
 </script>
 <div class="m-portlet m-portlet--mobile">
 
@@ -8,7 +8,7 @@ $("#breadcrumb-title").append(' / Alta de pares controlador-método');
 	<div class="m-portlet__head">
 		<div class="m-portlet__head-caption">
 				<div class="col-xl-12 order-1 order-xl-2 m--align-right">
-					<a data-function="<?=$id_sistema?>" id="sys_js_fn_08" href="javascript:;" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+					<a data-function="<?=$datos['id_sistema']?>" id="sys_js_fn_08" href="javascript:;" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
 						<span>
 							<i class="fa fa-plus left"></i>
 							<span>
@@ -53,7 +53,7 @@ $(document).ready(function() {
 						"headers": {
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 						},
-            "url": "permisos/obtener_controllers/<?=$id_sistema?>",
+            "url": "permisos/obtener_controllers/<?=$datos['id_sistema']?>",
             "type": "POST"
         }
     } );

@@ -1,5 +1,5 @@
 <script>
-$("#breadcrumb-title").html('Administracion de sistemas');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
 $("#breadcrumb-title").append(' / Administración de sistemas');
 </script>
 		<div class="m-portlet m-portlet--mobile">

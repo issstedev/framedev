@@ -1,7 +1,7 @@
 <!--Section: Team v.1-->
 <script>
-$("#breadcrumb-title").html('Perfil');
-$("#breadcrumb-title").append(' / <?=$datos['usuario']['usuario_name']?>');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Perfil / <?=$datos['usuario']['usuario']?>');
 </script>
 
 <div class="row">

@@ -1,6 +1,6 @@
 ﻿<script>
-$("#breadcrumb-title").html('Usuarios logueados');
-$("#breadcrumb-title").append(' / Logins y manejo de sesiones');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Control de sesiones');
 </script>
 		<div class="m-portlet m-portlet--mobile">
 

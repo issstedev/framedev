@@ -1,6 +1,6 @@
 <script>
-$("#breadcrumb-title").html('Usuarios logueados');
-$("#breadcrumb-title").append(' / Logins y manejo de sesiones');
+$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").append(' / Control de sesiones');
 </script>
 		<div class="m-portlet m-portlet--mobile">
 
@@ -65,7 +65,7 @@ $(document).ready(function() {
 					"headers": {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					},
-          "url": "systemusers/logueados_get/<?=$id_sistema?>",
+          "url": "systemusers/logueados_get/<?=$datos['id_sistema']?>",
           "type": "POST"
         },
         "columnDefs": [

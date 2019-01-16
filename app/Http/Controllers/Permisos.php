@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Permisos as ModelPermisos;
+use App\Models\Sistemas;
 use Helpme;
 
 class Permisos extends Controller
@@ -19,7 +20,14 @@ class Permisos extends Controller
   }
   public function index(){ /*Nothing :(*/ }
 
-  public function main($id_sistema){return view('sistemas/listado_pares')->with('id_sistema', $id_sistema);}
+  public function main($id_sistema){
+    $system_data = Sistemas::datos_sistema($id_sistema);
+    $datos = [
+        'id_sistema' => $id_sistema,
+        'system_data' => $system_data
+    ];
+    return view('sistemas/listado_pares')->with('datos', $datos);
+  }
 
   public function obtener_controllers($id_sistema){echo json_encode( ModelPermisos::obtenerControllers($id_sistema) );}
 
