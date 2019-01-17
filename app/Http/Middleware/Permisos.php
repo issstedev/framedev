@@ -20,6 +20,16 @@ class Permisos
               exit();
           }
 
+          if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&($_SESSION['tyc'] != 'SI')){
+              return redirect()->action('Login@tyc');
+              exit();
+          }
+
+          if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&($_SESSION['pass_chge'] == 10)){
+              return redirect()->action('Login@pass_chge');
+              exit();
+          }
+
           if((isset($_SESSION['token']))&&(!in_array($rol,$_SESSION['permisos']))){
               return redirect()->action('Login@error403');
               exit();
@@ -35,16 +45,6 @@ class Permisos
               $_SESSION['hora_acceso']=time();
               Config::updateLogin();
               return $next($request);
-          }
-
-          if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&($_SESSION['tyc'] != 'SI')){
-              return redirect()->action('Login@tyc');
-              exit();
-          }
-
-          if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&($_SESSION['pass_chge'] == 11)){
-              return redirect()->action('Login@pass_chge');
-              exit();
           }
 
           return $next($request);

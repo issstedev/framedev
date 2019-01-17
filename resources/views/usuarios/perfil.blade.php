@@ -206,9 +206,23 @@ $(document).ready(function() {
     init: function() {
       this.on("success", function(statics,file) {
         var img = file.split("|");
-        $.post( "usuarios/update_avatar/" + img[1], function( data ) {
-           swal('Se actualizó su avatar correctamente', '', "Actualizado!")
+
+        $.ajax({
+          headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          url: url_app + 'usuarios/update_avatar/' + img[1],
+          type: 'POST',
+          dataType: 'json',
+          success: function(resp_success){
+            if (resp_success['resp'] == true) {
+    					swal('Se actualizó su avatar correctamente', '', "Actualizado!");
+    				}
+          },
+          error: function(respuesta){ alerta('Alerta!','Error de conectividad de red PERFIL-UPD');}
         });
+
+
         $('#avatar_actual').html('<center><img src="plugs/timthumb.php?src=tmp/'+img[0]+'&w=300&h=300"></center>');
   			$('#avatar_top1').attr('src','plugs/timthumb.php?src=tmp/' + img[0] + '&w=80&h=80&a=t');
         $('#avatar_top2').attr('src','plugs/timthumb.php?src=tmp/' + img[0] + '&w=80&h=80&a=t');

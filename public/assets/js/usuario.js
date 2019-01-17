@@ -295,15 +295,15 @@ function tyc(stat) {
 			headers: {
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			},
-			url: 'usuarios/tyc/' + stat,
+			url: url_app +  'usuarios/tyc/' + stat,
 			dataType: 'json',
 			success: function(resp_success){
 				if (resp_success['resp'] == true) {
 					console.log(resp_success['resp']);
 					if(resp_success['dispositivo']=='celular'){
-						window.location ="mobile";
+						window.location ="../mobile";
 					}else{
-						window.location ="inicio";
+						window.location ="../inicio";
 					}
 				}else{
 					console.log(resp_success['resp']);
@@ -321,7 +321,7 @@ function cambiar_pass(){
 			headers: {
 						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			},
-			url: 'usuarios/cambiar_password',
+			url: url_app + 'usuarios/cambiar_password',
 			type: 'POST',
 			data: $("#chge_pass").serialize(),
 			dataType: 'json',
@@ -329,9 +329,9 @@ function cambiar_pass(){
 				if (resp_success['resp'] == true) {
 					console.log(resp_success['resp']);
 					if(resp_success['dispositivo']=='celular'){
-						window.location ="mobile";
+						window.location ="../mobile";
 					}else{
-						window.location ="inicio";
+						window.location ="../inicio";
 					}
 				}else{
 					alerta('Alerta!','Error en el proceso PASS_CHGE 01');

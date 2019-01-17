@@ -38,7 +38,7 @@ class Usuarios extends Model
     $avatar_actual = $perfil['avatar'];
 
       if($avatar_actual){
-        unlink('../uploads/perfiles/'.$avatar_actual);
+        unlink('../storage/perfiles/'.$avatar_actual);
       }
 
       DB::table('fw_usuarios_config')
@@ -47,7 +47,7 @@ class Usuarios extends Model
           'avatar'=> $avatar,
           'user_mod'=> $_SESSION['id_usuario']
       ]);
-      return true;
+      return array('resp' => true);
   }
 
   static function acceptTyc($stat){

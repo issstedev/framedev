@@ -30,7 +30,16 @@ class Login extends Controller
 
     public function tyc() { return view('plantilla/tyc'); }
 
-    public function pass_chge() { return view('plantilla/pass_chge'); }
+    public function pass_chge() {
+      if(!isset($_SESSION['token'])){
+          return redirect()->action('Login@index');
+          exit();
+      }else if($_SESSION['pass_chge'] == 11){
+        return redirect()->action('Inicio@index');
+        exit();
+      }
+      return view('plantilla/pass_chge');
+    }
 
     public function logear(Request $request) { return ModelLogin::logear($request); }
 

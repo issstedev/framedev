@@ -24,7 +24,7 @@ class Usuarios extends Controller
       $this->middleware('permiso:Usuarios|modal_add_usr', ['only' => ['modal_add_usr']]);
       $this->middleware('permiso:Usuarios|agregar_usuario', ['only' => ['agregar_usuario']]);
       $this->middleware('permiso:Usuarios|editar_usuario', ['only' => ['editar_usuario']]);
-      $this->middleware('permiso:Usuarios|editar_perfil', ['only' => ['cambiar_password','editar_perfil']]);
+      $this->middleware('permiso:Usuarios|editar_perfil', ['only' => ['editar_perfil']]);
       $this->middleware('permiso:Usuarios|baja_usuario', ['only' => ['baja_usuario']]);
       $this->middleware('permiso:Usuarios|perfil', ['only' => ['se_requiere_logueo']]);
   }
@@ -134,23 +134,28 @@ class Usuarios extends Controller
       }
   }
 
-  public function cambiar_password()
+  public function cambiar_password(Request $request)
   {
+
       $_SESSION['pass_chge'] = 11;
-      if(($_POST['password1'] == $_POST['password2'])&&($_POST['password1'])){
-        $chge_pass = $cambiar_password = ModelUsuarios::cambiar_password($_POST['password1'],$_SESSION['id_usuario']);
+      if(($request->input('password1') == $request->input('password2'))&&($request->input('password1'))){
+        $chge_pass = ModelUsuarios::cambiar_password($request->input('password1'),$_SESSION['id_usuario']);
       }
-      if($chge_pass){
+
+      \Debugbar::info('>'.$chge_pass);
+
+      if($chge_pass >= 0){
         $set_pass_chge = ModelUsuarios::pass_chge_stat(11,$_SESSION['id_usuario']);
-        if($set_pass_chge){
+        \Debugbar::info('>>'.$set_pass_chge);
+        if($set_pass_chge >= 0){
           $respuesta = array('resp' => true , 'dispositivo' => $_SESSION['dispositivo'] );
         }else{
           $_SESSION['pass_chge'] = 10;
-          $respuesta = array('resp' => false , 'dispositivo' => $_SESSION['dispositivo'] );
+          $respuesta = array('resp' => false ,'oper' => 'x', 'dispositivo' => $_SESSION['dispositivo'] );
         }
       }else{
         $_SESSION['pass_chge'] = 10;
-        $respuesta = array('resp' => false , 'dispositivo' => $_SESSION['dispositivo'] );
+        $respuesta = array('resp' => false ,'oper' => 'y', 'dispositivo' => $_SESSION['dispositivo'] );
       }
       print json_encode($respuesta);
   }
