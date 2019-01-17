@@ -35,11 +35,11 @@
 				<div class="m-error_container">
 					<span class="m-error_number">
 						<h1>
-							404
+							403
 						</h1>
 					</span>
 					<p class="m-error_desc">
-						<?=env('SITE_NAME')?>:<br> El recurso que solicita no existe o fué eliminado
+						<?=env('SITE_NAME')?>:<br> El recurso que solicita no está disponible para usted, se ha iniciado un log de registro.
 					</p>
 				</div>
 			</div>

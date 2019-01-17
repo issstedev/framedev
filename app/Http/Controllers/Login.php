@@ -49,6 +49,8 @@ class Login extends Controller
 
     public function verifica_session() {return ModelLogin::verificarSession();}
 
+    // No recuerdo por que dos funciones hacen los mismo :(
+
     public function keepAliveReset() { print json_encode(ModelLogin::keepAlive());}
 
     public function keepAlive() {print json_encode(ModelLogin::keepAlive());}

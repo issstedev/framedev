@@ -18,7 +18,7 @@ class Permisos extends Controller
       $this->middleware('permiso:Controllers|editar_metodo', ['only' => ['editar_metodo']]);
       $this->middleware('permiso:Controllers|eliminar_par', ['only' => ['eliminar_par']]);
   }
-  public function index(){ /*Nothing :(*/ }
+  public function index(){ return view('plantilla/404_full'); }
 
   public function main($id_sistema){
     $system_data = Sistemas::datos_sistema($id_sistema);

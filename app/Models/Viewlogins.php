@@ -15,7 +15,7 @@ class Viewlogins extends Model
   static function logueados_get(){
     $logins = new Viewlogins();
     $dataTable = new DT(
-      $logins,
+      $logins->where('id_sistema','=', 1),
       ['id_login', 'usuario','nombre','fecha_login', 'ultima_verificacion', 'ipv4', 'session_id', 'id_usuario']
     );
 
@@ -33,6 +33,7 @@ class Viewlogins extends Model
     } );
     return $dataTable->make();
   }
+
   static function logueadossystem_get($id_sistema){
     $logins = new Viewlogins();
     $dataTable = new DT(

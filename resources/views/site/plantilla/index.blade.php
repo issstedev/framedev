@@ -1179,7 +1179,7 @@ void main(void) {
 <h1 class="main-title">
     <span class="thin"><?=env('SITE_NAME')?></span>
     <span class="lara_tittle">
-        <span class="laraimg"><img class="inter_larimg" src="img/laravel.svg"></span>
+        <span class="laraimg"><a href="{{ action('Login@index') }}"><img class="inter_larimg" src="img/laravel.svg"></a></span>
         <?=env('SLOGAN_NAME')?>
     </span>
 </h1>

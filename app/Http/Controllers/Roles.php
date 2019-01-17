@@ -24,7 +24,9 @@ class Roles extends Controller
 
   public function establecer_acceso($id_rol,$access,$estado){print json_encode(ModelRoles::setear_acceso($id_rol,$access,$estado,'fw_roles','fw_roles'));}
 
-  public function clonar($id_rol,$transfer){print ModelRoles::clonar_permisos($id_rol,$transfer).'ok';}
+  public function clonar($id_rol,$transfer){
+      print ModelRoles::clonar_permisos($id_rol,$transfer).'ok';
+  }
 
   public function agregar_rol(Request $request){ print json_encode(ModelRoles::agregar_rol($request));}
 
