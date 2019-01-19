@@ -37,13 +37,13 @@ class Permisos
 
           if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&($_SESSION['tyc'] == 'SI')&&($_SESSION['pass_chge'] == 11)){
               $_SESSION['hora_acceso']=time();
-              Config::updateLogin();
+              Config::updateLogin($request, $rol);
               return $next($request);
           }
 
           if((isset($_SESSION['token']))&&($rol == true)){
               $_SESSION['hora_acceso']=time();
-              Config::updateLogin();
+              Config::updateLogin($request, $rol);
               return $next($request);
           }
 

@@ -11,12 +11,130 @@ class Config extends Model
   protected $primaryKey = 'id_config';
   public $timestamps = false;
 
-  static function updateLogin(){
+  static function updateLogin($request, $rol){
 
       DB::table('fw_login')
           ->where('id_usuario', $_SESSION['id_usuario'])
           ->where('open', 1)
           ->update(['ultima_verificacion' => date("Y-m-d H:i:s")]);
+
+
+      DB::table('fw_auditoria')->insert(
+          [
+              'controlador' => @$request->segments()[0],
+              'controlador_metodo' => @$request->segments()[1],
+              'post' => @json_encode($request->post()),
+              'headers' => json_encode($request->headers->all()),
+              'server' => json_encode($request->server->all()),
+              'session' => json_encode($request->getSession()->all()),
+              'ip' => $request->getClientIp(),
+              'url' => $request->url(),
+              'path' => $request->path(),
+              'method' => $request->method(),
+              'token_session' => $_SESSION['token'],
+              'usuario' => $_SESSION['usuario'],
+              'user_alta' => $_SESSION['id_usuario'],
+              'fecha_alta' => date("Y-m-d H:i:s")
+          ]
+      );
+
+/*
+          'controlador' => $request->segments(),
+          'controlador_metodo' => $request->segments(),
+          'post' => $request->post(),
+          'headers' => $request->headers,
+          'server' => $request->server,
+          'ip' => $request->getClientIp(),
+          'ips' => $request->getClientIps(),
+          'session' => $request->session(),
+          'url' => $request->url(),
+          'path' => $request->path(),
+          'method' => $request->method(),
+          'token_session' => $_SESSION['token'],
+          'usuario' => $_SESSION['usuario'],
+          'user_alta' => $_SESSION['id_usuario'],
+          'fecha_alta' => date("Y-m-d H:i:s")
+
+*/
+      //insertar registro de actividad
+      //$i = json_encode($request->post());
+      //$i = $request->post();
+      //$i = $request->path();
+      //$i = $request->url();
+      //$i = $request->fullUrl();
+      //$i = $request->method();
+      //$request->isMethod('post');
+      //$request->input();
+      //$i = $request->all();
+      //$i = $request->flash();
+      //$request->capture()->headers
+      //$request->root()
+      //$array = array('1','2');
+      //$request->fullUrlWithQuery($array)
+      //$request->decodedPath()
+      //$request->segments()
+      //$request->ajax()
+      //$request->headers
+                        //cookie
+                        //accept-language
+                        //accept-encoding
+                        //referer
+                        //content-type
+                        //user-agent
+                        //x-requested-with
+                        //x-csrf-token
+                        //origin
+                        //accept
+                        //content-length
+                        //connection
+                        //host
+                        //$request->capture()->headers->get('connection')
+      //$request->server
+                        //userResolver
+                        //HOME
+                        //HTTP_COOKIE
+                        //HTTP_ACCEPT_LANGUAGE
+                        //HTTP_ACCEPT_ENCODING
+                        //HTTP_REFERER
+                        //HTTP_CONTENT_TYPE
+                        //HTTP_USER_AGENT
+                        //HTTP_X_REQUESTED_WITH
+                        //HTTP_X_CSRF_TOKEN
+                        //HTTP_ORIGIN
+                        //HTTP_ACCEPT
+                        //HTTP_CONTENT_LENGTH
+                        //HTTP_CONNECTION
+                        //HTTP_HOST
+                        //REDIRECT_STATUS
+                        //SERVER_NAME
+                        //SERVER_PORT
+                        //SERVER_ADDR
+                        //REMOTE_PORT
+                        //REMOTE_ADDR
+                        //SERVER_SOFTWARE
+                        //GATEWAY_INTERFACE
+                        //REQUEST_SCHEME
+                        //SERVER_PROTOCOL
+                        //DOCUMENT_ROOT
+                        //DOCUMENT_URI
+                        //REQUEST_URI
+                        //SCRIPT_NAME
+                        //CONTENT_LENGTH
+                        //CONTENT_TYPE
+                        //REQUEST_METHOD
+                        //QUERY_STRING
+                        //SCRIPT_FILENAME
+                        //PATH_INFO
+                        //FCGI_ROLE
+                        //PHP_SELF
+                        //REQUEST_TIME_FLOAT
+                        //REQUEST_TIME
+                        //$request->server->get('USER')
+     //$request->getClientIp()
+     //$request->getClientIps()
+     //$request->getClientIps()[0]
+     //$request->session()
+     //$request->fingerprint()
   }
 
   static function getConfig($id_site,$config){

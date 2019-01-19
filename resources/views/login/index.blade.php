@@ -261,7 +261,7 @@
 
 	.laraimg{
 	  position:relative;
-	  top:3px;
+	  top:0px;
 	}
 
 	.inter_larimg{
