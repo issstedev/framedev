@@ -70,7 +70,7 @@ class Roles extends Model
         $query_resp = DB::table('fw_acceso')->insert([
             [
               'id_propietario' => $id_rol,
-              'cat_access_name' => 23,
+              'cat_access_name' => 12,
               'id_access' => $access,
               'propietario' => $propietario,
               'access' => $acceso,
