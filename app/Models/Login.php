@@ -186,16 +186,20 @@ class Login extends Model
 
     $permisos = DB::table('fw_permisos as fwp')
               ->join('fw_metodos as fwm','fwp.id_metodo','=','fwm.id_metodo')
-              ->select('fwm.controlador', 'fwm.metodo')
+              ->select('fwm.controlador', 'fwm.metodo', 'fwm.id_metodo')
               ->where('fwp.id_rol', '=', $rol)
               ->get();
 
     $accesos = array();
+    $accessid = array();
     if(count($permisos)>=1){
       foreach ($permisos as $num => $row) {
         $accesos[$num] = $row->controlador .'|'. $row->metodo;
+        $index = strtolower($row->controlador) .'|'. strtolower($row->metodo);
+        $accessid[$index] = $row->id_metodo;
       }
       $_SESSION['permisos'] = $accesos;
+      $_SESSION['accessid'] = $accessid;
     }else{
       $_SESSION['permisos'] = '';
     }

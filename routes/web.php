@@ -82,11 +82,11 @@ Route::group(['prefix' => 'sistemas'], function(){
 });
 
 Route::group(['prefix' => 'usuarios'], function(){
+        Route::get('/', 'Usuarios@index');
         Route::post('/upload_dropzone/{ruta}/{permisos}', 'Usuarios@upload_dropzone');
         Route::post('/update_avatar/{file}', 'Usuarios@update_avatar');
         Route::post('/editar_perfil', 'Usuarios@editar_perfil');
         Route::get('/perfil', 'Usuarios@perfil');
-        Route::get('/', 'Usuarios@index');
         Route::post('/obtener_usuarios', 'Usuarios@obtener_usuarios');
         Route::get('/modal_add_usr', 'Usuarios@modal_add_usr');
         Route::post('/agregar_usuario', 'Usuarios@agregar_usuario');
@@ -124,6 +124,8 @@ Route::group(['prefix' => 'login'], function(){
         Route::post('/loginlogger_get', 'Login@loginlogger_get');
         Route::get('/modal_all_sign_out', 'Login@modal_all_sign_out');
         Route::get('/sign_all_out', 'Login@sign_all_out');
+        Route::get('/auditoria', 'Login@auditoria');
+        Route::post('/auditoria_get', 'Login@auditoria_get');
 });
 
 Route::get('/', 'Site@index');

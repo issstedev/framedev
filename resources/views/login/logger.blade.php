@@ -54,6 +54,6 @@ $("#breadcrumb-title").append(' / Registro de accesos');
 			console.log('✓ Servicio de actualización de logger activo');
 		})
 		updChannel.bind('evento', function(data) {
-			$('#loginusr').DataTable().ajax.reload();
+			$('#logger').DataTable().ajax.reload();
 		});
 </script>

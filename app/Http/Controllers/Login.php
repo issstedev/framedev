@@ -6,6 +6,7 @@ use App\Models\Login as ModelLogin;
 use App\Models\Usuarios;
 use App\Models\Sistemas;
 use App\Models\Viewlog;
+use App\Models\Viewauditoria;
 use Helpme;
 
 class Login extends Controller
@@ -60,6 +61,10 @@ class Login extends Controller
     public function sign_out($id_usuario){ print ModelLogin::signout($id_usuario); }
 
     public function modal_sign_out($id_usuario) {return view('modales/login/sign-out')->with('id_usuario', $id_usuario); }
+
+    public function auditoria(){ return view('login/auditoria'); }
+
+    public function auditoria_get(){ print json_encode(Viewauditoria::auditar()); }
 
     public function loginlogger() {
       $system_data = Sistemas::datos_sistema(1);

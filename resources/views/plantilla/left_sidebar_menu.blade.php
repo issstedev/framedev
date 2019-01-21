@@ -22,7 +22,8 @@
            (Helpme::tiene_permiso('Catalogo|index')) OR
            (Helpme::tiene_permiso('Usuarios|perfil')) OR
            (Helpme::tiene_permiso('Login|loginlogger')) OR
-           (Helpme::tiene_permiso('Sistemas|index'))
+           (Helpme::tiene_permiso('Sistemas|index')) OR
+           (Helpme::tiene_permiso('Login|auditoria'))
          )
          {
       ?>
@@ -106,6 +107,12 @@
                 <i class="m-menu__link-icon flaticon-folder-1"></i><span class="m-menu__link-text">Catálogo</span></a>
               </li>
 
+
+            <?php }if(Helpme::tiene_permiso('Login|auditoria')){ ?>
+
+              <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('URL_APP ')?>login/auditoria');" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon flaticon-eye"></i><span class="m-menu__link-text">Auditoría</span></a>
+              </li>
 
             <?php } ?>
           </ul>

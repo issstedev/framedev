@@ -18,11 +18,15 @@ class Config extends Model
           ->where('open', 1)
           ->update(['ultima_verificacion' => date("Y-m-d H:i:s")]);
 
+      $metodo = (isset($request->segments()[1]))?$request->segments()[1]:'index';
 
+      //\Debugbar::info($_SESSION['accessid']);
       DB::table('fw_auditoria')->insert(
           [
-              'controlador' => @$request->segments()[0],
-              'controlador_metodo' => @$request->segments()[1],
+              'id_metodo' => $_SESSION['accessid'][strtolower($rol)],
+              'permiso' => $rol,
+              'controlador' => $request->segments()[0],
+              'metodo' => $metodo,
               'post' => @json_encode($request->post()),
               'headers' => json_encode($request->headers->all()),
               'server' => json_encode($request->server->all()),
@@ -32,7 +36,6 @@ class Config extends Model
               'path' => $request->path(),
               'method' => $request->method(),
               'token_session' => $_SESSION['token'],
-              'usuario' => $_SESSION['usuario'],
               'user_alta' => $_SESSION['id_usuario'],
               'fecha_alta' => date("Y-m-d H:i:s")
           ]
