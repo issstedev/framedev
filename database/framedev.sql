@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Laravel
+ Source Server         : LaravelFramedev
  Source Server Type    : MariaDB
  Source Server Version : 100134
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100134
  File Encoding         : 65001
 
- Date: 20/01/2019 18:21:28
+ Date: 21/01/2019 09:24:04
 */
 
 SET NAMES utf8mb4;
@@ -36,7 +36,7 @@ CREATE TABLE `cm_catalogo`  (
   PRIMARY KEY (`id_cat`) USING BTREE,
   INDEX `fk_cm_catalogo_cm_catalogo_1`(`id_padre`) USING BTREE,
   CONSTRAINT `FK__cm_catalo__id_pa__70A8B9AE` FOREIGN KEY (`id_padre`) REFERENCES `cm_catalogo` (`id_cat`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cm_catalogo
