@@ -11,8 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('populateAcceso');
         $this->call('populateCatalogo');
+        $this->call('populateAcceso');
         $this->call('populateConfig');
         $this->call('populateUbicaciones');
         $this->call('populateSistemas');

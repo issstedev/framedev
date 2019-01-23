@@ -17,6 +17,7 @@ class Login extends Controller
         $this->middleware('permiso:Login|force_sign_out', ['only' => ['sign_all_out','sign_out','modal_sign_out']]);
         $this->middleware('permiso:Login|salir', ['only' => ['keepAliveReset','salir','lockSession']]);
         $this->middleware('permiso:Login|loginlogger', ['only' => ['loginlogger','loginlogger_get']]);
+        $this->middleware('permiso:Login|auditoria', ['only' => ['auditoria','auditoria_get', 'modal_auditoria']]);
     }
 
     public function index() {
@@ -65,6 +66,13 @@ class Login extends Controller
     public function auditoria(){ return view('login/auditoria'); }
 
     public function auditoria_get(){ print json_encode(Viewauditoria::auditar()); }
+
+    public function modal_auditoria($id_usuario) {
+
+      $auditoria = Viewauditoria::descriptivo($id_usuario);
+      return view('modales/login/modal_auditoria')->with('auditoria', $auditoria);
+      
+    }
 
     public function loginlogger() {
       $system_data = Sistemas::datos_sistema(1);

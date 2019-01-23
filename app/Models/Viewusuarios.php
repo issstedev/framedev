@@ -36,6 +36,7 @@ class Viewusuarios extends Model
 
   static function ou2($id_usuario, $cat_status){
 
+
     $salida = '
     <a data-function="'.$id_usuario.'" class="usr_js_fn_03 btn btn-outline-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill m-btn--air">
       <i class="flaticon-cogwheel"></i>
@@ -56,6 +57,15 @@ class Viewusuarios extends Model
       </a>
       ';
     }
+
+    if(Helpme::tiene_permiso('Login|auditoria')){
+      $salida .= '
+      <a data-function="'.$id_usuario.'" class="usr_js_fn_09 btn btn-outline-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill m-btn--air">
+        <i class="flaticon-eye"></i>
+      </a>
+      ';
+    }
+
     return $salida;
   }
 }

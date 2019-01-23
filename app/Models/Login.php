@@ -239,7 +239,7 @@ class Login extends Model
               ->get();
 
 
-    if(count($logged)>=1){
+    if(count($logged) == 1){
 
       foreach ($logged as $row) {
         self::session_duplicada($row->id_usuario);

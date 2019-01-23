@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use LiveControl\EloquentDataTable\DataTable as DT;
 use LiveControl\EloquentDataTable\ExpressionWithName;
 use Helpme;
+use DB;
 
 class Viewauditoria extends Model
 {
@@ -33,35 +34,22 @@ class Viewauditoria extends Model
         $audit->usuario ,
         $audit->id_usuario ,
         $audit->fecha_alta
-        //self::ou2($audit->id_usuario,$audit->cat_status)
       ];
     });
     return $dataTable->make();
   }
 
 
-  static function ou2($id_usuario, $cat_status){
+  static function descriptivo($id_usuario){
 
-    $salida = '
-    <a data-function="'.$id_usuario.'" class="usr_js_fn_03 btn btn-outline-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill m-btn--air">
-      <i class="flaticon-cogwheel"></i>
-    </a>
-    ';
-    if($cat_status == 9){
-        $salida .= '
-        <a data-function="'.$id_usuario.'" id="usr_js_fn_07" class="btn btn-outline-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill m-btn--air">
-          <i class="flaticon-lock"></i>
-        </a>
-        ';
-    }
-
-    if(Helpme::tiene_permiso('Sistemas|relacionar_sistemas')){
-      $salida .= '
-      <a data-function="'.$id_usuario.'" class="sys_js_fn_05 btn btn-outline-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill m-btn--air">
-        <i class="flaticon-imac"></i>
-      </a>
-      ';
-    }
-    return $salida;
+    $out = DB::table('fw_auditoria as fwa')
+              ->join('fw_usuarios as fwu','fwa.user_alta','=','fwu.id_usuario')
+              ->join('fw_metodos as fwm','fwa.id_metodo','=','fwm.id_metodo')
+              ->select('fwa.id_auditoria', 'fwu.id_usuario','fwu.usuario', 'fwm.id_metodo', 'fwa.fecha_alta', 'fwm.descripcion')
+              ->where('fwu.id_usuario', '=', $id_usuario)
+              ->orderBy('fwa.id_auditoria', 'DESC')
+              ->get();
+    return $out;
   }
+
 }

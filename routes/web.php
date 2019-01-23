@@ -126,6 +126,7 @@ Route::group(['prefix' => 'login'], function(){
         Route::get('/sign_all_out', 'Login@sign_all_out');
         Route::get('/auditoria', 'Login@auditoria');
         Route::post('/auditoria_get', 'Login@auditoria_get');
+        Route::get('/modal_auditoria/{id_usuario}', 'Login@modal_auditoria');
 });
 
 Route::get('/', 'Site@index');

@@ -35,7 +35,13 @@
 <link href="<?=env('URL_PUBLIC')?>css/loader.css" rel="stylesheet" type="text/css" />
 <script src="<?=env('URL_PUBLIC')?>assets/js/loader.js"></script>
 
+<!--perfect-scrollbar-->
+<link href="<?=env('URL_PUBLIC')?>assets/vendors/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+
+<!--fontawesome5-->
+<link href="<?=env('URL_PUBLIC')?>assets/vendors/vendors/fontawesome5/css/all.min.css" rel="stylesheet" type="text/css" />
+
 <!--Datatables-->
-<link href="../../../assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="<?=env('URL_PUBLIC')?>assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
 
 <link rel="shortcut icon" href="<?=env('URL_PUBLIC')?>assets/demo/default/media/img/logo/favicon.ico" />

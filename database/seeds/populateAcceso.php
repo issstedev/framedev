@@ -14,7 +14,7 @@ class populateAcceso extends Seeder
       DB::table('fw_acceso')->insert(
       array(
       'id_acceso'=>1,
-      'cat_access_name'=>NULL,
+      'cat_access_name'=>12,
       'propietario'=>'fw_roles',
       'id_propietario'=>1,
       'access'=>'fw_roles',

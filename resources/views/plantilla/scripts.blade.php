@@ -1,4 +1,7 @@
 <!--Inicio::Base Scripts -->
+<script src="<?=env('URL_PUBLIC')?>assets/vendors/perfect-scrollbar/dist/perfect-scrollbar.js" type="text/javascript"></script>
+
+<!--Inicio::Base Scripts -->
 <script src="<?=env('URL_PUBLIC')?>assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
 <script src="<?=env('URL_PUBLIC')?>assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
 
@@ -33,8 +36,8 @@
 
 
 <!--fontawesome-pro-5.0.0 load everything!!-->
-<script src="<?=env('URL_PUBLIC')?>assets/fontawesome-pro-5.0.0/svg-with-js/js/fontawesome-all.js" type="text/javascript"></script>
-<script defer src="<?=env('URL_PUBLIC')?>assets/fontawesome-pro-5.0.0/svg-with-js/js/fa-v4-shims.js"></script>
+<!--<script src="<?=env('URL_PUBLIC')?>assets/fontawesome-pro-5.0.0/svg-with-js/js/fontawesome-all.js" type="text/javascript"></script>
+<script defer src="<?=env('URL_PUBLIC')?>assets/fontawesome-pro-5.0.0/svg-with-js/js/fa-v4-shims.js"></script>-->
 
 <!--Autocomplete-->
 <script src="<?=env('URL_PUBLIC')?>assets/js/jquery.autocomplete.js"></script>

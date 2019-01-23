@@ -232,7 +232,7 @@ $("body").on("click", "#usr_js_fn_07", function() {
 		});
 });
 
-$("#usr_js_fn_08").each(function() {
+$("body").on("click", "#usr_js_fn_08", function() {
 		var t = $(this).data("title")
 			, a = $(this).data("message")
 			, s = $(this).data("type")
@@ -287,6 +287,27 @@ $("#usr_js_fn_08").each(function() {
 					}
 				})
 		})
+});
+
+
+$("body").on("click", ".usr_js_fn_09", function() {
+		id_usuario = $(this).attr('data-function');
+			$.ajax({
+				headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+				url: 'login/modal_auditoria/' + id_usuario,
+				dataType: 'html',
+				success: function(resp_success){
+					var modal =  resp_success;
+					$(modal).modal().on('shown.bs.modal',function(){
+
+					}).on('hidden.bs.modal',function(){
+						$(this).remove();
+					});
+				},
+				error: function(respuesta){ alerta('Alerta!','Error de conectividad de red USR-09');}
+			});
 });
 
 function tyc(stat) {
