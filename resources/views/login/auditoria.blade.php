@@ -26,6 +26,10 @@ $("#breadcrumb-title").append(' / Análisis de cambios');
 		</div>
 
 <script>
+function strtrunc(str, max, add) {
+	 add = add || '...';
+	 return (typeof str === 'string' && str.length > max ? str.substring(0, max) + add : str);
+};
     $(document).ready(function() {
         $('#auditoria').dataTable( {
             "fnDrawCallback": function( oSettings ) {
@@ -44,10 +48,22 @@ $("#breadcrumb-title").append(' / Análisis de cambios');
 								},
                 "url": "login/auditoria_get",
                 "type": "POST"
-            }
+            },
+						"columnDefs": [
+							{
+								"targets": 8,
+		            "searchable":true,
+		            "visible":true,
+		            "render": function (status) {
+		              return  strtrunc(status, 10); ;
+		            }
+							}
+		        ]
         } );
 
     } );
+
+
 		var pusher = new Pusher('<?=env('PUSHER_APP_KEY')?>', {
 			encrypted: true
 		});
