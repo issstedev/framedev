@@ -1,6 +1,11 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
+
+          <?php
+          if(count($auditoria) > 0){
+          ?>
+
             <div class="modal-header">
                 <h5 class="modal-title" id="myModalLabel">Actividades recientes para <?=$auditoria[0]->usuario?>, <?=count($auditoria) . ' - Registros.'?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -63,10 +68,22 @@
             			</div>
             		</div>
             	</div>
-
-
-
             </div>
+
+        <?php
+        }else{
+        ?>
+        <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Sin ctividades recientes</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" id="modal_content"></div>
+        <?php
+        }
+        ?>
+
         </div>
     </div>
 </div>
