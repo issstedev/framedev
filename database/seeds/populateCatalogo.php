@@ -213,55 +213,5 @@ class populateCatalogo extends Seeder
       'fecha_mod'=>NULL
       ));
 
-
-
-      DB::table('cm_catalogo')->insert(
-      array(
-      'id_cat'=>13,
-      'id_padre'=>NULL,
-      'catalogo'=>'status_sistema',
-      'etiqueta'=>'Activo',
-      'activo'=>'1',
-      'orden'=>1,
-      'valor'=>'',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2019-01-06 09:49:08',
-      'fecha_mod'=>NULL
-      ));
-
-
-
-      DB::table('cm_catalogo')->insert(
-      array(
-      'id_cat'=>14,
-      'id_padre'=>NULL,
-      'catalogo'=>'status_sistema',
-      'etiqueta'=>'Mantenimiento',
-      'activo'=>'1',
-      'orden'=>2,
-      'valor'=>'',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2019-01-06 09:49:29',
-      'fecha_mod'=>NULL
-      ));
-
-
-
-      DB::table('cm_catalogo')->insert(
-      array(
-      'id_cat'=>15,
-      'id_padre'=>NULL,
-      'catalogo'=>'status_sistema',
-      'etiqueta'=>'Suspendido',
-      'activo'=>'1',
-      'orden'=>3,
-      'valor'=>'',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2019-01-06 09:50:13',
-      'fecha_mod'=>NULL
-      ));
     }
 }

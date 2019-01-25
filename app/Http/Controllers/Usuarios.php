@@ -7,7 +7,6 @@ use App\Models\Roles;
 use App\Models\Viewlogins;
 use App\Models\Viewusuarios;
 use App\Models\Ubicacion;
-use App\Models\Sistemas;
 use Helpme;
 
 class Usuarios extends Controller
@@ -32,11 +31,7 @@ class Usuarios extends Controller
   public function editar_usuario(Request $request) { print json_encode(ModelUsuarios::editar_usuario($request)); }
 
   public function logueados() {
-    $system_data = Sistemas::datos_sistema(1);
-    $datos = [
-        'system_data' => $system_data
-    ];
-    return view('usuarios/logueados')->with('datos', $datos);
+    return view('usuarios/logueados');
   }
 
   public function logueados_get() { print json_encode(Viewlogins::logueados_get()); }
@@ -50,11 +45,7 @@ class Usuarios extends Controller
   public function desbloquear_usuarios(){print json_encode(ModelUsuarios::desbloquear_usuarios());}
 
   public function index(){
-    $system_data = Sistemas::datos_sistema(1);
-    $datos = [
-        'system_data' => $system_data
-    ];
-    return view('usuarios/usuarios')->with('bloqueados', ModelUsuarios::usuarios_bloqueados())->with('datos', $datos);
+    return view('usuarios/usuarios')->with('bloqueados', ModelUsuarios::usuarios_bloqueados());
   }
 
   public function obtener_usuarios(){print json_encode(Viewusuarios::obtener_usuarios());}
@@ -170,14 +161,12 @@ class Usuarios extends Controller
         }
 
       $rol = Roles::rol();
-      $system_data = Sistemas::datos_sistema(1);
 
       $datos = [
           'usuario' => $usuario,
           'rol' => $rol,
           'avatar' => $avatar,
-          'perfil' => $perfil,
-          'system_data' => $system_data
+          'perfil' => $perfil
       ];
       return view('usuarios/perfil')->with('datos', $datos);
   }

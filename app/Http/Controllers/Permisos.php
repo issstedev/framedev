@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Permisos as ModelPermisos;
-use App\Models\Sistemas;
 use Helpme;
 
 class Permisos extends Controller
@@ -19,15 +18,6 @@ class Permisos extends Controller
       $this->middleware('permiso:Controllers|eliminar_par', ['only' => ['eliminar_par']]);
   }
   public function index(){ return view('plantilla/404_full'); }
-
-  public function main($id_sistema){
-    $system_data = Sistemas::datos_sistema($id_sistema);
-    $datos = [
-        'id_sistema' => $id_sistema,
-        'system_data' => $system_data
-    ];
-    return view('sistemas/listado_pares')->with('datos', $datos);
-  }
 
   public function obtener_controllers($id_sistema){echo json_encode( ModelPermisos::obtenerControllers($id_sistema) );}
 

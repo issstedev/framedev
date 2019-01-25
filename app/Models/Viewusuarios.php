@@ -50,14 +50,6 @@ class Viewusuarios extends Model
         ';
     }
 
-    if(Helpme::tiene_permiso('Sistemas|relacionar_sistemas')){
-      $salida .= '
-      <a data-function="'.$id_usuario.'" class="sys_js_fn_05 btn btn-outline-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill m-btn--air">
-        <i class="flaticon-imac"></i>
-      </a>
-      ';
-    }
-
     if(Helpme::tiene_permiso('Login|auditoria')){
       $salida .= '
       <a data-function="'.$id_usuario.'" class="usr_js_fn_09 btn btn-outline-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill m-btn--air">

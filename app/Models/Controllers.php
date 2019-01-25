@@ -32,7 +32,6 @@ class Controllers extends Model
     $store = new Controllers;
     $store->controlador = $request->input('controlador');
     $store->metodo = $request->input('metodo');
-    $store->id_sistema = 1;
     $store->nombre = $request->input('nombre');
     $store->descripcion = $request->input('descripcion');
     $store->user_alta = $_SESSION['id_usuario'];

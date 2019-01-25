@@ -1,6 +1,6 @@
 <!--Section: Team v.1-->
 <script>
-$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").html('<?=env('SITE_NAME')?>');
 $("#breadcrumb-title").append(' / Perfil / <?=$datos['usuario']['usuario']?>');
 </script>
 

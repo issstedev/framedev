@@ -14,7 +14,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>1,
-      'id_sistema'=>1,
       'controlador'=>'Area',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -30,7 +29,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>2,
-      'id_sistema'=>1,
       'controlador'=>'Area',
       'metodo'=>'select_area',
       'nombre'=>'Seleccionar areas',
@@ -46,7 +44,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>3,
-      'id_sistema'=>1,
       'controlador'=>'Controllers',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -62,7 +59,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>4,
-      'id_sistema'=>1,
       'controlador'=>'Controllers',
       'metodo'=>'obtener_controllers',
       'nombre'=>'Lista de Controladores',
@@ -78,7 +74,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>5,
-      'id_sistema'=>1,
       'controlador'=>'Controllers',
       'metodo'=>'data_controller',
       'nombre'=>'Modal Metodos',
@@ -94,7 +89,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>6,
-      'id_sistema'=>1,
       'controlador'=>'Controllers',
       'metodo'=>'editar_metodo',
       'nombre'=>'Editar Metodo',
@@ -110,7 +104,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>7,
-      'id_sistema'=>1,
       'controlador'=>'Controllers',
       'metodo'=>'modal_add_metodo',
       'nombre'=>'Modal Agregar Metodo',
@@ -126,7 +119,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>8,
-      'id_sistema'=>1,
       'controlador'=>'Controllers',
       'metodo'=>'agregar_metodo',
       'nombre'=>'Agregar Metodo',
@@ -142,7 +134,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>9,
-      'id_sistema'=>1,
       'controlador'=>'Controllers',
       'metodo'=>'eliminar_par',
       'nombre'=>'Elimina Metodo',
@@ -158,7 +149,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>10,
-      'id_sistema'=>1,
       'controlador'=>'Extensions',
       'metodo'=>'init',
       'nombre'=>'Inicializa las extensiones',
@@ -174,7 +164,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>11,
-      'id_sistema'=>1,
       'controlador'=>'Inicio',
       'metodo'=>'index',
       'nombre'=>'Ventana Principal',
@@ -190,7 +179,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>12,
-      'id_sistema'=>1,
       'controlador'=>'Login',
       'metodo'=>'salir',
       'nombre'=>'Salir',
@@ -206,7 +194,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>13,
-      'id_sistema'=>1,
       'controlador'=>'Roles',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -222,7 +209,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>14,
-      'id_sistema'=>1,
       'controlador'=>'Roles',
       'metodo'=>'modal_roles',
       'nombre'=>'Modal Roles',
@@ -238,7 +224,7 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>15,
-      'id_sistema'=>1,
+
       'controlador'=>'Roles',
       'metodo'=>'agregar_rol',
       'nombre'=>'Inserta Nivel',
@@ -254,7 +240,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>16,
-      'id_sistema'=>1,
       'controlador'=>'Roles',
       'metodo'=>'permisos',
       'nombre'=>'Administracion de permisos',
@@ -270,7 +255,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>17,
-      'id_sistema'=>1,
       'controlador'=>'Roles',
       'metodo'=>'establecer_permiso',
       'nombre'=>'Setear permiso',
@@ -286,7 +270,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>18,
-      'id_sistema'=>1,
       'controlador'=>'Roles',
       'metodo'=>'clonar',
       'nombre'=>'Clonar roles',
@@ -302,7 +285,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>19,
-      'id_sistema'=>1,
       'controlador'=>'Ubicacion',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -318,7 +300,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>20,
-      'id_sistema'=>1,
       'controlador'=>'Ubicacion',
       'metodo'=>'obtener_ubicaciones',
       'nombre'=>'Obtiene ubicaciones',
@@ -334,7 +315,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>21,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -350,7 +330,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>22,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'obtener_usuarios',
       'nombre'=>'Lista de usuarios',
@@ -366,7 +345,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>23,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'datos_usuario',
       'nombre'=>'Datos de usuario',
@@ -382,7 +360,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>24,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'modal_add_usr',
       'nombre'=>'Modal agregar usuario',
@@ -398,7 +375,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>25,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'agregar_usuario',
       'nombre'=>'Insert Usuario',
@@ -414,7 +390,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>26,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'editar_usuario',
       'nombre'=>'Update Usuario',
@@ -430,7 +405,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>27,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'baja_usuario',
       'nombre'=>'Update status baja',
@@ -446,7 +420,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>28,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'perfil',
       'nombre'=>'Modificar Perfil',
@@ -462,7 +435,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>29,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'editar_perfil',
       'nombre'=>'Actualiza el perfil',
@@ -478,7 +450,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>30,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'upload_avatar',
       'nombre'=>'Subir o cambiar avatar',
@@ -494,7 +465,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>31,
-      'id_sistema'=>1,
       'controlador'=>'Sidebar',
       'metodo'=>'obtenerExtensiones',
       'nombre'=>'Obtener extensiones con controladores y metodos',
@@ -510,7 +480,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>32,
-      'id_sistema'=>1,
       'controlador'=>'Pdf',
       'metodo'=>'resguardo_telefonico',
       'nombre'=>'Resguardo telefónico',
@@ -526,7 +495,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>33,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'logueados',
       'nombre'=>'Logueados',
@@ -542,7 +510,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>34,
-      'id_sistema'=>1,
       'controlador'=>'Login',
       'metodo'=>'force_sign_out',
       'nombre'=>'Forzar Deslogueo del sistema',
@@ -558,7 +525,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>35,
-      'id_sistema'=>1,
       'controlador'=>'Login',
       'metodo'=>'force_all_sign_out',
       'nombre'=>'Forzar el deslogueo glabal',
@@ -574,7 +540,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>36,
-      'id_sistema'=>1,
       'controlador'=>'Login',
       'metodo'=>'switch_login_op',
       'nombre'=>'Deshabilita y habilita el logueo de los operadores',
@@ -590,7 +555,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>37,
-      'id_sistema'=>1,
       'controlador'=>'Catalogo',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -606,7 +570,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>38,
-      'id_sistema'=>1,
       'controlador'=>'Catalogo',
       'metodo'=>'editar_catalogo',
       'nombre'=>'Edita los elementos del catalogo',
@@ -622,7 +585,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>39,
-      'id_sistema'=>1,
       'controlador'=>'Catalogo',
       'metodo'=>'eliminar_elemento',
       'nombre'=>'Eliminar elemento de catalogo',
@@ -638,7 +600,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>40,
-      'id_sistema'=>1,
       'controlador'=>'Catalogo',
       'metodo'=>'add_elemento',
       'nombre'=>'Agrega un nuevo elemento',
@@ -654,7 +615,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>41,
-      'id_sistema'=>1,
       'controlador'=>'Mobile',
       'metodo'=>'index',
       'nombre'=>'Acceso desde el mobil',
@@ -670,7 +630,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>42,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'desbloquea_usuario',
       'nombre'=>'Usuarios Bloqueados',
@@ -686,7 +645,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>43,
-      'id_sistema'=>1,
       'controlador'=>'Usuarios',
       'metodo'=>'desbloquear_usuarios',
       'nombre'=>'Desbloquear usuarios',
@@ -702,7 +660,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>44,
-      'id_sistema'=>1,
       'controlador'=>'Login',
       'metodo'=>'loginlogger',
       'nombre'=>'Registro de accesos',
@@ -718,7 +675,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>45,
-      'id_sistema'=>1,
       'controlador'=>'Sistemas',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -734,7 +690,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>46,
-      'id_sistema'=>1,
       'controlador'=>'Sistemas',
       'metodo'=>'agregar_sistema',
       'nombre'=>'Agragar Sistema',
@@ -750,7 +705,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>47,
-      'id_sistema'=>NULL,
       'controlador'=>'Sistemas',
       'metodo'=>'editar_sistema',
       'nombre'=>'Editar Sistemas',
@@ -766,7 +720,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>48,
-      'id_sistema'=>1,
       'controlador'=>'Sistemas',
       'metodo'=>'relacionar_sistemas',
       'nombre'=>'Relacionar sistemas',
@@ -782,7 +735,6 @@ class populateMetodos extends Seeder
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>49,
-      'id_sistema'=>1,
       'controlador'=>'Login',
       'metodo'=>'auditoria',
       'nombre'=>'Listado de auditoria',

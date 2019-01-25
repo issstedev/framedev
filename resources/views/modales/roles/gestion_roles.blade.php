@@ -13,7 +13,7 @@
       </style>
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Gestionar Roles para: <?=$datos['system_data']->nombre?></h5>
+                <h5 class="modal-title" id="myModalLabel">Gestionar Roles para: <?=env('SITE_NAME')?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

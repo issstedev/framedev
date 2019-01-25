@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Roles as ModelRoles;
 use App\Models\Catalogo;
-use App\Models\Sistemas;
 use Helpme;
 
 class Roles extends Controller
@@ -33,11 +32,9 @@ class Roles extends Controller
   public function modal_roles(){
       $roles = ModelRoles::queryRoles(null);
       $tiporol = Catalogo::selectCatalog('tiporol',null);
-      $system_data = Sistemas::datos_sistema(1);
       $datos = [
           'roles' => $roles,
-          'tiporol' => $tiporol,
-          'system_data' => $system_data
+          'tiporol' => $tiporol
       ];
       return view('modales/roles/gestion_roles')->with('datos', $datos);
   }
@@ -57,8 +54,6 @@ class Roles extends Controller
                 $accesos[$i] = ModelRoles::getAccesos($rol,$roles_ck[$i]['value'],'fw_roles','fw_roles');
           }
 
-      $system_data = Sistemas::datos_sistema(1);
-
       $datos = [
           'descripcion' => $descripcion,
           'metodos' => $metodos,
@@ -66,8 +61,7 @@ class Roles extends Controller
           'roles_ck' => $roles_ck,
           'rol' => $rol,
           'permisos' => $permisos,
-          'accesos' => $accesos,
-          'system_data' => $system_data
+          'accesos' => $accesos
       ];
       return view('permisos/index')->with('datos', $datos);
   }

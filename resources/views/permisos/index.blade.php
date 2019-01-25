@@ -1,5 +1,5 @@
 <script>
-$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").html('<?=env('SITE_NAME')?>');
 $("#breadcrumb-title").append(' / Roles y permisos / Control de permisos de rol > <?=$datos['descripcion']?>');
 </script>
 <!--begin::Portlet-->

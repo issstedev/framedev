@@ -25,14 +25,12 @@ class CreateFwRolesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id_rol');
             $table->unsignedInteger('cat_tiporol')->nullable()->default(null);
-            $table->unsignedInteger('id_sistema')->nullable()->default(null);
             $table->string('descripcion')->nullable()->default(null);
             $table->integer('user_alta')->nullable()->default(null);
             $table->integer('user_mod')->nullable()->default(null);
             $table->dateTime('fecha_alta')->nullable()->default(null);
             $table->dateTime('fecha_mod')->nullable()->default(null);
 
-            $table->index(["id_sistema"], 'fk_fw_roles_sistemas_1');
 
             $table->index(["cat_tiporol"], 'fk_fw_roles_cm_catalogo_1');
 
@@ -42,10 +40,6 @@ class CreateFwRolesTable extends Migration
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
 
-            $table->foreign('id_sistema', 'fk_fw_roles_sistemas_1')
-                ->references('id_sistema')->on('sistemas')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
         });
     }
 

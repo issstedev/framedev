@@ -15,7 +15,6 @@ class populateRoles extends Seeder
       array(
       'id_rol'=>1,
       'cat_tiporol'=>6,
-      'id_sistema'=>1,
       'descripcion'=>'Desarrollador',
       'user_alta'=>0,
       'user_mod'=>0,

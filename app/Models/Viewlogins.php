@@ -15,7 +15,7 @@ class Viewlogins extends Model
   static function logueados_get(){
     $logins = new Viewlogins();
     $dataTable = new DT(
-      $logins->where('id_sistema','=', 1),
+      $logins,
       ['id_login', 'usuario','nombre','fecha_login', 'ultima_verificacion', 'ipv4', 'session_id', 'id_usuario']
     );
 
@@ -33,30 +33,6 @@ class Viewlogins extends Model
     } );
     return $dataTable->make();
   }
-
-  static function logueadossystem_get($id_sistema){
-    $logins = new Viewlogins();
-    $dataTable = new DT(
-      $logins->where('id_sistema','=', $id_sistema),
-      ['id_login', 'usuario','nombre','fecha_login', 'ultima_verificacion', 'ipv4', 'session_id', 'id_usuario']
-    );
-
-    $dataTable->setFormatRowFunction(function ($logins) {
-      return [
-        $logins->id_login ,
-        $logins->usuario ,
-        $logins->nombre ,
-        $logins->fecha_login ,
-        $logins->ultima_verificacion ,
-        $logins->ipv4 ,
-        $logins->session_id ,
-        self::lg1($logins->id_usuario)
-      ];
-    } );
-    return $dataTable->make();
-  }
-
-
 
 
   static function lg1($id_usuario){

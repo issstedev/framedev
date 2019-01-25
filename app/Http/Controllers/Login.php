@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Login as ModelLogin;
 use App\Models\Usuarios;
-use App\Models\Sistemas;
 use App\Models\Viewlog;
 use App\Models\Viewauditoria;
 use Helpme;
@@ -71,15 +70,11 @@ class Login extends Controller
 
       $auditoria = Viewauditoria::descriptivo($id_usuario);
       return view('modales/login/modal_auditoria')->with('auditoria', $auditoria);
-      
+
     }
 
     public function loginlogger() {
-      $system_data = Sistemas::datos_sistema(1);
-      $datos = [
-          'system_data' => $system_data
-      ];
-      return view('login/logger')->with('datos', $datos);
+      return view('login/logger');
     }
 
     public function loginlogger_get(){ print json_encode(Viewlog::logger()); }

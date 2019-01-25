@@ -24,7 +24,6 @@ class CreateFwMetodosTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id_metodo');
-            $table->unsignedInteger('id_sistema')->nullable()->default(null);
             $table->string('controlador')->nullable()->default(null);
             $table->string('metodo')->nullable()->default(null);
             $table->string('nombre')->nullable()->default(null);
@@ -34,13 +33,6 @@ class CreateFwMetodosTable extends Migration
             $table->dateTime('fecha_alta')->nullable()->default(null);
             $table->dateTime('fecha_mod')->nullable()->default(null);
 
-            $table->index(["id_sistema"], 'fk_fw_metodos_sistemas_1');
-
-
-            $table->foreign('id_sistema', 'fk_fw_metodos_sistemas_1')
-                ->references('id_sistema')->on('sistemas')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
         });
     }
 

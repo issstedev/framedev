@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Roles;
 use App\Models\Usuarios;
-use App\Models\Sistemas;
 use Helpme;
 
 class Inicio extends Controller
@@ -34,10 +33,8 @@ class Inicio extends Controller
 
     }
 
-    $lista_sistemas = Sistemas::sistemas_accesibles($_SESSION['id_usuario']);
     $datos = [
         'avatar_usr_circ' => $avatar_usr_circ,
-        'lista_sistemas' => $lista_sistemas,
         'usuario_name' => $usuario_name,
         'rol' => $rol,
         'id_rol' => $id_rol,

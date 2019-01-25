@@ -1,5 +1,5 @@
 ﻿<script>
-$("#breadcrumb-title").html('<?=$datos['system_data']->nombre?>');
+$("#breadcrumb-title").html('<?=env('SITE_NAME')?>');
 $("#breadcrumb-title").append(' / Catálogo general / Catálogo');
 </script>
 

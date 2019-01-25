@@ -157,7 +157,6 @@ class Roles extends Model
         [
           'descripcion' => $request->input('descripcion'),
           'cat_tiporol' => $request->input('cat_tiporol'),
-          'id_sistema' => 1,
           'user_alta' => $_SESSION['id_usuario'],
           'fecha_alta' => date("Y-m-d H:i:s")
         ]
@@ -196,7 +195,6 @@ class Roles extends Model
   static function queryRoles(){
     $roles = DB::table('cm_catalogo')
               ->join('fw_roles','fw_roles.cat_tiporol','=','cm_catalogo.id_cat')
-              ->where('fw_roles.id_sistema', '=', 1)
               ->select('fw_roles.id_rol', 'cm_catalogo.etiqueta', 'fw_roles.descripcion')
               ->get();
     if(count($roles)>=1){
