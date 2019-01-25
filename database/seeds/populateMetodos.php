@@ -538,7 +538,7 @@ class populateMetodos extends Seeder
       'controlador'=>'Login',
       'metodo'=>'loginlogger',
       'nombre'=>'Registro de accesos',
-      'descripcion'=>'',
+      'descripcion'=>'Muestra el registro de accesos al sistema',
       'user_alta'=>1,
       'user_mod'=>NULL,
       'fecha_alta'=>'2018-05-20 05:26:47',
