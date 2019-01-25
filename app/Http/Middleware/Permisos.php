@@ -16,6 +16,7 @@ class Permisos
     {
 
           if(!isset($_SESSION['token'])){
+              //return Redirect::intended(env('URL_APP'));
               return redirect()->action('Login@index');
               exit();
           }

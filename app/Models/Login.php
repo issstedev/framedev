@@ -68,7 +68,7 @@ class Login extends Model
       /*1800 = 30 minutos*/
       /*3600 = 1 hr*/
       /*tiempo en segundos*/
-      if(isset($_SESSION['hora_acceso']) && ($resta>1800)){
+      if(isset($_SESSION['hora_acceso']) && ($resta>900)){
         $array[]=array('resp'=>"timeout",'tiempo'=>$resta);
       }else{
         $array = self::keepAlive();
