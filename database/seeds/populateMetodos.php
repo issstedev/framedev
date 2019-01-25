@@ -11,6 +11,7 @@ class populateMetodos extends Seeder
      */
     public function run()
     {
+
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>1,
@@ -23,8 +24,6 @@ class populateMetodos extends Seeder
       'fecha_alta'=>'2016-11-16 14:41:31',
       'fecha_mod'=>'2017-11-15 18:26:17'
       ));
-
-
 
       DB::table('fw_metodos')->insert(
       array(
@@ -39,8 +38,6 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>3,
@@ -53,8 +50,6 @@ class populateMetodos extends Seeder
       'fecha_alta'=>'2016-11-16 14:41:31',
       'fecha_mod'=>'2016-11-17 20:11:31'
       ));
-
-
 
       DB::table('fw_metodos')->insert(
       array(
@@ -69,8 +64,6 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>5,
@@ -83,8 +76,6 @@ class populateMetodos extends Seeder
       'fecha_alta'=>'2016-11-16 14:41:31',
       'fecha_mod'=>'2016-06-17 18:59:56'
       ));
-
-
 
       DB::table('fw_metodos')->insert(
       array(
@@ -99,8 +90,6 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>7,
@@ -113,8 +102,6 @@ class populateMetodos extends Seeder
       'fecha_alta'=>'2016-11-16 14:41:31',
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
-
-
 
       DB::table('fw_metodos')->insert(
       array(
@@ -129,8 +116,6 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2017-11-09 02:07:04'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>9,
@@ -144,26 +129,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2017-11-09 02:07:33'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
       'id_metodo'=>10,
-      'controlador'=>'Extensions',
-      'metodo'=>'init',
-      'nombre'=>'Inicializa las extensiones',
-      'descripcion'=>'Clase principal que permite inicializar las extensiones',
-      'user_alta'=>0,
-      'user_mod'=>0,
-      'fecha_alta'=>'2016-11-16 14:41:31',
-      'fecha_mod'=>'2016-11-16 14:41:31'
-      ));
-
-
-
-      DB::table('fw_metodos')->insert(
-      array(
-      'id_metodo'=>11,
       'controlador'=>'Inicio',
       'metodo'=>'index',
       'nombre'=>'Ventana Principal',
@@ -174,11 +142,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>12,
+      'id_metodo'=>11,
       'controlador'=>'Login',
       'metodo'=>'salir',
       'nombre'=>'Salir',
@@ -189,11 +155,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>13,
+      'id_metodo'=>12,
       'controlador'=>'Roles',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -204,11 +168,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>14,
+      'id_metodo'=>13,
       'controlador'=>'Roles',
       'metodo'=>'modal_roles',
       'nombre'=>'Modal Roles',
@@ -219,12 +181,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>15,
-
+      'id_metodo'=>14,
       'controlador'=>'Roles',
       'metodo'=>'agregar_rol',
       'nombre'=>'Inserta Nivel',
@@ -235,11 +194,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>16,
+      'id_metodo'=>15,
       'controlador'=>'Roles',
       'metodo'=>'permisos',
       'nombre'=>'Administracion de permisos',
@@ -250,11 +207,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>17,
+      'id_metodo'=>16,
       'controlador'=>'Roles',
       'metodo'=>'establecer_permiso',
       'nombre'=>'Setear permiso',
@@ -265,11 +220,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>18,
+      'id_metodo'=>17,
       'controlador'=>'Roles',
       'metodo'=>'clonar',
       'nombre'=>'Clonar roles',
@@ -280,11 +233,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>19,
+      'id_metodo'=>18,
       'controlador'=>'Ubicacion',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -295,11 +246,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>20,
+      'id_metodo'=>19,
       'controlador'=>'Ubicacion',
       'metodo'=>'obtener_ubicaciones',
       'nombre'=>'Obtiene ubicaciones',
@@ -310,11 +259,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2015-10-08 20:13:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>21,
+      'id_metodo'=>20,
       'controlador'=>'Usuarios',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -325,11 +272,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>22,
+      'id_metodo'=>21,
       'controlador'=>'Usuarios',
       'metodo'=>'obtener_usuarios',
       'nombre'=>'Lista de usuarios',
@@ -340,11 +285,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>23,
+      'id_metodo'=>22,
       'controlador'=>'Usuarios',
       'metodo'=>'datos_usuario',
       'nombre'=>'Datos de usuario',
@@ -355,11 +298,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>24,
+      'id_metodo'=>23,
       'controlador'=>'Usuarios',
       'metodo'=>'modal_add_usr',
       'nombre'=>'Modal agregar usuario',
@@ -370,11 +311,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>25,
+      'id_metodo'=>24,
       'controlador'=>'Usuarios',
       'metodo'=>'agregar_usuario',
       'nombre'=>'Insert Usuario',
@@ -385,11 +324,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>26,
+      'id_metodo'=>25,
       'controlador'=>'Usuarios',
       'metodo'=>'editar_usuario',
       'nombre'=>'Update Usuario',
@@ -400,11 +337,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>27,
+      'id_metodo'=>26,
       'controlador'=>'Usuarios',
       'metodo'=>'baja_usuario',
       'nombre'=>'Update status baja',
@@ -415,11 +350,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>28,
+      'id_metodo'=>27,
       'controlador'=>'Usuarios',
       'metodo'=>'perfil',
       'nombre'=>'Modificar Perfil',
@@ -430,11 +363,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>29,
+      'id_metodo'=>28,
       'controlador'=>'Usuarios',
       'metodo'=>'editar_perfil',
       'nombre'=>'Actualiza el perfil',
@@ -445,11 +376,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>30,
+      'id_metodo'=>29,
       'controlador'=>'Usuarios',
       'metodo'=>'upload_avatar',
       'nombre'=>'Subir o cambiar avatar',
@@ -460,11 +389,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>31,
+      'id_metodo'=>30,
       'controlador'=>'Sidebar',
       'metodo'=>'obtenerExtensiones',
       'nombre'=>'Obtener extensiones con controladores y metodos',
@@ -475,26 +402,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-11-16 14:41:31'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>32,
-      'controlador'=>'Pdf',
-      'metodo'=>'resguardo_telefonico',
-      'nombre'=>'Resguardo telefónico',
-      'descripcion'=>'Permite descargar el formato de resguardo telefónico',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2016-03-17 01:50:59',
-      'fecha_mod'=>'2016-03-17 08:50:59'
-      ));
-
-
-
-      DB::table('fw_metodos')->insert(
-      array(
-      'id_metodo'=>33,
+      'id_metodo'=>31,
       'controlador'=>'Usuarios',
       'metodo'=>'logueados',
       'nombre'=>'Logueados',
@@ -505,11 +415,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-04-13 19:56:42'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>34,
+      'id_metodo'=>32,
       'controlador'=>'Login',
       'metodo'=>'force_sign_out',
       'nombre'=>'Forzar Deslogueo del sistema',
@@ -520,11 +428,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-04-14 00:54:04'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>35,
+      'id_metodo'=>33,
       'controlador'=>'Login',
       'metodo'=>'force_all_sign_out',
       'nombre'=>'Forzar el deslogueo glabal',
@@ -535,11 +441,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-05-10 00:05:18'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>36,
+      'id_metodo'=>34,
       'controlador'=>'Login',
       'metodo'=>'switch_login_op',
       'nombre'=>'Deshabilita y habilita el logueo de los operadores',
@@ -550,11 +454,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2017-11-06 06:14:55'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>37,
+      'id_metodo'=>35,
       'controlador'=>'Catalogo',
       'metodo'=>'index',
       'nombre'=>'Indice',
@@ -565,11 +467,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-06-17 18:29:49'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>38,
+      'id_metodo'=>36,
       'controlador'=>'Catalogo',
       'metodo'=>'editar_catalogo',
       'nombre'=>'Edita los elementos del catalogo',
@@ -580,11 +480,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-06-17 19:01:26'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>39,
+      'id_metodo'=>37,
       'controlador'=>'Catalogo',
       'metodo'=>'eliminar_elemento',
       'nombre'=>'Eliminar elemento de catalogo',
@@ -595,11 +493,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-06-17 23:46:29'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>40,
+      'id_metodo'=>38,
       'controlador'=>'Catalogo',
       'metodo'=>'add_elemento',
       'nombre'=>'Agrega un nuevo elemento',
@@ -610,26 +506,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2016-06-18 00:19:02'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>41,
-      'controlador'=>'Mobile',
-      'metodo'=>'index',
-      'nombre'=>'Acceso desde el mobil',
-      'descripcion'=>'página inicial de acceso desde el móvil',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2016-11-14 22:01:13',
-      'fecha_mod'=>'2016-11-14 22:01:13'
-      ));
-
-
-
-      DB::table('fw_metodos')->insert(
-      array(
-      'id_metodo'=>42,
+      'id_metodo'=>39,
       'controlador'=>'Usuarios',
       'metodo'=>'desbloquea_usuario',
       'nombre'=>'Usuarios Bloqueados',
@@ -640,11 +519,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2017-11-20 09:10:59'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>43,
+      'id_metodo'=>40,
       'controlador'=>'Usuarios',
       'metodo'=>'desbloquear_usuarios',
       'nombre'=>'Desbloquear usuarios',
@@ -655,11 +532,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>'2017-11-20 09:12:09'
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>44,
+      'id_metodo'=>41,
       'controlador'=>'Login',
       'metodo'=>'loginlogger',
       'nombre'=>'Registro de accesos',
@@ -670,71 +545,9 @@ class populateMetodos extends Seeder
       'fecha_mod'=>NULL
       ));
 
-
-
       DB::table('fw_metodos')->insert(
       array(
-      'id_metodo'=>45,
-      'controlador'=>'Sistemas',
-      'metodo'=>'index',
-      'nombre'=>'Indice',
-      'descripcion'=>'Muestra el listado de los sistemas que se administran',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2019-01-05 18:08:29',
-      'fecha_mod'=>NULL
-      ));
-
-
-
-      DB::table('fw_metodos')->insert(
-      array(
-      'id_metodo'=>46,
-      'controlador'=>'Sistemas',
-      'metodo'=>'agregar_sistema',
-      'nombre'=>'Agragar Sistema',
-      'descripcion'=>'Permite añadir un nueva sistema para ser administrado',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2019-01-05 19:35:29',
-      'fecha_mod'=>NULL
-      ));
-
-
-
-      DB::table('fw_metodos')->insert(
-      array(
-      'id_metodo'=>47,
-      'controlador'=>'Sistemas',
-      'metodo'=>'editar_sistema',
-      'nombre'=>'Editar Sistemas',
-      'descripcion'=>'Permite la edición de un sistema previamente capturado',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2019-01-05 21:26:26',
-      'fecha_mod'=>NULL
-      ));
-
-
-
-      DB::table('fw_metodos')->insert(
-      array(
-      'id_metodo'=>48,
-      'controlador'=>'Sistemas',
-      'metodo'=>'relacionar_sistemas',
-      'nombre'=>'Relacionar sistemas',
-      'descripcion'=>'Relaciona los sistemas a un usuario determinado para su administración',
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2019-01-06 13:17:07',
-      'fecha_mod'=>NULL
-      ));
-
-
-
-      DB::table('fw_metodos')->insert(
-      array(
-      'id_metodo'=>49,
+      'id_metodo'=>42,
       'controlador'=>'Login',
       'metodo'=>'auditoria',
       'nombre'=>'Listado de auditoria',
