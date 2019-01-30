@@ -221,7 +221,109 @@ class Login extends Model
     }
   }
 
+  static function logearExterno($request){
+
+      $post_send = array(
+          'usuario' => $request->input('usuario'),
+          'password' => $request->input('password')
+      );
+      $post_send = json_encode($post_send);
+
+      $secret=env('SYSTEM_KEY');
+      $system = env('APP_NAME');
+      $sign = hash_hmac('sha256', $post_send, $secret, false);
+
+      $headers = array(
+         'systemverify-Signature:'.$sign,
+         'system:'.$system,
+         'ip:'.$_SERVER['REMOTE_ADDR']
+      );
+
+      $curl = null;
+      $curl = curl_init(env('EXT_LOGIN'));
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($curl, CURLOPT_HEADER, 1);
+      curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+      curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+      curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 20);
+      curl_setopt($curl, CURLOPT_POSTFIELDS, $post_send);
+
+      $res = curl_exec($curl);
+      $data = explode("\n",$res);
+      $status = $data[0];
+      $post   = $data[9];
+      $post = json_decode($post, true);
+      $remote_data = json_decode($post, true);
+      self::loginExternoProcess($remote_data);
+
+      //\Debugbar::info($remote_data[4][1]['accessid']);
+  }
+
+  static function loginExternoProcess($remote_data){
+
+    if($remote_data[5]['resp'] == 'inhabilitado'){
+      $array[]=array('resp'=>"inhabilitado");
+      print json_encode($array);
+      exit();
+    }
+
+    if($remote_data[0]['resp'] == 'acceso_correcto'){
+
+        self::session_duplicada($remote_data[3]['id_usuario']);
+        $_SESSION['id_usuario']=$remote_data[3]['id_usuario'];
+        $_SESSION['id_rol']=$remote_data[3]['id_rol'];
+        $_SESSION['hora_acceso']= time();
+        $_SESSION['usuario']=$remote_data[3]['usuario'];
+        $_SESSION['id_ubicacion']=$remote_data[3]['id_ubicacion'];
+        $_SESSION['correo']=$remote_data[3]['correo'];
+        $_SESSION['tyc']=$remote_data[3]['tyc'];
+        $_SESSION['pass_chge']=$remote_data[3]['pass_chge'];
+        $_SESSION['token'] = $remote_data[3]['token'];
+        $array[0]=array('resp'=>"acceso_correcto");
+
+        self::MobileDetect();
+        $array[1] = array('dispositivo'=>$_SESSION['dispositivo']);
+
+        $acceso = Config::getConfig(1,'login_permitido');
+
+        if($acceso['valor'] == 1){
+
+          self::permisosRemotos($remote_data[4]);
+          $array[2] = array('via'=>"correcta");
+          self::storeSession($_SESSION['id_usuario']);
+
+        }else{
+
+          session_unset();
+          unset($_SESSION);
+          session_destroy();
+          $array[2] = array('via'=>"disabled");
+
+        }
+    }else{
+      if(self::existeUsuario($remote_data[3]['usuario']))
+          self::putLoggerLogin($remote_data[3]['usuario']);
+
+      $array[]=array('resp'=>"acceso_incorrecto");
+    }
+    print json_encode($array);
+  }
+
+
+  static function permisosRemotos($remote_data){
+      $_SESSION['permisos'] = $remote_data[0]['permisos'];
+      $_SESSION['accessid'] = $remote_data[1]['accessid'];
+  }
+
   static function logear($request){
+      if(env('LOGIN_EXT_LOC') == 'EXTERNO')
+        self::logearExterno($request);
+
+      if(env('LOGIN_EXT_LOC') == 'LOCAL')
+        self::logearLocal($request);
+  }
+
+  static function logearLocal($request){
     $stat = self::getStatusUser($request->input('usuario'));
     if($stat == 9){
       $array[]=array('resp'=>"inhabilitado");
@@ -244,7 +346,7 @@ class Login extends Model
       foreach ($logged as $row) {
         self::session_duplicada($row->id_usuario);
 
-        //session_name(SITE_NAME);
+        //session_name(APP_NAME);
         $_SESSION['id_usuario']=$row->id_usuario;
         $_SESSION['id_rol']=$row->id_rol;
         $_SESSION['hora_acceso']= time();

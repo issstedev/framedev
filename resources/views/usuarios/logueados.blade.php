@@ -1,5 +1,5 @@
 ﻿<script>
-$("#breadcrumb-title").html('<?=env('SITE_NAME')?>');
+$("#breadcrumb-title").html('<?=env('APP_NAME')?>');
 $("#breadcrumb-title").append(' / Control de sesiones');
 </script>
 		<div class="m-portlet m-portlet--mobile">
