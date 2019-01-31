@@ -265,6 +265,10 @@ class Login extends Model
       $array[]=array('resp'=>"inhabilitado");
       print json_encode($array);
       exit();
+    }elseif($remote_data[5]['resp'] == 'No autorizado'){
+      $array[]=array('resp'=>"No autorizado");
+      print json_encode($array);
+      exit();
     }
 
     if($remote_data[0]['resp'] == 'acceso_correcto'){
