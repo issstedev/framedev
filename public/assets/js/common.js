@@ -76,6 +76,10 @@ $("body").on("click", ".loginfn", function() {
 						$('#usuario').value="";
 						$('#password').value="";
 						alerta('Alerta!','Su cuenta está inhabilitada por exceder el número de intentos de acceso permitidos, notifíquelo a su administrador');
+					}else if(respuesta[0].resp=="No autorizado"){
+						$('#usuario').value="";
+						$('#password').value="";
+						alerta('Alerta!','No tiene permisos de acceso a esta aplicación, notifíquelo a su administrador de recursos');
 					}
 				},
 				error: function(){ alerta('Alerta!','Error de conectividad de red CMMN-03');}
