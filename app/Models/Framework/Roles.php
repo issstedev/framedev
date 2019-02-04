@@ -11,7 +11,9 @@ class Roles extends Model
   protected $primaryKey = 'id_rol';
   public $timestamps = false;
 
-
+  static function getAll(){
+    return Roles::all();
+  }
   static function setOption_U($arreglo){
     $opciones = "<option value='' disabled selected>Seleccione</option>";
       for($i=0;$i<count($arreglo);$i++){

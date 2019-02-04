@@ -13,6 +13,11 @@ class Permisos extends Model
   protected $primaryKey = 'id_metodo';
   public $timestamps = false;
 
+
+  static function getAll(){
+    return Permisos::all();
+  }
+
   static function obtenerControllers($id_sistema){
     $dataTable = new DT(
       Permisos::where('id_metodo', '>', 0)->where('id_sistema','=',$id_sistema),
