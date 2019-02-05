@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call('populateRoles');
         $this->call('populateUsuarios');
         $this->call('populateUsuariosConfig');
-        $this->call('populatePermisos');
+        //$this->call('populatePermisos');
+        $this->call('populatePermisosExternos');
     }
 }
