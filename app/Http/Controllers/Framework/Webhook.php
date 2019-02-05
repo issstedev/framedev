@@ -23,11 +23,13 @@ class Webhook extends Controller
       $remote_ip = $_SERVER ['HTTP_IP'];
   		$body = file_get_contents('php://input');
   		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
+
   		if($webhook_signature == $expected_signature) {
+
 
         $metodos = Controllers::getAll();
         $roles = Roles::getAll();
-        $permisos = Roles::getAll();
+        $permisos = Permisos::getAll();
 
         $datos = [
             'metodos' => json_encode($metodos),
@@ -35,10 +37,9 @@ class Webhook extends Controller
             'permisos' => json_encode($permisos)
         ];
 
-        $header_send = json_encode($datos);
+        $header_send = base64_encode(json_encode($datos));
 
-        header($header_send);
-  			header("Status: 200 OK!");
+        echo $header_send;
 
   		} else {
   			header("Status: 401 Not authenticated");
