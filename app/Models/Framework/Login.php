@@ -242,7 +242,7 @@ class Login extends Model
       );
 
       $curl = null;
-      $curl = curl_init(env('EXT_LOGIN'));
+      $curl = curl_init(env('EXT_LOGIN').'auth');
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
       curl_setopt($curl, CURLOPT_HEADER, 1);
       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);

@@ -13,6 +13,7 @@
 Route::group(['prefix' => 'webhook'], function(){
         Route::get('/', 'Webhook@index');
         Route::any('/backup', 'Webhook@backup');
+        Route::any('/populate', 'Webhook@populate');
 });
 
 
