@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Controllers;
 use App\Models\Roles;
-use App\Models\Permisos;
+use App\Models\Accesos;
 use Helpme;
 
 class Webhook extends Controller
@@ -29,12 +29,12 @@ class Webhook extends Controller
 
         $metodos = Controllers::getAll();
         $roles = Roles::getAll();
-        $permisos = Permisos::getAll();
+        $accesos = Accesos::getAll();
 
         $datos = [
             'metodos' => json_encode($metodos),
             'roles' => json_encode($roles),
-            'permisos' => json_encode($permisos)
+            'accesos' => json_encode($accesos)
         ];
 
         $header_send = base64_encode(json_encode($datos));

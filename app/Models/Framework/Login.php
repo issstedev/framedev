@@ -237,7 +237,7 @@ class Login extends Model
       $headers = array(
          'systemverify-Signature:'.$sign,
          'system:'.$system,
-         'system_id:'.$system_id,
+         'system-id:'.$system_id,
          'ip:'.$_SERVER['REMOTE_ADDR']
       );
 
@@ -258,7 +258,7 @@ class Login extends Model
       $remote_data = json_decode($post, true);
       self::loginExternoProcess($remote_data);
 
-      //\Debugbar::info($remote_data[4][1]['accessid']);
+      \Debugbar::info($system_id);
   }
 
   static function loginExternoProcess($remote_data){
