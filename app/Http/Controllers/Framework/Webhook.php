@@ -64,19 +64,25 @@ class Webhook extends Controller
 
           $remote_model = self::getModelosRemotos($ids_inserts);
 
-          /*DB::table('fw_usuarios_config')->truncate();
-          DB::table('fw_usuarios')->truncate();
+          DB::statement('SET FOREIGN_KEY_CHECKS=0;');
           DB::table('fw_acceso')->truncate();
+          DB::table('fw_auditoria')->truncate();
+          DB::table('fw_login')->truncate();
+          DB::table('fw_login_log')->truncate();
+          DB::table('fw_lost_password')->truncate();
           DB::table('fw_permisos')->truncate();
+          DB::table('fw_usuarios_config')->truncate();
+          DB::table('fw_usuarios')->truncate();
           DB::table('fw_roles')->truncate();
-          DB::table('fw_metodos')->truncate();*/
+          DB::table('fw_metodos')->truncate();
+          DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
           $remote_model = base64_decode($remote_model);
           $remote_model = json_decode($remote_model, true);
 
           $last_ids = self::populateImports($remote_model);
 
-          echo '$last_ids';
+          echo json_encode($last_ids);
 
   		} else {
   			header("Status: 401 Not authenticated");
@@ -90,9 +96,6 @@ class Webhook extends Controller
     $roles = json_decode($remote_model['roles'], true);
     $accesos = json_decode($remote_model['accesos'], true);
 
-    return $metodos[0]['id_metodo'];
-
-/*
     for($i=0; $i < count($metodos); $i++){
       $id_metodo = DB::table('fw_metodos')->insertGetId(
           [
@@ -109,6 +112,7 @@ class Webhook extends Controller
       );
     }
 
+
     for($i=0; $i < count($roles); $i++){
       $id_rol = DB::table('fw_roles')->insertGetId(
           [
@@ -124,6 +128,8 @@ class Webhook extends Controller
       );
     }
 
+
+
     for($i=0; $i < count($accesos); $i++){
       $id_permiso = DB::table('fw_permisos')->insertGetId(
           [
@@ -138,14 +144,12 @@ class Webhook extends Controller
       );
     }
 
+
     return array(
             'last_id_metodo' => $id_metodo ,
             'last_id_role' => $id_rol,
             'last_id_permiso' => $id_permiso
           );
-*/
-
-
 
   }
 
