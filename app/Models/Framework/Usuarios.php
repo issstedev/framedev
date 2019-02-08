@@ -11,6 +11,53 @@ class Usuarios extends Model
   protected $primaryKey = 'id_usuario';
   public $timestamps = false;
 
+  static function updateFromRemoteUserRol($id_usuario, $rol){
+
+        return DB::table('fw_usuarios')
+                ->where('id_usuario', $id_usuario)
+                ->update([
+                    'id_rol' => $rol
+                ]);
+
+  }
+
+  static function updateFromRemoteUser($id_usuario, $id){
+
+        return DB::table('fw_usuarios')
+                ->where('id_usuario', $id_usuario)
+                ->update([
+                    'cat_status' => $id
+                ]);
+
+  }
+
+  static function importarUsuario($userdata){
+
+      $id_usuario = DB::table('fw_usuarios')->insert(
+          [
+              'id_usuario' => $userdata->id_usuario,
+              'id_area' => $userdata->id_area,
+              'password' => $userdata->password,
+              'usuario' => $userdata->usuario,
+              'correo' => $userdata->correo,
+              //'id_rol' => $userdata->id_rol,
+              'nombres' => $userdata->nombres,
+              'apellido_paterno' => $userdata->apellido_paterno,
+              'apellido_materno' => $userdata->apellido_materno,
+              'id_ubicacion' => $userdata->id_ubicacion,
+              'cat_pass_chge' => $userdata->cat_pass_chge,
+              'cat_status' => $userdata->cat_status,
+              'user_alta' => $userdata->user_alta,
+              'user_mod' => $userdata->user_mod,
+              'fecha_alta' => $userdata->fecha_alta,
+              'fecha_mod' => $userdata->fecha_mod
+          ]
+      );
+
+      self::crear_perfil($id_usuario);
+      self::updateIngreso($request->input('fecha_ingreso'),$id_usuario);
+      return $id_usuario;
+  }
 
   static function usuarios_bloqueados(){
     return DB::table('fw_usuarios')->where('cat_status','=',9)->count();

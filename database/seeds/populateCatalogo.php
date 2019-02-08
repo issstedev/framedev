@@ -213,5 +213,21 @@ class populateCatalogo extends Seeder
       'fecha_mod'=>NULL
       ));
 
+
+      DB::table('cm_catalogo')->insert(
+      array(
+      'id_cat'=>13,
+      'id_padre'=>NULL,
+      'catalogo'=>'status',
+      'etiqueta'=>'Unsync',
+      'activo'=>'1',
+      'orden'=>2,
+      'valor'=>'',
+      'user_alta'=>1,
+      'user_mod'=>1,
+      'fecha_alta'=>'2016-11-16 14:41:31',
+      'fecha_mod'=>'2016-11-16 14:41:31'
+      ));
+
     }
 }
