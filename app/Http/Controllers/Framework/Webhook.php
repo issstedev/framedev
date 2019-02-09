@@ -80,9 +80,9 @@ class Webhook extends Controller
         $data = json_decode($userdata);
         $id_insert = Usuarios::importarUsuario($data);
 
-        header("X:".$id_insert);
+        header('X:'.$id_insert);
 
-  			header("Status: 200 OK!");
+  			header("Status: 200 OK!cc");
 
   		} else {
   			header("Status: 401 Not authenticated");
@@ -256,7 +256,7 @@ class Webhook extends Controller
     $res = curl_exec($curl);
     $data = explode("\n",$res);
     $status = $data[0];
-    return  $data[11];
+    return  $data[12];
     //return $res;
   }
 }

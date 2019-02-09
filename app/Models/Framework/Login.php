@@ -253,12 +253,10 @@ class Login extends Model
       $res = curl_exec($curl);
       $data = explode("\n",$res);
       $status = $data[0];
-      $post   = $data[9];
+      $post   = $data[10];
       $post = json_decode($post, true);
       $remote_data = json_decode($post, true);
       self::loginExternoProcess($remote_data);
-
-      \Debugbar::info($system_id);
   }
 
   static function loginExternoProcess($remote_data){

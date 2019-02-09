@@ -153,11 +153,14 @@ class Usuarios extends Controller
 
   public function perfil()
   {
+
       $usuario = ModelUsuarios::datos_usuario($_SESSION['id_usuario']);
       $perfil  = ModelUsuarios::perfil_usuario($_SESSION['id_usuario']);
 
         if($perfil['avatar']){
             $avatar = Helpme::duplicatePublic($perfil['avatar'],'perfiles');
+        }else{
+           $avatar = '';
         }
 
       $rol = Roles::rol();
@@ -170,6 +173,7 @@ class Usuarios extends Controller
       ];
       return view('usuarios/perfil')->with('datos', $datos);
   }
+
   public function upload_dropzone($folder,$permisos){
     if(Helpme::tiene_permiso('Usuarios|'.$permisos)){
       $newfldr = str_replace('|', '/', $folder);

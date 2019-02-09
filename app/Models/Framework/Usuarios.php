@@ -55,7 +55,7 @@ class Usuarios extends Model
       );
 
       self::crear_perfil($id_usuario);
-      self::updateIngreso($request->input('fecha_ingreso'),$id_usuario);
+      self::updateIngreso(date("Y-m-d H:i:s"),$id_usuario);
       return $id_usuario;
   }
 
@@ -188,11 +188,12 @@ class Usuarios extends Model
   }
 
   static function updateIngreso($fecha_ingreso,$id_usuario){
+    if(isset($_SESSION['id_usuario'])){$mod_user = $_SESSION['id_usuario'];}else{$mod_user = $id_usuario;}
     DB::table('fw_usuarios_config')
             ->where('id_usuario', $id_usuario)
             ->update([
                 'fecha_ingreso'=> $fecha_ingreso,
-                'user_mod'=> $_SESSION['id_usuario']
+                'user_mod'=> $id_usuario
             ]);
   }
 
@@ -411,6 +412,7 @@ class Usuarios extends Model
   }
 
   static function crear_perfil($id_usuario){
+    if(isset($_SESSION['id_usuario'])){$user_alta = $_SESSION['id_usuario'];}else{$user_alta = $id_usuario;}
     $count = DB::table('fw_usuarios_config')->where('id_usuario', '=', $id_usuario)->count();
     if($count == 1){
       return true;
@@ -418,7 +420,7 @@ class Usuarios extends Model
       DB::table('fw_usuarios_config')->insert(
           [
               'id_usuario' => $id_usuario,
-              'user_alta' => $_SESSION['id_usuario'],
+              'user_alta' => $user_alta,
               'fecha_alta' => date("Y-m-d H:i:s")
           ]
       );
