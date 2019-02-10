@@ -46,6 +46,8 @@ class Login extends Controller
 
     public function error404() { return view('plantilla/404_full'); }
 
+    public function error500() { return view('plantilla/500_full'); }
+
     public function salir(){return ModelLogin::salir();}
 
     public function verifica_session() {return ModelLogin::verificarSession();}
@@ -90,7 +92,11 @@ class Login extends Controller
     {
         $usuario = Usuarios::datos_usuario($_SESSION['id_usuario']);
         $perfil  = Usuarios::perfil_usuario($_SESSION['id_usuario']);
-        if($perfil['avatar']){$avatar = Helpme::duplicatePublic($perfil['avatar'],'perfiles');}
+        if($perfil['avatar']){
+          $avatar = Helpme::duplicatePublic($perfil['avatar'],'perfiles');
+        }else{
+          $avatar = '';
+        }
         $usuario_menu_top = Usuarios::datos_usuario($_SESSION['id_usuario']);
         $correo = $_SESSION['correo'];
         $username = $_SESSION['usuario'];
