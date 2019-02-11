@@ -65,6 +65,33 @@ class Webhook extends Controller
 
   }
 
+  static public function updateuserdata(){
+
+      $secret=env('SYSTEM_KEY');
+      $system_id=env('SYSTEM_ID');
+  		$webhook_signature = $_SERVER ['HTTP_SYSTEMVERIFY_SIGNATURE'];
+      $remote_ip = $_SERVER ['HTTP_IP'];
+      $estado = $_SERVER ['HTTP_ESTADO'];
+      $userdata = $_SERVER ['HTTP_USERDATA'];
+  		$body = file_get_contents('php://input');
+  		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
+  		if($webhook_signature == $expected_signature) {
+
+        $data = json_decode($userdata);
+        $data_usr = Usuarios::updateFromRemoteUserData($data);
+
+        $data_usr = json_encode($data_usr);
+
+        header('X:'.$data_usr);
+
+  			header("Status: 200 OK!");
+
+  		} else {
+  			header("Status: 401 Not authenticated");
+  		}
+
+  }
+
   static public function syncuser(){
 
       $secret=env('SYSTEM_KEY');
@@ -82,7 +109,7 @@ class Webhook extends Controller
 
         header('X:'.$id_insert);
 
-  			header("Status: 200 OK!cc");
+  			header("Status: 200 OK!");
 
   		} else {
   			header("Status: 401 Not authenticated");

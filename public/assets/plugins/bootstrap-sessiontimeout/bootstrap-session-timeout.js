@@ -225,7 +225,14 @@
 							}else if (respuesta[0].resp=='exitnow'){
 								$('#session-exitnow-dialog').modal('show');
 							}else{
-								startSessionTimer();
+                if(respuesta[0].user_token == false)
+                  alerta('¡Cambios de usuario!','Han cambiado los datos del usuario');
+
+                if(respuesta[0].rol_token == false)
+                  alerta('¡Cambios de permisos!','Han cambiado sus permisos');
+
+                  startSessionTimer();
+
 							}
 						},
 					error: function(){console.log('error de conectividad');}

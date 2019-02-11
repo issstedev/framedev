@@ -31,6 +31,30 @@ class Usuarios extends Model
 
   }
 
+  static function updateFromRemoteUserData($dataUser){
+
+      return DB::table('fw_usuarios')
+                ->where('id_usuario', $userdata->id_usuario)
+                ->update([
+                  'id_area' => $userdata->id_area,
+                  'password' => $userdata->password,
+                  'usuario' => $userdata->usuario,
+                  'correo' => $userdata->correo,
+                  'id_rol' => $userdata->id_rol,
+                  'nombres' => $userdata->nombres,
+                  'apellido_paterno' => $userdata->apellido_paterno,
+                  'apellido_materno' => $userdata->apellido_materno,
+                  'id_ubicacion' => $userdata->id_ubicacion,
+                  'cat_pass_chge' => $userdata->cat_pass_chge,
+                  'cat_status' => $userdata->cat_status,
+                  'user_alta' => $userdata->user_alta,
+                  'user_mod' => $userdata->user_mod,
+                  'fecha_alta' => $userdata->fecha_alta,
+                  'fecha_mod' => $userdata->fecha_mod
+                ]);
+
+  }
+
   static function importarUsuario($userdata){
 
       $id_usuario = DB::table('fw_usuarios')->insert(
@@ -47,6 +71,7 @@ class Usuarios extends Model
               'id_ubicacion' => $userdata->id_ubicacion,
               'cat_pass_chge' => $userdata->cat_pass_chge,
               'cat_status' => $userdata->cat_status,
+              'token' => $userdata->token,
               'user_alta' => $userdata->user_alta,
               'user_mod' => $userdata->user_mod,
               'fecha_alta' => $userdata->fecha_alta,
@@ -70,6 +95,7 @@ class Usuarios extends Model
             ->where('id_usuario', $id_usuario)
             ->update([
                 'cat_status'=> 5,
+                'token'=> Helpme::token(32),
                 'user_mod'=> $_SESSION['id_usuario']
             ]);
     if($query_resp){
@@ -181,6 +207,7 @@ class Usuarios extends Model
             ->where('id_usuario', $user)
             ->update([
                 'cat_pass_chge'=> $stat,
+                'token'=> Helpme::token(32),
                 'user_mod'=> $_SESSION['id_usuario']
             ]);
 
@@ -254,6 +281,7 @@ class Usuarios extends Model
                               'nombres'=> $request->input('nombres'),
                               'apellido_paterno'=> $request->input('apellido_paterno'),
                               'apellido_materno'=> $request->input('apellido_materno'),
+                              'token'=> Helpme::token(32),
                               'user_mod'=> $_SESSION['id_usuario']
                           ]);
 
@@ -281,6 +309,7 @@ class Usuarios extends Model
                           ->where('id_usuario', $id_usuario)
                           ->update([
                               'password' => md5($pass),
+                              'token'=> Helpme::token(32),
                               'user_mod'=>$mod_user
                           ]);
     return $query_resp;
@@ -366,6 +395,7 @@ class Usuarios extends Model
               'nombres' => $request->input('nombres'),
               'apellido_paterno' => $request->input('apellido_paterno'),
               'apellido_materno' => $request->input('apellido_materno'),
+              'token'=> Helpme::token(32),
               'user_alta' => $_SESSION['id_usuario'],
               'fecha_alta' => date("Y-m-d H:i:s")
           ]

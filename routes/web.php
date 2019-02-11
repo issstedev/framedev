@@ -16,7 +16,8 @@ Route::group(['prefix' => 'webhook'], function(){
         Route::any('/populate', 'Webhook@populate');
         Route::any('/syncuser', 'Webhook@syncuser');
         Route::any('/updateuser', 'Webhook@updateuser');
-          Route::any('/updateuserrol', 'Webhook@updateuserrol');
+        Route::any('/updateuserrol', 'Webhook@updateuserrol');
+        Route::any('/updateuserdata', 'Webhook@updateuserdata');
 });
 
 
@@ -145,6 +146,5 @@ Route::get('/', 'Site@index');
 Route::group(['prefix' => 'site'], function(){
         Route::get('/', 'Site@index');
 });
-
 
 Route::fallback('Login@error404');

@@ -7,6 +7,7 @@ use DB;
 
 class Roles extends Model
 {
+  
   protected $table = 'fw_roles';
   protected $primaryKey = 'id_rol';
   public $timestamps = false;
@@ -321,4 +322,26 @@ class Roles extends Model
     $return = rtrim($return, ",");
     return $return;
   }
+
+  static function getToken($rol){
+    $token = DB::table('fw_roles')
+              ->where('id_rol','=',$rol)
+              ->select('token')
+              ->get();
+    if(count($token)>=1){
+      foreach ($token as $row) {
+          return $row->token;
+      }
+    }
+  }
+
+  static function getDataRol($id_rol){
+    return Roles::all()
+              ->where('id_rol','=',$id_rol);
+  }
+
+  static function getAllDB(){
+    return Roles::all();
+  }
+
 }

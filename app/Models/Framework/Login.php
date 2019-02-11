@@ -3,6 +3,8 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Helpme;
+use App\Models\Usuarios;
+use App\Models\Roles;
 use DB;
 
 class Login extends Model
@@ -45,12 +47,24 @@ class Login extends Model
                 ->update(array('ultima_verificacion' => date("Y-m-d H:i:s")));
    }
 
-  static function keepAlive(){
-    $resta = time()-$_SESSION['hora_acceso'];
-    $array[]=array('resp'=>"intime",'tiempo'=>$resta);
-    self::updateLogin2();
-    return $array;
-  }
+   static function keepAlive(){
+     $resta = time()-$_SESSION['hora_acceso'];
+
+     if(env('LOGIN_EXT_LOC') == 'EXTERNO'){
+       $user = Usuarios::datos_usuario($_SESSION['id_usuario']);
+       $user_token = ($_SESSION['user_token'] == $user->token)?true:false;
+
+       $rol_token = Roles::getToken($user->id_rol);
+       $rol_token = ($_SESSION['rol_token'] == $rol_token)?true:false;
+
+       $array[]=array('resp'=>"intime",'tiempo'=>$resta, 'user_token' => $user_token, 'rol_token' => $rol_token);
+     }else{
+       $array[]=array('resp'=>"intime",'tiempo'=>$resta, 'user_token' => $_SESSION['user_token']);
+     }
+
+     self::updateLogin2();
+     return $array;
+   }
 
   static function verificarSession(){
     if(is_file(session_save_path().'/sess_'.session_id())){
@@ -69,7 +83,14 @@ class Login extends Model
       /*3600 = 1 hr*/
       /*tiempo en segundos*/
       if(isset($_SESSION['hora_acceso']) && ($resta>900)){
-        $array[]=array('resp'=>"timeout",'tiempo'=>$resta);
+
+        $user = Usuarios::datos_usuario($_SESSION['id_usuario']);
+        $user_token = ($_SESSION['user_token'] == $user->token)?true:false;
+
+        $rol_token = Roles::getToken($user->id_rol);
+        $rol_token = ($_SESSION['rol_token'] == $rol_token)?true:false;
+
+        $array[]=array('resp'=>"timeout",'tiempo'=>$resta, 'user_token' => $user_token, 'rol_token' => $rol_token);
       }else{
         $array = self::keepAlive();
       }
@@ -283,6 +304,8 @@ class Login extends Model
         $_SESSION['tyc']=$remote_data[3]['tyc'];
         $_SESSION['pass_chge']=$remote_data[3]['pass_chge'];
         $_SESSION['token'] = $remote_data[3]['token'];
+        $_SESSION['user_token']=$remote_data[3]['user_token'];
+        $_SESSION['rol_token']=$remote_data[3]['rol_token'];
         $array[0]=array('resp'=>"acceso_correcto");
 
         self::MobileDetect();
@@ -360,6 +383,8 @@ class Login extends Model
         $_SESSION['tyc']=$row->aceptar_tyc;
         $_SESSION['pass_chge']=$row->cat_pass_chge;
         $_SESSION['token'] = Helpme::token(62);
+        $_SESSION['user_token']=Helpme::token(62);
+        $_SESSION['rol_token']=Helpme::token(62);
         $array[0]=array('resp'=>"acceso_correcto");
       }
         self::MobileDetect();
