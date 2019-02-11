@@ -7,7 +7,6 @@ use DB;
 
 class Roles extends Model
 {
-  
   protected $table = 'fw_roles';
   protected $primaryKey = 'id_rol';
   public $timestamps = false;

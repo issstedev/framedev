@@ -147,4 +147,5 @@ Route::group(['prefix' => 'site'], function(){
         Route::get('/', 'Site@index');
 });
 
+
 Route::fallback('Login@error404');
