@@ -71,7 +71,6 @@ class Webhook extends Controller
       $system_id=env('SYSTEM_ID');
   		$webhook_signature = $_SERVER ['HTTP_SYSTEMVERIFY_SIGNATURE'];
       $remote_ip = $_SERVER ['HTTP_IP'];
-      $estado = $_SERVER ['HTTP_ESTADO'];
       $userdata = $_SERVER ['HTTP_USERDATA'];
   		$body = file_get_contents('php://input');
   		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
