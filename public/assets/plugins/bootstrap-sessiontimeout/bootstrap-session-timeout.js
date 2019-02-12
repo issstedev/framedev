@@ -226,10 +226,10 @@
 								$('#session-exitnow-dialog').modal('show');
 							}else{
                 if(respuesta[0].user_token == false)
-                  alerta('¡Cambios de usuario!','Han cambiado los datos del usuario');
+                  $("#comm_js_fn_01").trigger("click");
 
                 if(respuesta[0].rol_token == false)
-                  alerta('¡Cambios de permisos!','Han cambiado sus permisos');
+                  $("#comm_js_fn_01").trigger("click");
 
                   startSessionTimer();
 
