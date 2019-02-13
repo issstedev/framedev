@@ -17,19 +17,50 @@ class Webhook extends Controller
   }
   static public function index(){}
 
-  static public function updateuserrol(){
+
+  static public function updateroldata(){
 
       $secret=env('SYSTEM_KEY');
       $system_id=env('SYSTEM_ID');
   		$webhook_signature = $_SERVER ['HTTP_SYSTEMVERIFY_SIGNATURE'];
       $remote_ip = $_SERVER ['HTTP_IP'];
-      $id_rol = $_SERVER ['HTTP_ID_ROL'];
-      $id_usuario = $_SERVER ['HTTP_ID_USUARIO'];
+      $roldata = $_SERVER ['HTTP_ROLDATA'];
   		$body = file_get_contents('php://input');
   		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
   		if($webhook_signature == $expected_signature) {
 
-        Usuarios::updateFromRemoteUserRol($id_usuario, $id_rol);
+        $data = json_decode($roldata);
+        $data_rol = Roles::updateFromRemoteRolData($data);
+
+        $data_rol = json_encode($data_rol);
+
+        header('X:'.$data_rol);
+
+  			header("Status: 200 OK!");
+
+  		} else {
+  			header("Status: 401 Not authenticated");
+  		}
+      
+  }
+
+  static public function updateuserdata(){
+
+      $secret=env('SYSTEM_KEY');
+      $system_id=env('SYSTEM_ID');
+  		$webhook_signature = $_SERVER ['HTTP_SYSTEMVERIFY_SIGNATURE'];
+      $remote_ip = $_SERVER ['HTTP_IP'];
+      $userdata = $_SERVER ['HTTP_USERDATA'];
+  		$body = file_get_contents('php://input');
+  		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
+  		if($webhook_signature == $expected_signature) {
+
+        $data = json_decode($userdata);
+        $data_usr = Usuarios::updateFromRemoteUserData($data);
+
+        $data_usr = json_encode($data_usr);
+
+        header('X:'.$data_usr);
 
   			header("Status: 200 OK!");
 
@@ -56,32 +87,6 @@ class Webhook extends Controller
         }else{
           Usuarios::updateFromRemoteUser($id_usuario, 4);
         }
-
-  			header("Status: 200 OK!");
-
-  		} else {
-  			header("Status: 401 Not authenticated");
-  		}
-
-  }
-
-  static public function updateuserdata(){
-
-      $secret=env('SYSTEM_KEY');
-      $system_id=env('SYSTEM_ID');
-  		$webhook_signature = $_SERVER ['HTTP_SYSTEMVERIFY_SIGNATURE'];
-      $remote_ip = $_SERVER ['HTTP_IP'];
-      $userdata = $_SERVER ['HTTP_USERDATA'];
-  		$body = file_get_contents('php://input');
-  		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
-  		if($webhook_signature == $expected_signature) {
-
-        $data = json_decode($userdata);
-        $data_usr = Usuarios::updateFromRemoteUserData($data);
-
-        $data_usr = json_encode($data_usr);
-
-        header('X:'.$data_usr);
 
   			header("Status: 200 OK!");
 

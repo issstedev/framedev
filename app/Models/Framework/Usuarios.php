@@ -11,6 +11,31 @@ class Usuarios extends Model
   protected $primaryKey = 'id_usuario';
   public $timestamps = false;
 
+  static function updateFromRemoteUserData($userdata){
+
+    return Usuarios::where('id_usuario', $userdata->id_usuario)
+        ->update(
+        [
+            'password' => $userdata->password,
+            'usuario' => $userdata->usuario,
+            'correo' => $userdata->correo,
+            'nombres' => $userdata->nombres,
+            'apellido_paterno' => $userdata->apellido_paterno,
+            'apellido_materno' => $userdata->apellido_materno,
+            'id_ubicacion' => $userdata->id_ubicacion,
+            'cat_pass_chge' => $userdata->cat_pass_chge,
+            'cat_status' => $userdata->cat_status,
+            'token' => $userdata->token,
+            'user_alta' => $userdata->user_alta,
+            'user_mod' => $userdata->user_mod,
+            'fecha_alta' => $userdata->fecha_alta,
+            'fecha_mod' => $userdata->fecha_mod
+        ]
+    );
+
+
+  }
+
   static function updateFromRemoteUserRol($id_usuario, $rol){
 
         return DB::table('fw_usuarios')
@@ -27,30 +52,6 @@ class Usuarios extends Model
                 ->where('id_usuario', $id_usuario)
                 ->update([
                     'cat_status' => $id
-                ]);
-
-  }
-
-  static function updateFromRemoteUserData($dataUser){
-
-      return DB::table('fw_usuarios')
-                ->where('id_usuario', $userdata->id_usuario)
-                ->update([
-                  'id_area' => $userdata->id_area,
-                  'password' => $userdata->password,
-                  'usuario' => $userdata->usuario,
-                  'correo' => $userdata->correo,
-                  'id_rol' => $userdata->id_rol,
-                  'nombres' => $userdata->nombres,
-                  'apellido_paterno' => $userdata->apellido_paterno,
-                  'apellido_materno' => $userdata->apellido_materno,
-                  'id_ubicacion' => $userdata->id_ubicacion,
-                  'cat_pass_chge' => $userdata->cat_pass_chge,
-                  'cat_status' => $userdata->cat_status,
-                  'user_alta' => $userdata->user_alta,
-                  'user_mod' => $userdata->user_mod,
-                  'fecha_alta' => $userdata->fecha_alta,
-                  'fecha_mod' => $userdata->fecha_mod
                 ]);
 
   }

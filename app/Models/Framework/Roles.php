@@ -11,6 +11,25 @@ class Roles extends Model
   protected $primaryKey = 'id_rol';
   public $timestamps = false;
 
+
+  static function updateFromRemoteRolData($roldata){
+
+    /*return Roles::where('id_rol', $roldata->id_rol)
+        ->update(
+        [
+            'cat_tiporol' => $roldata->cat_tiporol,
+            'id_sistema' => $roldata->id_sistema,
+            'descripcion' => $roldata->descripcion,
+            'token' => $roldata->token,
+            'user_alta' => $roldata->user_alta,
+            'user_mod' => $roldata->user_mod,
+            'fecha_alta' => $roldata->fecha_alta,
+            'fecha_mod' => $roldata->fecha_mod
+        ]
+    );*/
+
+  }
+
   static function getAll(){
     return Roles::all();
   }
