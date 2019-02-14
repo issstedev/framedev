@@ -41,7 +41,7 @@ class Webhook extends Controller
   		} else {
   			header("Status: 401 Not authenticated");
   		}
-      
+
   }
 
   static public function updateuserdata(){
@@ -51,12 +51,13 @@ class Webhook extends Controller
   		$webhook_signature = $_SERVER ['HTTP_SYSTEMVERIFY_SIGNATURE'];
       $remote_ip = $_SERVER ['HTTP_IP'];
       $userdata = $_SERVER ['HTTP_USERDATA'];
+      $id_rol = $_SERVER ['HTTP_IDROL'];
   		$body = file_get_contents('php://input');
   		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
   		if($webhook_signature == $expected_signature) {
 
         $data = json_decode($userdata);
-        $data_usr = Usuarios::updateFromRemoteUserData($data);
+        $data_usr = Usuarios::updateFromRemoteUserData($data, $id_rol);
 
         $data_usr = json_encode($data_usr);
 
@@ -104,12 +105,13 @@ class Webhook extends Controller
       $remote_ip = $_SERVER ['HTTP_IP'];
       $estado = $_SERVER ['HTTP_ESTADO'];
       $userdata = $_SERVER ['HTTP_USERDATA'];
+      $id_rol = $_SERVER ['HTTP_IDROL'];
   		$body = file_get_contents('php://input');
   		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
   		if($webhook_signature == $expected_signature) {
 
         $data = json_decode($userdata);
-        $id_insert = Usuarios::importarUsuario($data);
+        $id_insert = Usuarios::importarUsuario($data, $id_rol);
 
         header('X:'.$id_insert);
 

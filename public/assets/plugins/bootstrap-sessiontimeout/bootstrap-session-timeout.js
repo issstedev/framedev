@@ -225,6 +225,7 @@
 							}else if (respuesta[0].resp=='exitnow'){
 								$('#session-exitnow-dialog').modal('show');
 							}else{
+
                 if(respuesta[0].user_token == false)
                   $("#comm_js_fn_01").trigger("click");
 

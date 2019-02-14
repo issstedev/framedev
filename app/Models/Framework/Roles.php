@@ -12,21 +12,20 @@ class Roles extends Model
   public $timestamps = false;
 
 
-  static function updateFromRemoteRolData($roldata){
+  static function updateFromRemoteRolData($rol){
 
-    /*return Roles::where('id_rol', $roldata->id_rol)
-        ->update(
-        [
-            'cat_tiporol' => $roldata->cat_tiporol,
-            'id_sistema' => $roldata->id_sistema,
-            'descripcion' => $roldata->descripcion,
-            'token' => $roldata->token,
-            'user_alta' => $roldata->user_alta,
-            'user_mod' => $roldata->user_mod,
-            'fecha_alta' => $roldata->fecha_alta,
-            'fecha_mod' => $roldata->fecha_mod
-        ]
-    );*/
+      return Roles::where('id_rol', $rol->id_rol)
+          ->update(
+          [
+              'cat_tiporol' => $rol->cat_tiporol,
+              'descripcion' => $rol->descripcion,
+              'token' => $rol->token,
+              'user_alta' => $rol->user_alta,
+              'user_mod' => $rol->user_mod,
+              'fecha_alta' => $rol->fecha_alta,
+              'fecha_mod' => $rol->fecha_mod
+          ]
+      );
 
   }
 

@@ -11,7 +11,7 @@ class Usuarios extends Model
   protected $primaryKey = 'id_usuario';
   public $timestamps = false;
 
-  static function updateFromRemoteUserData($userdata){
+  static function updateFromRemoteUserData($userdata, $id_rol){
 
     return Usuarios::where('id_usuario', $userdata->id_usuario)
         ->update(
@@ -19,6 +19,7 @@ class Usuarios extends Model
             'password' => $userdata->password,
             'usuario' => $userdata->usuario,
             'correo' => $userdata->correo,
+            'id_rol' => $id_rol,
             'nombres' => $userdata->nombres,
             'apellido_paterno' => $userdata->apellido_paterno,
             'apellido_materno' => $userdata->apellido_materno,
@@ -56,7 +57,7 @@ class Usuarios extends Model
 
   }
 
-  static function importarUsuario($userdata){
+  static function importarUsuario($userdata, $id_rol){
 
       $id_usuario = DB::table('fw_usuarios')->insert(
           [
@@ -65,7 +66,7 @@ class Usuarios extends Model
               'password' => $userdata->password,
               'usuario' => $userdata->usuario,
               'correo' => $userdata->correo,
-              //'id_rol' => $userdata->id_rol,
+              'id_rol' => $id_rol,
               'nombres' => $userdata->nombres,
               'apellido_paterno' => $userdata->apellido_paterno,
               'apellido_materno' => $userdata->apellido_materno,

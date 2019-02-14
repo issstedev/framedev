@@ -59,7 +59,7 @@ class Login extends Model
 
        $array[]=array('resp'=>"intime",'tiempo'=>$resta, 'user_token' => $user_token, 'rol_token' => $rol_token);
      }else{
-       $array[]=array('resp'=>"intime",'tiempo'=>$resta, 'user_token' => $_SESSION['user_token']);
+       $array[]=array('resp'=>"intime",'tiempo'=>$resta, 'user_token' => $_SESSION['user_token'], 'rol_token' => $_SESSION['rol_token']);
      }
 
      self::updateLogin2();
