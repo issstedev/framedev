@@ -11,7 +11,7 @@ class Usuarios extends Model
   protected $primaryKey = 'id_usuario';
   public $timestamps = false;
 
-  static function updateFromRemoteUserData($userdata, $id_rol){
+  static function updateFromRemoteUserData($userdata, $id_rol, $cat_status){
 
     return Usuarios::where('id_usuario', $userdata->id_usuario)
         ->update(
@@ -25,7 +25,7 @@ class Usuarios extends Model
             'apellido_materno' => $userdata->apellido_materno,
             'id_ubicacion' => $userdata->id_ubicacion,
             'cat_pass_chge' => $userdata->cat_pass_chge,
-            'cat_status' => $userdata->cat_status,
+            'cat_status' => $cat_status,
             'token' => $userdata->token,
             'user_alta' => $userdata->user_alta,
             'user_mod' => $userdata->user_mod,
