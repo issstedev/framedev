@@ -11,6 +11,21 @@ class Roles extends Model
   protected $primaryKey = 'id_rol';
   public $timestamps = false;
 
+  static function importarRol($roldata){
+      $id_rol = DB::table('fw_roles')->insertGetId([
+          [
+            'id_rol' => $roldata->id_rol,
+            'cat_tiporol' => $roldata->cat_tiporol,
+            'descripcion' => $roldata->descripcion,
+            'token' => $roldata->token,
+            'user_alta' => $roldata->user_alta,
+            'user_mod' => $roldata->user_mod,
+            'fecha_alta' => $roldata->fecha_alta,
+            'fecha_mod' => $roldata->fecha_mod
+          ]
+      ]);
+      return $id_rol;
+  }
 
   static function updateFromRemoteRolData($rol){
 

@@ -17,6 +17,7 @@ Route::group(['prefix' => 'webhook'], function(){
         Route::any('/syncuser', 'Webhook@syncuser');
         Route::any('/updateuser', 'Webhook@updateuser');
         Route::any('/updateroldata', 'Webhook@updateroldata');
+        Route::any('/syncrol', 'Webhook@syncrol');
 });
 
 
