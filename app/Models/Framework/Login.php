@@ -282,15 +282,30 @@ class Login extends Model
 
   static function loginExternoProcess($remote_data){
 
-    if($remote_data[5]['resp'] == 'inhabilitado'){
-      $array[]=array('resp'=>"inhabilitado");
-      print json_encode($array);
-      exit();
-    }elseif($remote_data[5]['resp'] == 'No autorizado'){
-      $array[]=array('resp'=>"No autorizado");
-      print json_encode($array);
-      exit();
+
+    switch ($remote_data[5]['resp']) {
+        case 'inhabilitado': // login fallido
+            $array[]=array('resp'=>"inhabilitado");
+            print json_encode($array);
+            exit();
+            break;
+        case "inactivo": // inactivo
+            $array[]=array('resp'=>"inactivo");
+            print json_encode($array);
+            exit();
+            break;
+        case "eliminado": // eliminado
+            $array[]=array('resp'=>"eliminado");
+            print json_encode($array);
+            exit();
+            break;
+        case 'No autorizado': // No autorizado
+            $array[]=array('resp'=>"No autorizado");
+            print json_encode($array);
+            exit();
+            break;
     }
+
 
     if($remote_data[0]['resp'] == 'acceso_correcto'){
 
@@ -352,10 +367,23 @@ class Login extends Model
 
   static function logearLocal($request){
     $stat = self::getStatusUser($request->input('usuario'));
-    if($stat == 9){
-      $array[]=array('resp'=>"inhabilitado");
-      print json_encode($array);
-      exit();
+
+    switch ($stat) {
+        case 9: // login fallido
+            $array[]=array('resp'=>"inhabilitado");
+            print json_encode($array);
+            exit();
+            break;
+        case 4: // inactivo
+            $array[]=array('resp'=>"inactivo");
+            print json_encode($array);
+            exit();
+            break;
+        case 5: // eliminado
+            $array[]=array('resp'=>"eliminado");
+            print json_encode($array);
+            exit();
+            break;
     }
 
     $password_md5=md5($request->input('password'));
