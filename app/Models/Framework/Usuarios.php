@@ -13,6 +13,8 @@ class Usuarios extends Model
 
   static function updateFromRemoteUser($userdata, $id_rol, $cat_status){
 
+    $status = ($userdata->cat_status  != 3)?$status = $userdata->cat_status:$status = $cat_status;
+
     return Usuarios::where('id_usuario', $userdata->id_usuario)
         ->update(
         [
@@ -25,7 +27,7 @@ class Usuarios extends Model
             'apellido_materno' => $userdata->apellido_materno,
             'id_ubicacion' => $userdata->id_ubicacion,
             'cat_pass_chge' => $userdata->cat_pass_chge,
-            'cat_status' => $cat_status,
+            'cat_status' => $status,
             'token' => $userdata->token,
             'user_alta' => $userdata->user_alta,
             'user_mod' => $userdata->user_mod,

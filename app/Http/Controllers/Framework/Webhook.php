@@ -59,11 +59,8 @@ class Webhook extends Controller
 
         $data = json_decode($userdata);
         $data_usr = Usuarios::updateFromRemoteUser($data, $id_rol, $cat_status);
-
         $data_usr = json_encode($data_usr);
-
         header('X:'.$data_usr);
-echo json_encode($data);
   			header("Status: 200 OK!");
 
   		} else {
