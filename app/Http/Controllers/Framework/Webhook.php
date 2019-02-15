@@ -44,7 +44,7 @@ class Webhook extends Controller
 
   }
 
-  static public function updateuserdata(){
+  static public function updateuser(){
 
       $secret=env('SYSTEM_KEY');
       $system_id=env('SYSTEM_ID');
@@ -58,38 +58,12 @@ class Webhook extends Controller
   		if($webhook_signature == $expected_signature) {
 
         $data = json_decode($userdata);
-        $data_usr = Usuarios::updateFromRemoteUserData($data, $id_rol, $cat_status);
+        $data_usr = Usuarios::updateFromRemoteUser($data, $id_rol, $cat_status);
 
         $data_usr = json_encode($data_usr);
 
         header('X:'.$data_usr);
-
-  			header("Status: 200 OK!");
-
-  		} else {
-  			header("Status: 401 Not authenticated");
-  		}
-
-  }
-
-  static public function updateuser(){
-
-      $secret=env('SYSTEM_KEY');
-      $system_id=env('SYSTEM_ID');
-  		$webhook_signature = $_SERVER ['HTTP_SYSTEMVERIFY_SIGNATURE'];
-      $remote_ip = $_SERVER ['HTTP_IP'];
-      $estado = $_SERVER ['HTTP_ESTADO'];
-      $id_usuario = $_SERVER ['HTTP_ID_USUARIO'];
-  		$body = file_get_contents('php://input');
-  		$expected_signature = hash_hmac( 'sha256', $body, $secret, false );
-  		if($webhook_signature == $expected_signature) {
-
-        if($estado == true){
-          Usuarios::updateFromRemoteUser($id_usuario, 3);
-        }else{
-          Usuarios::updateFromRemoteUser($id_usuario, 4);
-        }
-
+echo json_encode($data);
   			header("Status: 200 OK!");
 
   		} else {
