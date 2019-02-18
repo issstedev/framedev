@@ -15,10 +15,11 @@ class Permisos extends Model
 
 
   static function importarMetodo($metododata){
+    
       $id_metodo = DB::table('fw_metodos')->insertGetId([
+        'id_metodo' => $metododata->id_metodo,
         'controlador' => $metododata->controlador,
         'metodo' => $metododata->metodo,
-        'id_sistema' => $metododata->id_sistema,
         'nombre' => $metododata->nombre,
         'descripcion' => $metododata->descripcion,
         'user_alta' => $metododata->user_alta,
