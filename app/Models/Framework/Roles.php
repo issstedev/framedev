@@ -13,7 +13,6 @@ class Roles extends Model
 
   static function importarRol($roldata){
       $id_rol = DB::table('fw_roles')->insertGetId([
-          [
             'id_rol' => $roldata->id_rol,
             'cat_tiporol' => $roldata->cat_tiporol,
             'descripcion' => $roldata->descripcion,
@@ -22,7 +21,6 @@ class Roles extends Model
             'user_mod' => $roldata->user_mod,
             'fecha_alta' => $roldata->fecha_alta,
             'fecha_mod' => $roldata->fecha_mod
-          ]
       ]);
       return $id_rol;
   }
