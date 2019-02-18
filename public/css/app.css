@@ -257,3 +257,32 @@ padding-top: 5px;
 .m-brand .m-brand__logo .m-brand__logo-wrapper a:hover{
   color:#FFFFFF;
 }
+/*BARRA*/
+.m-aside-left.m-aside-left--skin-dark {
+    background-color: #55185d;
+}
+/*LOGO*/
+.m-brand.m-brand--skin-dark {
+    background: #55185d;
+}
+/*BOTONERA*/
+.m-aside-menu .m-menu__nav .m-menu__subnav {
+    background-color: #55185d;
+}
+.m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item .m-menu__submenu .m-menu__item>.m-menu__heading .m-menu__link-text, .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item .m-menu__submenu .m-menu__item>.m-menu__link .m-menu__link-text {
+    color: #b98abf;
+}
+/*ENCABEZADO DE LISTA*/
+.m-aside-menu .m-menu__nav>.m-menu__item>.m-menu__link {
+    background-color: #491050;
+}
+.m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item.m-menu__item--active>.m-menu__link .m-menu__link-text {
+    color: #f9c5ff;
+}
+.m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item.m-menu__item--active>.m-menu__link .m-menu__link-icon {
+    color: #d48edc;
+}
+/*ICONOS*/
+.m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item .m-menu__submenu .m-menu__item>.m-menu__link .m-menu__link-icon {
+    color: #c77dff;
+}
