@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Controllers;
 use App\Models\Roles;
 use App\Models\Accesos;
+use App\Models\Permisos;
 use App\Models\Usuarios;
 use Helpme;
 use DB;
@@ -17,6 +18,29 @@ class Webhook extends Controller
   }
 
   static public function index(){}
+
+
+  static public function syncmetodo(){
+      $secret=env('SYSTEM_KEY');
+      $system_id=env('SYSTEM_ID');
+      $webhook_signature = $_SERVER ['HTTP_SYSTEMVERIFY_SIGNATURE'];
+      $remote_ip = $_SERVER ['HTTP_IP'];
+      $metododata = $_SERVER ['HTTP_METODODATA'];
+      $body = file_get_contents('php://input');
+      $expected_signature = hash_hmac( 'sha256', $body, $secret, false );
+      if($webhook_signature == $expected_signature) {
+
+        $metododata = json_decode($metododata);
+        $id_metodo = Permisos::importarMetodo($metododata);
+        header('X:'.$id_metodo);
+
+        header("Status: 200 OK!");
+
+      } else {
+        header("Status: 401 Not authenticated");
+      }
+  }
+
 
   static public function syncrol(){
       $secret=env('SYSTEM_KEY');
@@ -107,7 +131,6 @@ class Webhook extends Controller
         $id_insert = Usuarios::importarUsuario($data, $id_rol);
 
         header('X:'.$id_insert);
-        echo json_encode($_SERVER);
 
   			header("Status: 200 OK!");
 

@@ -14,6 +14,19 @@ class Permisos extends Model
   public $timestamps = false;
 
 
+  static function importarMetodo($metododata){
+      $id_metodo = DB::table('fw_metodos')->insertGetId([
+        'controlador' => $metododata->controlador,
+        'metodo' => $metododata->metodo,
+        'id_sistema' => $metododata->id_sistema,
+        'nombre' => $metododata->nombre,
+        'descripcion' => $metododata->descripcion,
+        'user_alta' => $metododata->user_alta,
+        'fecha_alta' => $metododata->fecha_alta
+      ]);
+      return $id_metodo;
+  }
+
   static function getAll(){
     return Permisos::all();
   }

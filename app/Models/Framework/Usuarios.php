@@ -51,6 +51,9 @@ class Usuarios extends Model
 
   static function importarUsuario($userdata, $id_rol){
 
+
+    try {
+
       $id_usuario = DB::table('fw_usuarios')->insert(
           [
               'id_usuario' => $userdata->id_usuario,
@@ -72,9 +75,15 @@ class Usuarios extends Model
               'fecha_mod' => $userdata->fecha_mod
           ]
       );
-
       self::crear_perfil($id_usuario);
       self::updateIngreso(date("Y-m-d H:i:s"),$id_usuario);
+
+    } catch(\Illuminate\Database\QueryException $ex){
+
+        $id_usuario = $ex->getMessage();
+
+    }
+
       return $id_usuario;
   }
 
