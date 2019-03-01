@@ -357,6 +357,7 @@ class Login extends Model
   static function permisosRemotos($remote_data){
       $_SESSION['permisos'] = $remote_data[0]['permisos'];
       $_SESSION['accessid'] = $remote_data[1]['accessid'];
+      $_SESSION['auditstat'] = $remote_data[2]['auditstat'];
   }
 
   static function logear($request){
