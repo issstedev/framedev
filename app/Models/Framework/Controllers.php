@@ -37,6 +37,7 @@ class Controllers extends Model
     $store->metodo = $request->input('metodo');
     $store->nombre = $request->input('nombre');
     $store->descripcion = $request->input('descripcion');
+    $store->auditable = $request->input('auditable');
     $store->user_alta = $_SESSION['id_usuario'];
     $store->fecha_alta = date("Y-m-d H:i:s");
     if($store->save()){
@@ -54,6 +55,7 @@ class Controllers extends Model
     $upd_metodo->metodo = $request->input('metodo');
     $upd_metodo->nombre = $request->input('nombre');
     $upd_metodo->descripcion = $request->input('descripcion');
+    $upd_metodo->auditable = $request->input('auditable');
     $upd_metodo->user_mod = $_SESSION['id_usuario'];
     if($upd_metodo->save())
     {
