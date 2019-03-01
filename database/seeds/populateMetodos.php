@@ -551,6 +551,7 @@ class populateMetodos extends Seeder
       'metodo'=>'desbloquea_usuario',
       'nombre'=>'Usuarios Bloqueados',
       'descripcion'=>'Desbloquea un usuario ',
+      'auditable' => 19,
       'user_alta'=>1,
       'user_mod'=>NULL,
       'fecha_alta'=>'2017-11-20 03:10:59',
