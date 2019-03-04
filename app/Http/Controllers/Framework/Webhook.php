@@ -228,6 +228,7 @@ class Webhook extends Controller
             'metodo'=>$metodos[$i]['metodo'],
             'nombre'=>$metodos[$i]['nombre'],
             'descripcion'=>$metodos[$i]['descripcion'],
+            'auditable'=>$metodos[$i]['auditable'],
             'user_alta'=>$metodos[$i]['user_alta'],
             'user_mod'=>$metodos[$i]['user_mod'],
             'fecha_alta'=>$metodos[$i]['fecha_alta'],
@@ -297,16 +298,11 @@ class Webhook extends Controller
     $curl = null;
     $curl = curl_init($app_url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($curl, CURLOPT_HEADER, 1);
+    curl_setopt($curl, CURLOPT_HEADER, 0);
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
     curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 20);
     curl_setopt($curl, CURLOPT_POSTFIELDS, $post_send);
-
-    $res = curl_exec($curl);
-    $data = explode("\n",$res);
-    $status = $data[0];
-    return  $data[12];
-    //return $res;
+    return curl_exec($curl);
   }
 }

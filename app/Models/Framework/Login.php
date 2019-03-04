@@ -267,23 +267,18 @@ class Login extends Model
       $curl = null;
       $curl = curl_init(env('EXT_LOGIN').'auth');
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($curl, CURLOPT_HEADER, 1);
+      curl_setopt($curl, CURLOPT_HEADER, 0 );
       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
       curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
       curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 20);
       curl_setopt($curl, CURLOPT_POSTFIELDS, $post_send);
 
       $res = curl_exec($curl);
-      $data = explode("\n",$res);
-      $status = $data[0];
-      $post   = $data[10];
-      $post = json_decode($post, true);
-      $remote_data = json_decode($post, true);
-      self::loginExternoProcess($remote_data);
+      $res = json_decode($res,true);
+      self::loginExternoProcess($res);
   }
 
   static function loginExternoProcess($remote_data){
-
 
     switch ($remote_data[5]['resp']) {
         case 'inhabilitado': // login fallido
