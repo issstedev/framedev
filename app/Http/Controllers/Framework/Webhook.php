@@ -31,11 +31,7 @@ class Webhook extends Controller
       if($webhook_signature == $expected_signature) {
 
         $metododata = json_decode($metododata);
-        $id_metodo = Permisos::importarMetodo($metododata);
-        header('X:'.$id_metodo);
-
-        header("Status: 200 OK!");
-
+        echo Permisos::importarMetodo($metododata);
       } else {
         header("Status: 401 Not authenticated");
       }
@@ -53,10 +49,7 @@ class Webhook extends Controller
   		if($webhook_signature == $expected_signature) {
 
         $roldata = json_decode($roldata);
-        $id_rol = Roles::importarRol($roldata);
-        header('X:'.$id_rol);
-
-  			header("Status: 200 OK!");
+        echo Roles::importarRol($roldata);
 
   		} else {
   			header("Status: 401 Not authenticated");
@@ -77,12 +70,7 @@ class Webhook extends Controller
 
         $data = json_decode($roldata);
         $data_rol = Roles::updateFromRemoteRolData($data);
-
-        $data_rol = json_encode($data_rol);
-
-        header('X:'.$data_rol);
-
-  			header("Status: 200 OK!");
+        echo json_encode($data_rol);
 
   		} else {
   			header("Status: 401 Not authenticated");
@@ -105,10 +93,7 @@ class Webhook extends Controller
 
         $data = json_decode($userdata);
         $data_usr = Usuarios::updateFromRemoteUser($data, $id_rol, $cat_status);
-        $data_usr = json_encode($data_usr);
-        header('X:'.$data_usr);
-  			header("Status: 200 OK!");
-
+        echo json_encode($data_usr);
   		} else {
   			header("Status: 401 Not authenticated");
   		}
@@ -128,12 +113,7 @@ class Webhook extends Controller
   		if($webhook_signature == $expected_signature) {
 
         $data = json_decode($userdata);
-        $id_insert = Usuarios::importarUsuario($data, $id_rol);
-
-        header('X:'.$id_insert);
-
-  			header("Status: 200 OK!");
-
+        echo Usuarios::importarUsuario($data, $id_rol);
   		} else {
   			header("Status: 401 Not authenticated");
   		}
