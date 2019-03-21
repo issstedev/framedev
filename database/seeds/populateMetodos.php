@@ -600,5 +600,19 @@ class populateMetodos extends Seeder
       'fecha_mod'=>NULL
       ));
 
+      DB::table('fw_metodos')->insert(
+      array(
+      'id_metodo'=>43,
+      'controlador'=>'Inventarios',
+      'metodo'=>'alta',
+      'nombre'=>'alta de computo',
+      'descripcion'=>'Da de alta equipo de computo, telefonía o red',
+      'auditable' => 19,
+      'user_alta'=>1,
+      'user_mod'=>NULL,
+      'fecha_alta'=>'2019-03-20 18:52:36',
+      'fecha_mod'=>NULL
+      ));
+
     }
 }

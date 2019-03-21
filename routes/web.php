@@ -10,6 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'inventarios'], function(){
+        Route::get('/', 'inventarios@index');
+        Route::get('/computo', 'inventarios@computo');
+        Route::get('/telefonia', 'inventarios@telefonia');
+        Route::get('/red', 'inventarios@red');
+});
+
+
 Route::group(['prefix' => 'webhook'], function(){
         Route::get('/', 'Webhook@index');
         Route::any('/backup', 'Webhook@backup');

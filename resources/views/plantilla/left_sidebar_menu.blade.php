@@ -31,7 +31,7 @@
         <a  href="javascript:;" class="m-menu__link m-menu__toggle">
           <i class="m-menu__link-icon flaticon-network"></i>
           <span class="m-menu__link-text">
-            <?=env('APP_NAME')?>
+            Framedev
           </span>
           <i class="m-menu__ver-arrow la la-angle-right"></i>
         </a>
@@ -42,7 +42,7 @@
             <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
               <span class="m-menu__link">
                 <span class="m-menu__link-text">
-                  <?=env('APP_NAME')?>
+                  Framedev
                 </span>
               </span>
             </li>
@@ -111,6 +111,70 @@
         </div>
       </li>
       <?php } ?>
+
+
+
+
+
+
+
+
+
+
+      <?php
+         if(
+           (Helpme::tiene_permiso('Usuarios|index')) OR
+           (Helpme::tiene_permiso('Controllers|index'))
+         )
+         {
+      ?>
+
+      <li class="m-menu__item  m-menu__item--active" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+        <a  href="javascript:;" class="m-menu__link m-menu__toggle">
+          <i class="m-menu__link-icon flaticon-network"></i>
+          <span class="m-menu__link-text">
+            <?=env('APP_NAME')?>
+          </span>
+          <i class="m-menu__ver-arrow la la-angle-right"></i>
+        </a>
+        <div class="m-menu__submenu ">
+          <span class="m-menu__arrow"></span>
+          <ul class="m-menu__subnav">
+
+            <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
+              <span class="m-menu__link">
+                <span class="m-menu__link-text">
+                  <?=env('APP_NAME')?>
+                </span>
+              </span>
+            </li>
+
+            <?php
+
+            if(Helpme::tiene_permiso('Controllers|index')){ ?>
+
+
+              <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon flaticon-user-ok"></i><span class="m-menu__link-text">Alta de bienes</span><i
+									 class="m-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
+									<ul class="m-menu__subnav">
+										<li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>inventarios/computo');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Computo</span></a></li>
+										<li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>inventarios/telefonia');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Telefonía</span></a></li>
+                    <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>inventarios/red');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Red</span></a></li>
+									</ul>
+								</div>
+							</li>
+
+            <?php } ?>
+
+          </ul>
+        </div>
+      </li>
+      <?php } ?>
+
+
+
 
 
 
