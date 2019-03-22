@@ -614,5 +614,101 @@ class populateMetodos extends Seeder
       'fecha_mod'=>NULL
       ));
 
+
+
+      DB::table('fw_metodos')->insert(
+      array(
+      'id_metodo'=>44,
+      'controlador'=>'Estadistica',
+      'metodo'=>'contacto',
+      'nombre'=>'datos de contacto',
+      'descripcion'=>'Da de alta información de contacto',
+      'auditable'=>19,
+      'user_alta'=>1,
+      'user_mod'=>NULL,
+      'fecha_alta'=>'2019-03-21 00:50:36',
+      'fecha_mod'=>NULL
+      ));
+
+
+
+      DB::table('fw_metodos')->insert(
+      array(
+      'id_metodo'=>45,
+      'controlador'=>'Estadistica',
+      'metodo'=>'areas',
+      'nombre'=>'dato de área',
+      'descripcion'=>'Da de alta datos de área',
+      'auditable'=>19,
+      'user_alta'=>1,
+      'user_mod'=>NULL,
+      'fecha_alta'=>'2019-03-21 00:50:36',
+      'fecha_mod'=>NULL
+      ));
+
+
+
+      DB::table('fw_metodos')->insert(
+      array(
+      'id_metodo'=>46,
+      'controlador'=>'Estadistica',
+      'metodo'=>'rhumanos',
+      'nombre'=>'datos de personal',
+      'descripcion'=>'Da de alta datos de personal',
+      'auditable'=>19,
+      'user_alta'=>1,
+      'user_mod'=>NULL,
+      'fecha_alta'=>'2019-03-21 00:50:36',
+      'fecha_mod'=>NULL
+      ));
+
+
+
+      DB::table('fw_metodos')->insert(
+      array(
+      'id_metodo'=>47,
+      'controlador'=>'Estadistica',
+      'metodo'=>'comunicaciones',
+      'nombre'=>'datos de comunicaciones',
+      'descripcion'=>'Da de alta datos de comunicaciones',
+      'auditable'=>19,
+      'user_alta'=>1,
+      'user_mod'=>NULL,
+      'fecha_alta'=>'2019-03-21 00:50:36',
+      'fecha_mod'=>NULL
+      ));
+
+
+
+      DB::table('fw_metodos')->insert(
+      array(
+      'id_metodo'=>48,
+      'controlador'=>'Estadistica',
+      'metodo'=>'inventario',
+      'nombre'=>'Inventario de equipo',
+      'descripcion'=>'Da de alta equipo médico',
+      'auditable'=>19,
+      'user_alta'=>1,
+      'user_mod'=>NULL,
+      'fecha_alta'=>'2019-03-21 00:50:36',
+      'fecha_mod'=>NULL
+      ));
+
+
+
+      DB::table('fw_metodos')->insert(
+      array(
+      'id_metodo'=>49,
+      'controlador'=>'Estadistica',
+      'metodo'=>'inf_hospitalaria',
+      'nombre'=>'Información hospitalaria',
+      'descripcion'=>'Da de alta información de estadística hospitalaria',
+      'auditable'=>19,
+      'user_alta'=>1,
+      'user_mod'=>NULL,
+      'fecha_alta'=>'2019-03-21 00:50:36',
+      'fecha_mod'=>NULL
+      ));
+
     }
 }

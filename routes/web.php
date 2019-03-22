@@ -10,13 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'inventarios'], function(){
-        Route::get('/', 'inventarios@index');
-        Route::get('/computo', 'inventarios@computo');
-        Route::get('/telefonia', 'inventarios@telefonia');
-        Route::get('/red', 'inventarios@red');
-});
-
 
 Route::group(['prefix' => 'webhook'], function(){
         Route::get('/', 'Webhook@index');
@@ -27,6 +20,15 @@ Route::group(['prefix' => 'webhook'], function(){
         Route::any('/updateroldata', 'Webhook@updateroldata');
         Route::any('/syncrol', 'Webhook@syncrol');
         Route::any('/syncmetodo', 'Webhook@syncmetodo');
+});
+
+Route::group(['prefix' => 'susmx'], function() {
+
+        Route::get('/mapas', 'MapsController@index');
+        Route::get('mapas/{id}', 'MapsController@show')->name('mapasShow');
+        Route::post('/mapas/buscar/{id}', 'MapsController@search')->name('buscar');
+        Route::get('/mapa/demo', 'MapsController@pintaMapa');
+
 });
 
 

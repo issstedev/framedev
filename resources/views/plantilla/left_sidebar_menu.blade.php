@@ -123,8 +123,7 @@
 
       <?php
          if(
-           (Helpme::tiene_permiso('Usuarios|index')) OR
-           (Helpme::tiene_permiso('Controllers|index'))
+           (Helpme::tiene_permiso('Inventarios|alta'))
          )
          {
       ?>
@@ -151,7 +150,7 @@
 
             <?php
 
-            if(Helpme::tiene_permiso('Controllers|index')){ ?>
+            if(Helpme::tiene_permiso('Inventarios|alta')){ ?>
 
 
               <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle">
@@ -175,6 +174,90 @@
 
 
 
+
+
+      <?php
+         if(
+           (Helpme::tiene_permiso('Estadistica|contacto')) OR
+           (Helpme::tiene_permiso('Estadistica|areas')) OR
+           (Helpme::tiene_permiso('Estadistica|rhumanos')) OR
+           (Helpme::tiene_permiso('Estadistica|comunicaciones')) OR
+           (Helpme::tiene_permiso('Estadistica|inventario')) OR
+           (Helpme::tiene_permiso('Estadistica|inf_hospitalaria'))
+         )
+         {
+      ?>
+
+      <li class="m-menu__item  m-menu__item--active" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+        <a  href="javascript:;" class="m-menu__link m-menu__toggle">
+          <i class="m-menu__link-icon flaticon-network"></i>
+          <span class="m-menu__link-text">
+            Geo Estadística
+          </span>
+          <i class="m-menu__ver-arrow la la-angle-right"></i>
+        </a>
+        <div class="m-menu__submenu ">
+          <span class="m-menu__arrow"></span>
+          <ul class="m-menu__subnav">
+
+            <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
+              <span class="m-menu__link">
+                <span class="m-menu__link-text">
+                  Formularios
+                </span>
+              </span>
+            </li>
+
+            <?php
+
+            if(
+              (Helpme::tiene_permiso('Estadistica|contacto')) OR
+              (Helpme::tiene_permiso('Estadistica|areas')) OR
+              (Helpme::tiene_permiso('Estadistica|rhumanos')) OR
+              (Helpme::tiene_permiso('Estadistica|comunicaciones')) OR
+              (Helpme::tiene_permiso('Estadistica|inventario')) OR
+              (Helpme::tiene_permiso('Estadistica|inf_hospitalaria'))
+            )
+            {
+              ?>
+
+
+
+              <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover"><a href="javascript:;" class="m-menu__link m-menu__toggle">
+                <i class="m-menu__link-icon flaticon-user-ok"></i><span class="m-menu__link-text">Captura de datos</span><i
+									 class="m-menu__ver-arrow la la-angle-right"></i></a>
+								<div class="m-menu__submenu "><span class="m-menu__arrow"></span>
+									<ul class="m-menu__subnav">
+
+                      <?php if(Helpme::tiene_permiso('Estadistica|contacto')){ ?>
+                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/contacto');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Contacto</span></a></li>
+
+                      <?php } if(Helpme::tiene_permiso('Estadistica|areas')){ ?>
+                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/areas');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Áreas</span></a></li>
+
+                      <?php } if(Helpme::tiene_permiso('Estadistica|rhumanos')){ ?>
+                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/rhumanos');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Recursos Humanos</span></a></li>
+
+                      <?php } if(Helpme::tiene_permiso('Estadistica|comunicaciones')){ ?>
+                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/comunicaciones');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Comunicaciones</span></a></li>
+
+                      <?php } if(Helpme::tiene_permiso('Estadistica|inventario')){ ?>
+                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/inventario');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Inventario</span></a></li>
+
+                      <?php } if(Helpme::tiene_permiso('Estadistica|inf_hospitalaria')){ ?>
+                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/inf_hospitalaria');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Información Hospitalaria</span></a></li>
+                      <?php }  ?>
+
+									</ul>
+								</div>
+							</li>
+
+            <?php } ?>
+
+          </ul>
+        </div>
+      </li>
+      <?php } ?>
 
 
 

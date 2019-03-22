@@ -6,7 +6,7 @@ use App\Models\Inventarios as InventariosModel;
 use App\Models\Catalogo;
 use Helpme;
 
-class inventarios extends Controller
+class Inventarios extends Controller
 {
   public function __construct()
   {
