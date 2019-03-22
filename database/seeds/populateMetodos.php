@@ -696,19 +696,5 @@ class populateMetodos extends Seeder
 
 
 
-      DB::table('fw_metodos')->insert(
-      array(
-      'id_metodo'=>49,
-      'controlador'=>'Estadistica',
-      'metodo'=>'inf_hospitalaria',
-      'nombre'=>'Información hospitalaria',
-      'descripcion'=>'Da de alta información de estadística hospitalaria',
-      'auditable'=>19,
-      'user_alta'=>1,
-      'user_mod'=>NULL,
-      'fecha_alta'=>'2019-03-21 00:50:36',
-      'fecha_mod'=>NULL
-      ));
-
     }
 }
