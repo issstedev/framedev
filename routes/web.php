@@ -10,6 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'estadistica'], function(){
+        Route::get('/', 'Estadistica@index');
+        Route::get('/contacto', 'Estadistica@contacto');
+        Route::get('/areas', 'Estadistica@areas');
+        Route::get('/rhumanos', 'Estadistica@rhumanos');
+        Route::get('/comunicaciones', 'Estadistica@comunicaciones');
+        Route::get('/inventario', 'Estadistica@inventario');
+        Route::get('/inf_hospitalaria', 'Estadistica@inf_hospitalaria');
+});
+
+Route::group(['prefix' => 'inventarios'], function(){
+        Route::get('/', 'inventarios@index');
+        Route::get('/computo', 'inventarios@computo');
+        Route::get('/telefonia', 'inventarios@telefonia');
+        Route::get('/red', 'inventarios@red');
+});
 
 Route::group(['prefix' => 'webhook'], function(){
         Route::get('/', 'Webhook@index');
