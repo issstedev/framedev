@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Inventarios as InventariosModel;
+use App\Models\Estadistica as EstadisticaModel;
 use App\Models\Catalogo;
 use Helpme;
 
@@ -16,7 +16,6 @@ class Estadistica extends Controller
       $this->middleware('permiso:Estadistica|rhumanos', ['only' => ['rhumanos']]);
       $this->middleware('permiso:Estadistica|comunicaciones', ['only' => ['comunicaciones']]);
       $this->middleware('permiso:Estadistica|inventario', ['only' => ['inventario']]);
-      $this->middleware('permiso:Estadistica|inf_hospitalaria', ['only' => ['inf_hospitalaria']]);
   }
 
   public function index(){
@@ -67,15 +66,5 @@ class Estadistica extends Controller
     ];
     return view('estadistica/inventario')->with('datos', $datos);
   }
-
-  public function inf_hospitalaria()
-  {
-    $tiporol = Catalogo::selectCatalog('tiporol',null);
-    $datos = [
-        'tiporol' => $tiporol
-    ];
-    return view('estadistica/inf_hospitalaria')->with('datos', $datos);
-  }
-
 
 }
