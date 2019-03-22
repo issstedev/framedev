@@ -38,44 +38,31 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Nombre (s)
+                  Nombre
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre (s)" value="">
+                  <input class="form-control m-input" type="text" id="nombre" name="nombre" placeholder="Nombre de la unidad médica" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido paterno
+                  CLUES
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_paterno" name="apellido_paterno" placeholder="apellido paterno" value="">
+                  <input class="form-control m-input" type="text" id="clues" name="clues" placeholder="CLUES" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido materno
+                  Jurisdicción
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_materno" name="apellido_materno" placeholder="apellido materno" value="">
+                  <input class="form-control m-input" type="text" id="jurisdiccion" name="jurisdiccion" placeholder="Jurisdicción" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Usuario
-                </label>
-                <div class="col-7">
-
-                      <select class="form-control m-input" id="cat_tiporol" name="cat_tiporol">
-                      <?php echo $datos['tiporol']; ?>
-                      </select>
-
-
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Correo
+                  Teléfono
                 </label>
                 <div class="col-7">
                   <input class="form-control m-input" type="text" id="correo" name="correo" placeholder="Correo" value="">
@@ -85,18 +72,10 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
 
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Contraseña
+                  Dirección
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password" name="password" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Repetir contraseña
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password2" name="password2" value="">
+                  <input class="form-control m-input" type="text" id="direccion" name="direccion" placeholder="Dirección" value="">
                 </div>
               </div>
 
