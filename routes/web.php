@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', 'MapsController@index');
+
+
 Route::group(['prefix' => 'estadistica'], function(){
         Route::get('/', 'Estadistica@index');
         Route::get('/contacto', 'Estadistica@contacto');
@@ -137,6 +141,7 @@ Route::group(['prefix' => 'usuarios'], function(){
         Route::post('/cambiar_password', 'Usuarios@cambiar_password');
         Route::get('/tyc/{stat}', 'Usuarios@tyc');
 });
+
 
 Route::group(['prefix' => 'inicio'], function(){
         Route::get('/', 'Inicio@index');
