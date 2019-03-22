@@ -106,22 +106,14 @@
                 <i class="m-menu__link-icon flaticon-eye"></i><span class="m-menu__link-text">Auditoría</span></a>
               </li>
 
-            <?php } ?>
+            <?php }} ?>
+
           </ul>
         </div>
       </li>
-      <?php } ?>
-
-
-
-
-
-
-
-
-
-
       <?php
+
+
          if(
            (Helpme::tiene_permiso('Inventarios|alta'))
          )
@@ -182,8 +174,7 @@
            (Helpme::tiene_permiso('Estadistica|areas')) OR
            (Helpme::tiene_permiso('Estadistica|rhumanos')) OR
            (Helpme::tiene_permiso('Estadistica|comunicaciones')) OR
-           (Helpme::tiene_permiso('Estadistica|inventario')) OR
-           (Helpme::tiene_permiso('Estadistica|inf_hospitalaria'))
+           (Helpme::tiene_permiso('Estadistica|inventario'))
          )
          {
       ?>
@@ -215,8 +206,7 @@
               (Helpme::tiene_permiso('Estadistica|areas')) OR
               (Helpme::tiene_permiso('Estadistica|rhumanos')) OR
               (Helpme::tiene_permiso('Estadistica|comunicaciones')) OR
-              (Helpme::tiene_permiso('Estadistica|inventario')) OR
-              (Helpme::tiene_permiso('Estadistica|inf_hospitalaria'))
+              (Helpme::tiene_permiso('Estadistica|inventario'))
             )
             {
               ?>
@@ -244,15 +234,12 @@
                       <?php } if(Helpme::tiene_permiso('Estadistica|inventario')){ ?>
                       <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/inventario');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Inventario</span></a></li>
 
-                      <?php } if(Helpme::tiene_permiso('Estadistica|inf_hospitalaria')){ ?>
-                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/inf_hospitalaria');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Información Hospitalaria</span></a></li>
-                      <?php }  ?>
 
 									</ul>
 								</div>
 							</li>
 
-            <?php } ?>
+            <?php }} ?>
 
           </ul>
         </div>

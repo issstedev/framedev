@@ -17,7 +17,6 @@ Route::group(['prefix' => 'estadistica'], function(){
         Route::get('/rhumanos', 'Estadistica@rhumanos');
         Route::get('/comunicaciones', 'Estadistica@comunicaciones');
         Route::get('/inventario', 'Estadistica@inventario');
-        Route::get('/inf_hospitalaria', 'Estadistica@inf_hospitalaria');
 });
 
 Route::group(['prefix' => 'inventarios'], function(){

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Estadistica as EstadisticaModel;
 use App\Models\Catalogo;
 use Helpme;
 
