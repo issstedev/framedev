@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call('populateConfig');
         $this->call('populateUbicaciones');
         $this->call('populateMetodos');
-        
         $this->call('populateRoles');
         $this->call('populateUsuarios');
         $this->call('populateUsuariosConfig');
@@ -25,6 +24,5 @@ class DatabaseSeeder extends Seeder
         $this->call('LoadEstablecimientoSaludSeeder');
         $this->call('LoadLatLonEstablecimientoSeeder');
         $this->call('LoadLatLonSeeder');
-        
     }
 }
