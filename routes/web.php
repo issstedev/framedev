@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', 'MapsController@index');
 Route::get('/ubicacion', 'Inicio@ubicacion');
 
 

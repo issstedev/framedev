@@ -133,11 +133,8 @@ class Usuarios extends Controller
         $chge_pass = ModelUsuarios::cambiar_password($request->input('password1'),$_SESSION['id_usuario']);
       }
 
-      \Debugbar::info('>'.$chge_pass);
-
       if($chge_pass >= 0){
         $set_pass_chge = ModelUsuarios::pass_chge_stat(11,$_SESSION['id_usuario']);
-        \Debugbar::info('>>'.$set_pass_chge);
         if($set_pass_chge >= 0){
           $respuesta = array('resp' => true , 'dispositivo' => $_SESSION['dispositivo'] );
         }else{
