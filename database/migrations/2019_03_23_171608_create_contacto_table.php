@@ -33,9 +33,9 @@ class CreateContactoTable extends Migration
             $table->dateTime('fecha_alta')->nullable()->default(null);
             $table->dateTime('fecha_mod')->nullable()->default(null);
 
-            $table->index(["id_establecimiento"], 'fk_estadisticas_establecimientos_salud');
+            $table->index(["id_establecimiento"], 'fk_estadisticas_establecimientos_salud_1');
 
-            $table->foreign('id_establecimiento', 'fk_estadisticas_establecimientos_salud')
+            $table->foreign('id_establecimiento', 'fk_estadisticas_establecimientos_salud_1')
                 ->references('id')->on('establecimientos_salud')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');

@@ -31,11 +31,11 @@ class CreateEstadisticasTable extends Migration
             $table->integer('user_mod')->nullable()->default(null);
             $table->dateTime('fecha_alta')->nullable()->default(null);
             $table->dateTime('fecha_mod')->nullable()->default(null);
-            
-            $table->index(["id_establecimiento"], 'fk_estadisticas_establecimientos_salud');
+
+            $table->index(["id_establecimiento"], 'fk_estadisticas_establecimientos_salud_2');
             $table->index(["cat_fr_estadisticas"], 'fk_estadisticas_cm_catalogo_1');
 
-            $table->foreign('id_establecimiento', 'fk_estadisticas_establecimientos_salud')
+            $table->foreign('id_establecimiento', 'fk_estadisticas_establecimientos_salud_2')
                 ->references('id')->on('establecimientos_salud')
                 ->onDelete('restrict')
                 ->onUpdate('restrict');
