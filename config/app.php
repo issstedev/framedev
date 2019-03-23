@@ -27,7 +27,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'developer'),
+    'env' => env('APP_ENV', 'production'),
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),
+    'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FramedevServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+              /*MAPAS */
+       // GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
+         Cornford\Googlmapper\MapperServiceProvider::class,
 
     ],
 
@@ -228,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Helpme' => App\Helpers\Framedev::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
 
     ],
 

@@ -31,6 +31,12 @@ class Permisos
               exit();
           }
 
+          if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&(!isset($_SESSION['ubicacion']) )){
+              return redirect()->action('Inicio@ubicacion');
+              exit();
+          }
+
+
           if((isset($_SESSION['token']))&&(!in_array($rol,$_SESSION['permisos']))){
               return redirect()->action('Login@error403');
               exit();

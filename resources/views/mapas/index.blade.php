@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('plantilla.master')
 @section('content')
 
 <br>
@@ -15,19 +15,29 @@
    </div> 
 
     <div class="col s12 m6 l6">
-            <ul class="collection">
-            @foreach ($entidades as $entidad)
+          
+          <table id="entidad" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Entidad</th>
+                <th>clave</th>
+                <th>accciones</th>
+            </tr>
+          </thead>
 
-                    <li class="collection-item dismissable" style="touch-action: pan-y;">
-                    {{strtoupper($entidad->entidad)}}
-                    <a href="{{url('susmx/mapas/'.$entidad->id_entidad)}}" class="secondary-content"><i class="mdi-content-send"></i></a>
-                  </li>
-            @endforeach
-                </ul>
+              @foreach ($entidades as $entidad)
+                  <tr>
+                    <td>{{$entidad->id_entidad}}</td>
+                    <td>{{strtoupper($entidad->entidad)}}</td>
+                    <td>{{strtoupper($entidad->clave)}}</td>
+                     <td><a href="{{url('susmx/mapas/'.$entidad->id_entidad)}}">Entra</a></td>
+                  </tr>
+                    @endforeach
+        </table>
 
-              </div>  
+
+     </div>  
  </div> 
-
-
 
 @endsection

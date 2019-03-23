@@ -82,7 +82,7 @@ class Login extends Model
       /*1800 = 30 minutos*/
       /*3600 = 1 hr*/
       /*tiempo en segundos*/
-      if(isset($_SESSION['hora_acceso']) && ($resta>900)){
+      if(isset($_SESSION['hora_acceso']) && ($resta>3600)){
 
         $user = Usuarios::datos_usuario($_SESSION['id_usuario']);
         $user_token = ($_SESSION['user_token'] == $user->token)?true:false;

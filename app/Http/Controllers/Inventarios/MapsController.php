@@ -14,7 +14,6 @@ class MapsController extends Controller
      protected $entidad;
      protected $establecimiento;
      protected $mapaDefault;
-     protected $datos;
 
   public function __construct(Entidad $entidad, EstablecimientoSalud $establecimiento)
 	 {
@@ -29,31 +28,7 @@ class MapsController extends Controller
                 'cluster' => false
             ];
 
-   $avatar_usr_circ = '';
-       $usuario_name = array();
-
-
-    	if(isset($_SESSION['id_rol'])){
-
-            $id_rol = $_SESSION['id_rol'];
-            $id_usuario = $_SESSION['id_usuario'];
-            $rol = Roles::rol();
-
-
-            $usuario_menu_top = Usuarios::datos_usuario($id_usuario);
-            $perfil_menu_top  = Usuarios::perfil_usuario($id_usuario);
-            $avatar_usr_circ = (empty ($perfil_menu_top['avatar'])) ? 'img/avatar.jpg' : 'tmp/'.Helpme::duplicatePublic($perfil_menu_top['avatar'],'perfiles');
-            $usuario_name = $usuario_menu_top['nombres'];
-         }
-
-    $this->datos = [
-        'avatar_usr_circ' => $avatar_usr_circ,
-        'usuario_name' => $usuario_name,
-        'rol' => $rol,
-        'id_rol' => $id_rol,
-        'usuario_menu_top' => $usuario_menu_top
-    ]; 
-
+            
 
 	}
 
@@ -95,8 +70,6 @@ class MapsController extends Controller
 
 	public function show($id)
 	{
-		$datos = $this->datos;
-
 		if ($id != 99){
 		$entidad = $this->entidad->find($id);
 		$establecimientos= $this->establecimiento->entidad($id )->get();
@@ -133,7 +106,7 @@ class MapsController extends Controller
 
 		}	
 
-		return view('mapas.show', compact('entidad', 'establecimientos', 'mapa', 'totalConsultorios', 'datos'));
+		return view('mapas.show', compact('entidad', 'establecimientos', 'mapa', 'totalConsultorios'));
 	//	return response()->json($establecimientos);
 
 
@@ -141,7 +114,6 @@ class MapsController extends Controller
 
 	public function search(Request $request, $id)
 	{
-		$datos = $this->datos;  
 		$entidad = $this->entidad->find($id);
 		$cveInstitucion=$request->input('clave_de_la_institucion');
 		$nivelAtencion= $request->input('nivel_atencion');

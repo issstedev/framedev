@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+Use DB;
 class EstablecimientoSalud extends Model
 {
   protected $table = 'establecimientos_salud';
@@ -38,13 +38,13 @@ class EstablecimientoSalud extends Model
           return $query->where('clave_nivel_atencion', $clave);
     }
 
-    public function totalCamas($id){
+    public function totalCamas($id){  
         if ($id != 99){
-          $result = $this->select(DB::raw("sum(cast (total_de_camas as integer))"))->where('clave_de_la_entidad', $id)->get();
+          $result = $this->select(DB::raw("sum(CAST(total_de_camas as UNSIGNED))"))->where('clave_de_la_entidad', $id)->get();
         }
         
         if ($id = 99){
-          $result = $this->select(DB::raw("sum(cast (total_de_camas as integer))"))->get(); 
+          $result = $this->select(DB::raw("sum(CAST(total_de_camas as UNSIGNED))"))->get(); 
             }   
        return $result[0]['sum'];     
 
@@ -53,10 +53,10 @@ class EstablecimientoSalud extends Model
     public function totalConsultorios($id){
 
         if ($id != 99){
-          $result = $this->select(DB::raw("sum(cast (total_de_consultorios as integer))"))->where('clave_de_la_entidad', $id)->get();
+          $result = $this->select(DB::raw("sum(CAST(total_de_consultorios as UNSIGNED))"))->where('clave_de_la_entidad', $id)->get();
         }
         if ($id = 99)  { 
-          $result = $this->select(DB::raw("sum(cast (total_de_consultorios as integer))"))->get();      
+          $result = $this->select(DB::raw("sum(CAST(total_de_consultorios as UNSIGNED))"))->get();      
         }    
         return $result[0]['sum'];
     }
