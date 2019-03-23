@@ -72,6 +72,8 @@ class MapsController extends Controller
 
 
 
+
+
 	public function show($id)
 	{
 	
@@ -126,9 +128,9 @@ class MapsController extends Controller
 		$cveInstitucion=$request->input('clave_de_la_institucion');
 		$nivelAtencion= $request->input('nivel_atencion');
 		$status=$request->input('status_de_operacion');
-		if ($id == 99)
+		if ($id == 33)
 			$establecimientos = $this->establecimiento->tipoInstitucion($cveInstitucion)->nivelAtencion($nivelAtencion)->estatus($status)->get();
-		if ($id != 99)
+		if ($id != 33)
 			$establecimientos = $this->establecimiento->entidad($id)->tipoInstitucion($cveInstitucion)->nivelAtencion($nivelAtencion)->estatus($status)->get();
 		if($establecimientos->count()!=0){
 	    	Mapper::map($establecimientos->first()->lat, $establecimientos->first()->lat, $this->mapaDefault );
@@ -172,4 +174,11 @@ Mapper::informationWindow(42, -97, ['hello']);
 
 	}	
 
+		public function ficha($id){
+		
+		$establecimiento= $this->establecimiento->find($id);
+		
+		return view('mapas.ficha', compact('establecimiento'));
+
+	}	
 }

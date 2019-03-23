@@ -1,3 +1,1 @@
-<h1> {{strtoupper(Session::get('ubicacion')->nombre_de_la_unidad)}}</h1>
-
-
+ @include('mapas._ficha', ['establecimiento'=> Session::get('ubicacion') ] ) 

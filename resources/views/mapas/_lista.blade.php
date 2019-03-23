@@ -38,7 +38,7 @@
 
                                                     <td class="datatable__cell">
                                                        
-                                                        <a href="{{url('susmx/mapa/'.$establecimiento->id.'/ficha')}}" class="btn m-btn m-btn--gradient-from-info m-btn--gradient-to-accent">+</a>
+                                                        <a href="{{url('susmx/mapa/ficha/'.$establecimiento->id)}}" class="btn m-btn m-btn--gradient-from-info m-btn--gradient-to-accent">+</a>
                                                         
                                                     </td>
                                                        <td class="datatable__cell">
