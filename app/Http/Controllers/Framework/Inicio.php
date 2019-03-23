@@ -57,7 +57,7 @@ class Inicio extends Controller
   }
 
     public function ubicacion(){
-        $_SESSION['id_ubicacion'] = 9;
+        $_SESSION['ubicacion'] = 9;
         $avatar_usr_circ = '';
     $usuario_name = array();
 
