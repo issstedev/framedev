@@ -1,1 +1,3 @@
-<h1>Contenido de inicio</h1>
+<h1> {{strtoupper(Session::get('ubicacion')->nombre_de_la_unidad)}}</h1>
+
+

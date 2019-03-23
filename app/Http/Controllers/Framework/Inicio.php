@@ -8,6 +8,7 @@ use Helpme;
 use App\EstablecimientoSalud;
 use App\Entidad;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
+use Session;
 
 class Inicio extends Controller
 {
@@ -53,22 +54,21 @@ class Inicio extends Controller
         'usuario_menu_top' => $usuario_menu_top
     ];
 
+
+
     return view('plantilla/start')->with('datos', $datos);
   }
 
     public function ubicacion(){
         $_SESSION['ubicacion'] = 9;
         $avatar_usr_circ = '';
-    $usuario_name = array();
-
-
+      $usuario_name = array();
+    
     if(isset($_SESSION['id_rol'])){
 
-            $id_rol = $_SESSION['id_rol'];
+            $id_rol = $_SESSION['id_rol']; 
             $id_usuario = $_SESSION['id_usuario'];
             $rol = Roles::rol();
-
-
             $usuario_menu_top = Usuarios::datos_usuario($id_usuario);
             $perfil_menu_top  = Usuarios::perfil_usuario($id_usuario);
             $avatar_usr_circ = (empty ($perfil_menu_top['avatar'])) ? 'img/avatar.jpg' : 'tmp/'.Helpme::duplicatePublic($perfil_menu_top['avatar'],'perfiles');
@@ -76,13 +76,16 @@ class Inicio extends Controller
                   
     }
 
-    $datos = [
-        'avatar_usr_circ' => $avatar_usr_circ,
-        'usuario_name' => $usuario_name,
-        'rol' => $rol,
-        'id_rol' => $id_rol,
-        'usuario_menu_top' => $usuario_menu_top
-    ];
+       $usuario =Usuarios::find($_SESSION['id_usuario']);
+       Session::put('avatar_usr_circ',  $avatar_usr_circ);
+       Session::put('usuario',  $usuario);
+       Session::put('rol',  $rol);
+       Session::put('id_rol',  $id_rol);
+       Session::put('usuario_menu_top',  $usuario_menu_top);
+       
+
+
+
           $entidades = $this->entidad->zonaCentro()->orderBy('id_entidad', 'ASC')->get();
         Mapper::map($entidades->first()->lat, $entidades->first()->lat,
             [

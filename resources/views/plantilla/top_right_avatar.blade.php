@@ -1,7 +1,7 @@
 <li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
   <a href="#" class="m-nav__link m-dropdown__toggle">
     <span class="m-topbar__userpic">
-      <img id="avatar_top1" src="plugs/timthumb.php?src=<?=$datos['avatar_usr_circ']?>&w=80&h=80&a=t" class="m--img-rounded m--marginless m--img-centered" alt=""/>
+      <img id="avatar_top1" src="plugs/timthumb.php?src={{Session::get('avatar_usr_circ')}}&w=80&h=80&a=t" class="m--img-rounded m--marginless m--img-centered" alt=""/>
     </span>
   </a>
   <div class="m-dropdown__wrapper">
@@ -10,14 +10,14 @@
       <div class="m-dropdown__header m--align-center" style="background: url(assets/app/media/img/misc/notification_bg.jpg); background-size: cover;">
         <div class="m-card-user m-card-user--skin-dark">
           <div class="m-card-user__pic">
-            <img id="avatar_top2" src="plugs/timthumb.php?src=<?=$datos['avatar_usr_circ']?>&w=80&h=80&a=t" class="m--img-rounded m--marginless" alt=""/>
+            <img id="avatar_top2" src="plugs/timthumb.php?src={{ Session::get('avatar_usr_circ')}}&w=80&h=80&a=t" class="m--img-rounded m--marginless" alt=""/>
           </div>
           <div class="m-card-user__details">
             <span class="m-card-user__name m--font-weight-500">
-              <?=$datos['usuario_menu_top']['nombres']?>
+              {{Session::get('usuario_name')}}
             </span>
             <a href="" class="m-card-user__email m--font-weight-300 m-link">
-              <?=$datos['usuario_menu_top']['correo']?>
+              {{Session::get('usuario')->correo}}
             </a>
           </div>
         </div>

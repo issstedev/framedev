@@ -16,11 +16,15 @@ class DatabaseSeeder extends Seeder
         $this->call('populateConfig');
         $this->call('populateUbicaciones');
         $this->call('populateMetodos');
-        //$this->call('populateMetodosExternos');
+        
         $this->call('populateRoles');
         $this->call('populateUsuarios');
         $this->call('populateUsuariosConfig');
         $this->call('populatePermisos');
-        //$this->call('populatePermisosExternos');
+        $this->call('LoadEstadosSeeder');
+        $this->call('LoadEstablecimientoSaludSeeder');
+        $this->call('LoadLatLonEstablecimientoSeeder');
+        $this->call('LoadLatLonSeeder');
+        
     }
 }

@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', 'MapsController@index');
 Route::get('/ubicacion', 'Inicio@ubicacion');
 
 
@@ -48,6 +49,9 @@ Route::group(['prefix' => 'susmx'], function() {
         Route::get('mapas/{id}', 'MapsController@show')->name('mapasShow');
         Route::post('/mapas/buscar/{id}', 'MapsController@search')->name('buscar');
         Route::get('/mapa/demo', 'MapsController@pintaMapa');
+        Route::get('/mapa/ficha/{id}', 'MapsController@ficha');
+        Route::get('/mapa/inicio/{id}', 'MapsController@inicio');
+
 
 });
 
@@ -144,7 +148,7 @@ Route::group(['prefix' => 'usuarios'], function(){
 
 
 Route::group(['prefix' => 'inicio'], function(){
-        Route::get('/', 'Inicio@index');
+        Route::get('/', 'Inicio@index')->name('inicio');
         Route::get('/load_start', 'Inicio@load_start');
 });
 

@@ -6,6 +6,10 @@ use App\Entidad;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 use App\Models\Roles;
 use Illuminate\Http\Request;
+use App\Models\Usuarios;
+use Helpme;
+use Session;
+
 
 class MapsController extends Controller
 {
@@ -29,31 +33,6 @@ class MapsController extends Controller
                 'cluster' => false
             ];
 
-   $avatar_usr_circ = '';
-       $usuario_name = array();
-
-
-    	if(isset($_SESSION['id_rol'])){
-
-            $id_rol = $_SESSION['id_rol'];
-            $id_usuario = $_SESSION['id_usuario'];
-            $rol = Roles::rol();
-
-
-            $usuario_menu_top = Usuarios::datos_usuario($id_usuario);
-            $perfil_menu_top  = Usuarios::perfil_usuario($id_usuario);
-            $avatar_usr_circ = (empty ($perfil_menu_top['avatar'])) ? 'img/avatar.jpg' : 'tmp/'.Helpme::duplicatePublic($perfil_menu_top['avatar'],'perfiles');
-            $usuario_name = $usuario_menu_top['nombres'];
-         }
-
-    $this->datos = [
-        'avatar_usr_circ' => $avatar_usr_circ,
-        'usuario_name' => $usuario_name,
-        'rol' => $rol,
-        'id_rol' => $id_rol,
-        'usuario_menu_top' => $usuario_menu_top
-    ]; 
-
 
 	}
 
@@ -68,7 +47,7 @@ class MapsController extends Controller
                 'marker' => false,
                 'center' => false,
                 'eventBeforeLoad' => 'console.log("before load");',
-                'cluster' => false
+                'cluster' => true
             ]);
 		foreach ($entidades as $entidad) {
 			 $content = '<b>' .strtoupper($entidad->entidad). 
@@ -95,7 +74,8 @@ class MapsController extends Controller
 
 	public function show($id)
 	{
-		$datos = $this->datos;
+	
+  
 
 		if ($id != 99){
 		$entidad = $this->entidad->find($id);
@@ -180,6 +160,16 @@ Mapper::informationWindow(42, -97, ['hello']);
 		$content= '<b>' .$establecimiento->clave_de_la_institucion.'-'.$establecimiento->nombre_de_la_unidad . '</b>'.
 			   				'<br> Consultorios'.$establecimiento->total_de_consultorios.'</br>'.'<br> Camas'.$establecimiento->total_de_camas.'</br>'.'<b> '.$establecimiento->estatus_de_operacion.'-id'.$establecimiento->id.'</b>';
 		return $content;	   				
+	}
+
+
+
+	public function inicio($id){
+		 //$_SESSION['ubicacion'] = $id;
+		$establecimiento= $this->establecimiento->find($id);
+		Session::put('ubicacion',  $establecimiento);
+	return redirect()->action('Inicio@index');
+
 	}	
 
 }
