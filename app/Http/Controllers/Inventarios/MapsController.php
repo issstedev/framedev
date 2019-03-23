@@ -77,12 +77,12 @@ class MapsController extends Controller
 	
   
 
-		if ($id != 99){
+		if ($id != 33){
 		$entidad = $this->entidad->find($id);
 		$establecimientos= $this->establecimiento->entidad($id )->get();
 		$totalConsultorios= $this->establecimiento->totalConsultorios($id);
 		}
-		if ($id == 99){
+		if ($id == 33){
 		$entidad = $this->entidad->find($id);
 		$establecimientos= $this->establecimiento->tipoInstitucion('ISSSTE');
 		//$totalCamas = $this->establecimiento->tipoInstitucion('ISSSTE');
@@ -165,7 +165,7 @@ Mapper::informationWindow(42, -97, ['hello']);
 
 
 	public function inicio($id){
-		 //$_SESSION['ubicacion'] = $id;
+		 $_SESSION['ubicacion'] = $id;
 		$establecimiento= $this->establecimiento->find($id);
 		Session::put('ubicacion',  $establecimiento);
 	return redirect()->action('Inicio@index');
