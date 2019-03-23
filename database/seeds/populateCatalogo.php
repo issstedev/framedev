@@ -531,7 +531,7 @@ class populateCatalogo extends Seeder
 
       DB::table('cm_catalogo')->insert(
       array(
-      'id_cat'=>38,
+      'id_cat'=>126,
       'id_padre'=>23,
       'catalogo'=>'camas_censables',
       'etiqueta'=>'Camas de Cirugía General o Cirugía Reconstructiva',
@@ -1680,7 +1680,7 @@ class populateCatalogo extends Seeder
       'catalogo'=>'equipo_medico',
       'etiqueta'=>'Monitor de Signos Vitales',
       'activo'=>'1',
-      'orden'=>7
+      'orden'=>7,
       'valor'=>'',
       'user_alta'=>1,
       'user_mod'=>1,
