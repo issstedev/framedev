@@ -57,7 +57,7 @@ class Inicio extends Controller
   }
 
     public function ubicacion(){
-        
+        $_SESSION['id_ubicacion'] = 9;
         $avatar_usr_circ = '';
     $usuario_name = array();
 
@@ -112,7 +112,7 @@ class Inicio extends Controller
     $mapa=Mapper::render();
   
 
-       return view('mapas/index', compact('entidades', 'mapa', 'datos') );
+        return view('mapas/index', compact('entidades', 'mapa', 'datos') );
     }
 
 
