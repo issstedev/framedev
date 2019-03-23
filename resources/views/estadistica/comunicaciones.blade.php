@@ -14,7 +14,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
             <li class="nav-item m-tabs__item">
               <a class="nav-link m-tabs__link active" data-toggle="tab" href="#comunicaciones_tab_1" role="tab">
                 <i class="flaticon-share m--hide"></i>
-                Torres de comunicaciones
+                Enlaces de comunicacion
               </a>
             </li>
             <li class="nav-item m-tabs__item">
@@ -26,13 +26,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
             <li class="nav-item m-tabs__item">
               <a class="nav-link m-tabs__link" data-toggle="tab" href="#comunicaciones_tab_3" role="tab">
                 <i class="flaticon-share m--hide"></i>
-                Sitios a los que enlaza
-              </a>
-            </li>
-            <li class="nav-item m-tabs__item">
-              <a class="nav-link m-tabs__link" data-toggle="tab" href="#comunicaciones_tab_4" role="tab">
-                <i class="flaticon-share m--hide"></i>
-                Mapa de enlaces
+                Computo
               </a>
             </li>
           </ul>
@@ -44,35 +38,11 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Nombre (s)
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre (s)" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido paterno
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_paterno" name="apellido_paterno" placeholder="apellido paterno" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido materno
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_materno" name="apellido_materno" placeholder="apellido materno" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Usuario
+                  Descripción
                 </label>
                 <div class="col-7">
 
-                      <select class="form-control m-input" id="cat_tiporol" name="cat_tiporol">
+                      <select class="form-control m-input" id="descripcion" name="descripcion">
                       <?php echo $datos['tiporol']; ?>
                       </select>
 
@@ -81,46 +51,21 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
               </div>
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Correo
+                  Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="correo" name="correo" placeholder="Correo" value="">
+                  <input class="form-control m-input" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
-
-
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Contraseña
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password" name="password" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Repetir contraseña
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password2" name="password2" value="">
-                </div>
-              </div>
-
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
               <div class="m-form__actions">
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                    <?php
-                    if(Helpme::tiene_permiso('Usuarios|editar_perfil')){
-                    ?>
                       <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
-                    <?php
-                    }
-                    ?>
                     &nbsp;&nbsp;
                     <a type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
                       Cancelar
@@ -129,44 +74,35 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 </div>
               </div>
             </div>
-            <input type="hidden" id="activar_paginado" name="activar_paginado" value="1">
-            <input type="hidden" id="paginacion" name="paginacion" value="20">
           </form>
+          <div class="col s12 m6 l6">
+              <table id="comunicaciones_table_1" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+              </table>
+          </div>
         </div>
         <div class="tab-pane" id="comunicaciones_tab_2">
           <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Nombre (s)
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre (s)" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido paterno
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_paterno" name="apellido_paterno" placeholder="apellido paterno" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido materno
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_materno" name="apellido_materno" placeholder="apellido materno" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Usuario
+                  Descripción
                 </label>
                 <div class="col-7">
 
-                      <select class="form-control m-input" id="cat_tiporol" name="cat_tiporol">
+                      <select class="form-control m-input" id="descripcion" name="descripcion">
                       <?php echo $datos['tiporol']; ?>
                       </select>
 
@@ -175,46 +111,21 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
               </div>
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Correo
+                  Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="correo" name="correo" placeholder="Correo" value="">
+                  <input class="form-control m-input" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
-
-
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Contraseña
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password" name="password" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Repetir contraseña
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password2" name="password2" value="">
-                </div>
-              </div>
-
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
               <div class="m-form__actions">
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                    <?php
-                    if(Helpme::tiene_permiso('Usuarios|editar_perfil')){
-                    ?>
                       <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
-                    <?php
-                    }
-                    ?>
                     &nbsp;&nbsp;
                     <a type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
                       Cancelar
@@ -223,44 +134,35 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 </div>
               </div>
             </div>
-            <input type="hidden" id="activar_paginado" name="activar_paginado" value="1">
-            <input type="hidden" id="paginacion" name="paginacion" value="20">
           </form>
+          <div class="col s12 m6 l6">
+              <table id="comunicaciones_table_2" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+              </table>
+          </div>
         </div>
         <div class="tab-pane" id="comunicaciones_tab_3">
           <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Nombre (s)
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre (s)" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido paterno
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_paterno" name="apellido_paterno" placeholder="apellido paterno" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido materno
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_materno" name="apellido_materno" placeholder="apellido materno" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Usuario
+                  Descripción
                 </label>
                 <div class="col-7">
 
-                      <select class="form-control m-input" id="cat_tiporol" name="cat_tiporol">
+                      <select class="form-control m-input" id="descripcion" name="descripcion">
                       <?php echo $datos['tiporol']; ?>
                       </select>
 
@@ -269,46 +171,37 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
               </div>
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Correo
+                  Marca
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="correo" name="correo" placeholder="Correo" value="">
-                </div>
-              </div>
-
-
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Contraseña
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password" name="password" value="">
+                  <input class="form-control m-input" type="text" id="marca" name="marca" placeholder="Marca" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
-                  Repetir contraseña
+                  ServiceTag
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password2" name="password2" value="">
+                  <input class="form-control m-input" type="text" id="servicetag" name="servicetag" placeholder="Etiqueta de Servicio" value="">
                 </div>
               </div>
-
+              <div class="form-group m-form__group row">
+                <label for="example-text-input" class="col-2 col-form-label">
+                  Cantidad
+                </label>
+                <div class="col-7">
+                  <input class="form-control m-input" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="">
+                </div>
+              </div>
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
               <div class="m-form__actions">
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                    <?php
-                    if(Helpme::tiene_permiso('Usuarios|editar_perfil')){
-                    ?>
                       <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
-                    <?php
-                    }
-                    ?>
                     &nbsp;&nbsp;
                     <a type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
                       Cancelar
@@ -317,103 +210,28 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 </div>
               </div>
             </div>
-            <input type="hidden" id="activar_paginado" name="activar_paginado" value="1">
-            <input type="hidden" id="paginacion" name="paginacion" value="20">
           </form>
-        </div>
-        <div class="tab-pane" id="comunicaciones_tab_4">
-          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
-            <div class="m-portlet__body">
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Nombre (s)
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre (s)" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido paterno
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_paterno" name="apellido_paterno" placeholder="apellido paterno" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Apellido materno
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="apellido_materno" name="apellido_materno" placeholder="apellido materno" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Usuario
-                </label>
-                <div class="col-7">
+          <div class="col s12 m6 l6">
+              <table id="comunicaciones_table_3" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripcion</th>
+                        <th>Marca</th>
+                        <th>ServiceTag</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
 
-                      <select class="form-control m-input" id="cat_tiporol" name="cat_tiporol">
-                      <?php echo $datos['tiporol']; ?>
-                      </select>
-
-
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Correo
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="text" id="correo" name="correo" placeholder="Correo" value="">
-                </div>
-              </div>
-
-
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Contraseña
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password" name="password" value="">
-                </div>
-              </div>
-              <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
-                  Repetir contraseña
-                </label>
-                <div class="col-7">
-                  <input class="form-control m-input" type="password" id="password2" name="password2" value="">
-                </div>
-              </div>
-
-            </div>
-            <div class="m-portlet__foot m-portlet__foot--fit">
-              <div class="m-form__actions">
-                <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-7">
-                    <?php
-                    if(Helpme::tiene_permiso('Usuarios|editar_perfil')){
-                    ?>
-                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
-                        Guardar
-                      </a>
-                    <?php
-                    }
-                    ?>
-                    &nbsp;&nbsp;
-                    <a type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
-                      Cancelar
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <input type="hidden" id="activar_paginado" name="activar_paginado" value="1">
-            <input type="hidden" id="paginacion" name="paginacion" value="20">
-          </form>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+              </table>
+          </div>
         </div>
       </div>
      </div>
