@@ -41,6 +41,12 @@ $("#breadcrumb-title").append(' / Captura / RR. HH.');
                 Otro
               </a>
             </li>
+            <li class="nav-item m-tabs__item">
+              <a class="nav-link m-tabs__link" data-toggle="tab" href="#rrhh_tab_6" role="tab">
+                <i class="flaticon-share m--hide"></i>
+                Enfermeras
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -286,6 +292,66 @@ $("#breadcrumb-title").append(' / Captura / RR. HH.');
           </div>
         </div>
         <div class="tab-pane" id="rrhh_tab_5">
+          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
+            <div class="m-portlet__body">
+              <div class="form-group m-form__group row">
+                <label for="example-text-input" class="col-2 col-form-label">
+                  Descripción
+                </label>
+                <div class="col-7">
+
+                      <select class="form-control m-input" id="descripcion" name="descripcion">
+                      <?php echo $datos['tiporol']; ?>
+                      </select>
+
+
+                </div>
+              </div>
+              <div class="form-group m-form__group row">
+                <label for="example-text-input" class="col-2 col-form-label">
+                  Cantidad
+                </label>
+                <div class="col-7">
+                  <input class="form-control m-input" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="">
+                </div>
+              </div>
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+              <div class="m-form__actions">
+                <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-7">
+                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                        Guardar
+                      </a>
+                    &nbsp;&nbsp;
+                    <a type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">
+                      Cancelar
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="col s12 m6 l6">
+              <table id="rrhh_table_5" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+              </table>
+          </div>
+        </div>
+        <div class="tab-pane" id="rrhh_tab_6">
           <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
