@@ -2,6 +2,7 @@
 namespace App\Http\Middleware;
 use App\Models\Config;
 use Closure;
+use Session;
 
 class Permisos
 {
@@ -31,7 +32,7 @@ class Permisos
               exit();
           }
 
-          if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&(!isset($_SESSION['ubicacion']) )){
+          if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&!(Session::has('ubicacion'))){
               return redirect()->action('Inicio@ubicacion');
               exit();
           }
