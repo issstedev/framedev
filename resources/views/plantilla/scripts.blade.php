@@ -58,3 +58,4 @@
 <script src="<?=env('APP_URL')?>assets/js/sistemas.js"></script>
 <script src="<?=env('APP_URL')?>assets/js/wow.min.js"></script>
 <script src="<?=env('APP_URL')?>assets/js/pdf.js"></script>
+<script src="<?=env('APP_URL')?>assets/js/estadisticas.js"></script>

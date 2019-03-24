@@ -3,7 +3,11 @@
 $("#breadcrumb-title").html('<?=env('APP_NAME')?>');
 $("#breadcrumb-title").append(' / Captura / Comunicaciones');
 </script>
-
+<?php
+$display1 = ($count1 == 0)?'none':'table';
+$display2 = ($count2 == 0)?'none':'table';
+$display3 = ($count3 == 0)?'none':'table';
+?>
 <div class="row">
   <div class="col-xl-12 col-lg-11">
     <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
@@ -34,7 +38,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
       </div>
       <div class="tab-content">
         <div class="tab-pane active" id="comunicaciones_tab_1">
-          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
+          <form class="m-form m-form--fit m-form--label-align-right" id="comunicaciones_enlaces">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
@@ -42,8 +46,8 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 </label>
                 <div class="col-7">
 
-                      <select class="form-control m-input" id="descripcion" name="descripcion">
-                      <?php echo $datos['tiporol']; ?>
+                      <select class="form-control m-input" id="descripcion1" name="cat_fr_estadisticas">
+                      <?php echo $enlaces; ?>
                       </select>
 
 
@@ -54,7 +58,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                   Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="">
+                  <input class="form-control m-input" type="text" id="cantidad1" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
             </div>
@@ -63,7 +67,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                      <a id="est_js_fn_14" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
                     &nbsp;&nbsp;
@@ -76,25 +80,29 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
             </div>
           </form>
           <div class="col s12 m6 l6">
-              <table id="comunicaciones_table_1" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Descripcion</th>
-                        <th>Cantidad</th>
-                    </tr>
-                </thead>
+              <table style="display:{{$display1}}" id="comunicaciones_table_1" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Nombre</th>
+                          <th>Cantidad</th>
+                      </tr>
+                  </thead>
 
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                  <tbody>
+                  @foreach ($list_enlaces as $clave => $valor)
+                      <tr>
+                        <td>{{++$clave}}</td>
+                        <td>{{strtoupper($valor->descripcion)}}</td>
+                        <td>{{strtoupper($valor->cantidad)}}</td>
+                      </tr>
+                  @endforeach
+                  </tbody>
               </table>
           </div>
         </div>
         <div class="tab-pane" id="comunicaciones_tab_2">
-          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
+          <form class="m-form m-form--fit m-form--label-align-right" id="comunicaciones_servidores">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
@@ -102,8 +110,8 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 </label>
                 <div class="col-7">
 
-                      <select class="form-control m-input" id="descripcion" name="descripcion">
-                      <?php echo $datos['tiporol']; ?>
+                      <select class="form-control m-input" id="descripcion2" name="cat_fr_estadisticas">
+                      <?php echo $servidores; ?>
                       </select>
 
 
@@ -114,7 +122,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                   Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="">
+                  <input class="form-control m-input" type="text" id="cantidad2" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
             </div>
@@ -123,7 +131,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                      <a id="est_js_fn_15" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
                     &nbsp;&nbsp;
@@ -136,25 +144,29 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
             </div>
           </form>
           <div class="col s12 m6 l6">
-              <table id="comunicaciones_table_2" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Descripcion</th>
-                        <th>Cantidad</th>
-                    </tr>
-                </thead>
+              <table style="display:{{$display2}}" id="comunicaciones_table_2" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Nombre</th>
+                          <th>Cantidad</th>
+                      </tr>
+                  </thead>
 
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                  <tbody>
+                  @foreach ($list_servidores as $clave => $valor)
+                      <tr>
+                        <td>{{++$clave}}</td>
+                        <td>{{strtoupper($valor->descripcion)}}</td>
+                        <td>{{strtoupper($valor->cantidad)}}</td>
+                      </tr>
+                  @endforeach
+                  </tbody>
               </table>
           </div>
         </div>
         <div class="tab-pane" id="comunicaciones_tab_3">
-          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
+          <form class="m-form m-form--fit m-form--label-align-right" id="comunicaciones_computo">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
@@ -162,8 +174,8 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 </label>
                 <div class="col-7">
 
-                      <select class="form-control m-input" id="descripcion" name="descripcion">
-                      <?php echo $datos['tiporol']; ?>
+                      <select class="form-control m-input" id="descripcion3" name="cat_fr_estadisticas">
+                      <?php echo $computo; ?>
                       </select>
 
 
@@ -190,7 +202,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                   Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="">
+                  <input class="form-control m-input" type="text" id="cantidad3" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
             </div>
@@ -199,7 +211,7 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                      <a id="est_js_fn_16" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
                     &nbsp;&nbsp;
@@ -210,26 +222,31 @@ $("#breadcrumb-title").append(' / Captura / Comunicaciones');
                 </div>
               </div>
             </div>
+            <input type="hidden" id="computo_set" name="computo_set" value="computo">
           </form>
           <div class="col s12 m6 l6">
-              <table id="comunicaciones_table_3" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Descripcion</th>
-                        <th>Marca</th>
-                        <th>ServiceTag</th>
-                        <th>Cantidad</th>
-                    </tr>
-                </thead>
+              <table style="display:{{$display3}}" id="comunicaciones_table_3" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Nombre</th>
+                          <th>Marca</th>
+                          <th>Servicetag</th>
+                          <th>Cantidad</th>
+                      </tr>
+                  </thead>
 
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                  <tbody>
+                  @foreach ($list_computo as $clave => $valor)
+                      <tr>
+                        <td>{{++$clave}}</td>
+                        <td>{{strtoupper($valor->descripcion)}}</td>
+                        <td>{{strtoupper($valor->marca)}}</td>
+                        <td>{{strtoupper($valor->servicetag)}}</td>
+                        <td>{{strtoupper($valor->cantidad)}}</td>
+                      </tr>
+                  @endforeach
+                  </tbody>
               </table>
           </div>
         </div>

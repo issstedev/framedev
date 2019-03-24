@@ -3,7 +3,9 @@
 $("#breadcrumb-title").html('<?=env('APP_NAME')?>');
 $("#breadcrumb-title").append(' / Captura / Inventario');
 </script>
-
+<?php
+$display1 = ($count1 == 0)?'none':'table';
+?>
 <div class="row">
   <div class="col-xl-12 col-lg-11">
     <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
@@ -22,7 +24,7 @@ $("#breadcrumb-title").append(' / Captura / Inventario');
       </div>
       <div class="tab-content">
         <div class="tab-pane active" id="inventario_tab_1">
-          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
+          <form class="m-form m-form--fit m-form--label-align-right" id="inventario_equipo">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
                 <label for="example-text-input" class="col-2 col-form-label">
@@ -30,8 +32,8 @@ $("#breadcrumb-title").append(' / Captura / Inventario');
                 </label>
                 <div class="col-7">
 
-                      <select class="form-control m-input" id="descripcion" name="descripcion">
-                      <?php echo $datos['tiporol']; ?>
+                      <select class="form-control m-input" id="descripcion1" name="cat_fr_estadisticas">
+                      <?php echo $equipo_medico; ?>
                       </select>
 
 
@@ -42,7 +44,7 @@ $("#breadcrumb-title").append(' / Captura / Inventario');
                   Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="cantidad" name="cantidad" placeholder="Cantidad" value="">
+                  <input class="form-control m-input" type="text" id="cantidad1" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
             </div>
@@ -51,7 +53,7 @@ $("#breadcrumb-title").append(' / Captura / Inventario');
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                      <a id="est_js_fn_17" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
                     &nbsp;&nbsp;
@@ -64,22 +66,24 @@ $("#breadcrumb-title").append(' / Captura / Inventario');
             </div>
           </form>
           <div class="col s12 m6 l6">
-              <table id="inventario_table_1" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+              <table style="display:{{$display1}}" id="inventario_table_1" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
                   <thead>
                       <tr>
                           <th>ID</th>
-                          <th>Entidad</th>
-                          <th>clave</th>
-                          <th>accciones</th>
+                          <th>Descripción</th>
+                          <th>Cantidad</th>
                       </tr>
                   </thead>
 
-                  <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                  </tr>
+                  <tbody>
+                  @foreach ($list_equipo_medico as $clave => $valor)
+                      <tr>
+                        <td>{{++$clave}}</td>
+                        <td>{{strtoupper($valor->descripcion)}}</td>
+                        <td>{{strtoupper($valor->cantidad)}}</td>
+                      </tr>
+                  @endforeach
+                  </tbody>
               </table>
           </div>
         </div>

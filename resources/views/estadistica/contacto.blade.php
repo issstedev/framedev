@@ -34,18 +34,18 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
       </div>
       <div class="tab-content">
         <div class="tab-pane active" id="contact_tab_1">
-          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
+          <form class="m-form m-form--fit m-form--label-align-right" id="contacto_datos_unidad">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="nombres" class="col-2 col-form-label">
                   Nombre
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombre" name="nombre" placeholder="Nombre de la unidad médica" value="">
+                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre de la unidad médica" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="clues" class="col-2 col-form-label">
                   CLUES
                 </label>
                 <div class="col-7">
@@ -53,7 +53,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                 </div>
               </div>
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="jurisdiccion" class="col-2 col-form-label">
                   Jurisdicción
                 </label>
                 <div class="col-7">
@@ -61,17 +61,17 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                 </div>
               </div>
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="telefono" class="col-2 col-form-label">
                   Teléfono
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="correo" name="correo" placeholder="Correo" value="">
+                  <input class="form-control m-input" type="text" id="telefono" name="telefono" placeholder="Correo" value="">
                 </div>
               </div>
 
 
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="direccion" class="col-2 col-form-label">
                   Dirección
                 </label>
                 <div class="col-7">
@@ -85,7 +85,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                      <a id="est_js_fn_01" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
                     &nbsp;&nbsp;
@@ -102,18 +102,18 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
 
 
         <div class="tab-pane" id="contact_tab_2">
-          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
+          <form class="m-form m-form--fit m-form--label-align-right" id="contacto_mapas">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="longitud" class="col-2 col-form-label">
                   Longitud
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="longitud" name="latitud" placeholder="Longitud" value="">
+                  <input class="form-control m-input" type="text" id="longitud" name="longitud" placeholder="Longitud" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="latitud" class="col-2 col-form-label">
                   Latitud
                 </label>
                 <div class="col-7">
@@ -127,7 +127,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                      <a id="est_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
                     &nbsp;&nbsp;
@@ -143,18 +143,18 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
 
 
         <div class="tab-pane" id="contact_tab_3">
-          <form class="m-form m-form--fit m-form--label-align-right" id="editar_perfil">
+          <form class="m-form m-form--fit m-form--label-align-right" id="contacto_contacto">
             <div class="m-portlet__body">
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="nombre" class="col-2 col-form-label">
                   Nombre (s)
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre (s)" value="">
+                  <input class="form-control m-input" type="text" id="nombre" name="nombre" placeholder="Nombre (s)" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="cargo" class="col-2 col-form-label">
                   Cargo
                 </label>
                 <div class="col-7">
@@ -163,7 +163,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
               </div>
 
               <div class="form-group m-form__group row">
-                <label for="example-text-input" class="col-2 col-form-label">
+                <label for="correo" class="col-2 col-form-label">
                   Correo
                 </label>
                 <div class="col-7">
@@ -177,7 +177,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                 <div class="row">
                   <div class="col-2"></div>
                   <div class="col-7">
-                      <a id="usr_js_fn_02" class="btn btn-accent m-btn m-btn--air m-btn--custom">
+                      <a id="est_js_fn_03" class="btn btn-accent m-btn m-btn--air m-btn--custom">
                         Guardar
                       </a>
                     &nbsp;&nbsp;
@@ -189,23 +189,30 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
               </div>
             </div>
           </form>
+          <?php
+          $display = ($count == 0)?'none':'table';
+          ?>
           <div class="col s12 m6 l6">
-              <table id="contact_table_3" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
+              <table style="display:{{$display}}" id="contact_table_3" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
                   <thead>
                       <tr>
                           <th>ID</th>
-                          <th>Descripcion</th>
+                          <th>Nombre</th>
                           <th>Cargo</th>
                           <th>Correo</th>
                       </tr>
                   </thead>
 
-                  <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                  </tr>
+                  <tbody>
+                  @foreach ($contacts as $clave => $contact)
+                      <tr>
+                        <td>{{++$clave}}</td>
+                        <td>{{strtoupper($contact->nombre)}}</td>
+                        <td>{{strtoupper($contact->cargo)}}</td>
+                        <td>{{strtoupper($contact->correo)}}</td>
+                      </tr>
+                  @endforeach
+                  </tbody>
               </table>
           </div>
         </div>
