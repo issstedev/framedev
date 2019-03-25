@@ -13,7 +13,10 @@ class EstablecimientoSalud extends Model
         public function direccion(){
         return 'AV'.$this->vialidad.' Col'.$this->asentamiento.' #'.$this->numero_exterior.' cp'.$this->codigo_postal;
     }
-    
+
+    static public function nombre_de_la_institucion(){
+      return EstablecimientoSalud::where('id', $_SESSION['ubicacion'])->select('nombre_de_la_institucion')->first();
+    }
     public function nombre_completo(){
 
         return $this->clave_de_la_institucion.' '.$this->nombre_de_tipologia.' '.$this->nombre_de_la_unidad;
@@ -32,12 +35,12 @@ class EstablecimientoSalud extends Model
     }
     public function scopeTipoEstablecimiento($query, $clave)
     {
-        if  ($clave) 
+        if  ($clave)
           return $query->where('clave_tipo_establecimiento', $clave);
     }
     public function scopeEstatus($query, $clave)
     {
-        if ($clave) 
+        if ($clave)
             return $query->where('clave_de_estatus_de_operacion', $clave);
     }
 
@@ -47,26 +50,26 @@ class EstablecimientoSalud extends Model
           return $query->where('clave_nivel_atencion', $clave);
     }
 
-    public function totalCamas($id){  
+    public function totalCamas($id){
         if ($id != 99){
           $result = $this->select(DB::raw("sum(CAST(total_de_camas as UNSIGNED))"))->where('clave_de_la_entidad', $id)->get();
         }
-        
+
         if ($id = 99){
-          $result = $this->select(DB::raw("sum(CAST(total_de_camas as UNSIGNED))"))->get(); 
-            }   
-       return $result[0]['sum'];     
+          $result = $this->select(DB::raw("sum(CAST(total_de_camas as UNSIGNED))"))->get();
+            }
+       return $result[0]['sum'];
 
     }
-    
+
     public function totalConsultorios($id){
 
         if ($id != 99){
           $result = $this->select(DB::raw("sum(CAST(total_de_consultorios as UNSIGNED))"))->where('clave_de_la_entidad', $id)->get();
         }
-        if ($id = 99)  { 
-          $result = $this->select(DB::raw("sum(CAST(total_de_consultorios as UNSIGNED))"))->get();      
-        }    
+        if ($id = 99)  {
+          $result = $this->select(DB::raw("sum(CAST(total_de_consultorios as UNSIGNED))"))->get();
+        }
         return $result[0]['sum'];
     }
 

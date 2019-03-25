@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Catalogo;
 use App\Models\Estadistica as ModelEstadistica;
+use App\EstablecimientoSalud;
 use Helpme;
 
 class Estadistica extends Controller
 {
+  protected $nombre_centro;
   public function __construct()
   {
       $this->middleware('permiso:Estadistica|index', ['only' => ['index']]);
@@ -16,6 +18,7 @@ class Estadistica extends Controller
       $this->middleware('permiso:Estadistica|rhumanos', ['only' => ['rhumanos']]);
       $this->middleware('permiso:Estadistica|comunicaciones', ['only' => ['comunicaciones']]);
       $this->middleware('permiso:Estadistica|inventario', ['only' => ['inventario']]);
+      $this->nombre_centro = EstablecimientoSalud::nombre_de_la_institucion();
   }
 
 
@@ -45,7 +48,8 @@ class Estadistica extends Controller
   public function contacto(){
     $contacts = ModelEstadistica::get_contacts();
     $count = count($contacts);
-    return view('estadistica/contacto', compact('contacts', 'count'));
+    $centro = $this->nombre_centro->nombre_de_la_institucion;
+    return view('estadistica/contacto', compact('contacts', 'count', 'centro'));
   }
 
   public function areas()
@@ -63,6 +67,7 @@ class Estadistica extends Controller
     $count3 = count($list_noCensables);
     $list_instalaciones = ModelEstadistica::get_estadisticas(25);
     $count4 = count($list_instalaciones);
+    $centro = $this->nombre_centro->nombre_de_la_institucion;
 
     return view('estadistica/areas', compact(
       'consultorios',
@@ -76,7 +81,8 @@ class Estadistica extends Controller
       'count1',
       'count2',
       'count3',
-      'count4'
+      'count4',
+      'centro'
     ));
   }
 
@@ -101,6 +107,7 @@ class Estadistica extends Controller
     $count5 = count($list_otro_personal);
     $list_enfermeras = ModelEstadistica::get_estadisticas(94);
     $count6 = count($list_enfermeras);
+    $centro = $this->nombre_centro->nombre_de_la_institucion;
 
     return view('estadistica/rhumanos',compact(
       'medicos',
@@ -120,7 +127,8 @@ class Estadistica extends Controller
       'list_otro_personal',
       'count5',
       'list_enfermeras',
-      'count6'
+      'count6',
+      'centro'
     ));
   }
 
@@ -137,6 +145,8 @@ class Estadistica extends Controller
     $list_computo = ModelEstadistica::get_estadisticas_computo(33);
     $count3 = count($list_computo);
 
+    $centro = $this->nombre_centro->nombre_de_la_institucion;
+
     return view('estadistica/comunicaciones',compact(
       'enlaces',
       'servidores',
@@ -146,7 +156,8 @@ class Estadistica extends Controller
       'list_servidores',
       'count2',
       'list_computo',
-      'count3'
+      'count3',
+      'centro'
     ));
   }
 
@@ -156,10 +167,12 @@ class Estadistica extends Controller
 
     $list_equipo_medico = ModelEstadistica::get_estadisticas(34);
     $count1 = count($list_equipo_medico);
+    $centro = $this->nombre_centro->nombre_de_la_institucion;
     return view('estadistica/inventario',compact(
       'equipo_medico',
       'list_equipo_medico',
-      'count1'
+      'count1',
+      'centro'
     ));
   }
 

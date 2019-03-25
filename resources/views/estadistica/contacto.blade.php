@@ -1,6 +1,6 @@
 <!--Section: Team v.1-->
 <script>
-$("#breadcrumb-title").html('<?=env('APP_NAME')?>');
+$("#breadcrumb-title").html('<?=$centro?>');
 $("#breadcrumb-title").append(' / Captura / Contacto');
 </script>
 
@@ -109,7 +109,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   Longitud
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="longitud" name="longitud" placeholder="Longitud" value="">
+                  <input class="form-control m-input" type="number" id="longitud" name="longitud" placeholder="Longitud" value="">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -117,7 +117,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   Latitud
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="latitud" name="latitud" placeholder="Latitud" value="">
+                  <input class="form-control m-input" type="number" id="latitud" name="latitud" placeholder="Latitud" value="">
                 </div>
               </div>
             </div>

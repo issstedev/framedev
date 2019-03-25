@@ -15,7 +15,7 @@ class Inicio extends Controller
      protected $entidad;
      protected $establecimiento;
      protected $mapaDefault;
-     
+
   public function __construct(Entidad $entidad, EstablecimientoSalud $establecimiento)
   {
       $this->middleware('permiso:Inicio|index', ['only' => ['index','load_start']]);
@@ -43,7 +43,7 @@ class Inicio extends Controller
             $perfil_menu_top  = Usuarios::perfil_usuario($id_usuario);
             $avatar_usr_circ = (empty ($perfil_menu_top['avatar'])) ? 'img/avatar.jpg' : 'tmp/'.Helpme::duplicatePublic($perfil_menu_top['avatar'],'perfiles');
             $usuario_name = $usuario_menu_top['nombres'];
-                  
+
     }
 
     $datos = [
@@ -51,7 +51,8 @@ class Inicio extends Controller
         'usuario_name' => $usuario_name,
         'rol' => $rol,
         'id_rol' => $id_rol,
-        'usuario_menu_top' => $usuario_menu_top
+        'usuario_menu_top' => $usuario_menu_top,
+        'establecimiento' => EstablecimientoSalud::nombre_de_la_institucion()
     ];
 
 
@@ -60,20 +61,20 @@ class Inicio extends Controller
   }
 
     public function ubicacion(){
-        
+
         $avatar_usr_circ = '';
       $usuario_name = array();
-    
+
     if(isset($_SESSION['id_rol'])){
 
-            $id_rol = $_SESSION['id_rol']; 
+            $id_rol = $_SESSION['id_rol'];
             $id_usuario = $_SESSION['id_usuario'];
             $rol = Roles::rol();
             $usuario_menu_top = Usuarios::datos_usuario($id_usuario);
             $perfil_menu_top  = Usuarios::perfil_usuario($id_usuario);
             $avatar_usr_circ = (empty ($perfil_menu_top['avatar'])) ? 'img/avatar.jpg' : 'tmp/'.Helpme::duplicatePublic($perfil_menu_top['avatar'],'perfiles');
             $usuario_name = $usuario_menu_top['nombres'];
-                  
+
     }
 
        $usuario =Usuarios::find($_SESSION['id_usuario']);
@@ -82,7 +83,7 @@ class Inicio extends Controller
        Session::put('rol',  $rol);
        Session::put('id_rol',  $id_rol);
        Session::put('usuario_menu_top',  $usuario_menu_top);
-       
+
 
 
 
@@ -97,23 +98,23 @@ class Inicio extends Controller
                 'cluster' => false
             ]);
             foreach ($entidades as $entidad) {
-                  $content = '<b>' .strtoupper($entidad->entidad). 
+                  $content = '<b>' .strtoupper($entidad->entidad).
 
                   '<br> Total de Camas
-                  <br> Total de Establecimientos  
+                  <br> Total de Establecimientos
                    </b>
-             <a href="mapas/'.$entidad->id_entidad.'" class="secondary-content"><i class="mdi-content-send"></i></a>' 
+             <a href="mapas/'.$entidad->id_entidad.'" class="secondary-content"><i class="mdi-content-send"></i></a>'
                           ;
-          Mapper::informationWindow($entidad->lat, $entidad->lon, $content, ['markers' => [ 'animation' => 'DROP', 
+          Mapper::informationWindow($entidad->lat, $entidad->lon, $content, ['markers' => [ 'animation' => 'DROP',
 
            'scale' => 10000
                 ]]);
-                
+
 
     }
 
     $mapa=Mapper::render();
-  
+
 
         return view('mapas/index', compact('entidades', 'mapa', 'datos') );
     }

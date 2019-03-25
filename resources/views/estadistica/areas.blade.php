@@ -1,6 +1,6 @@
 <!--Section: Team v.1-->
 <script>
-$("#breadcrumb-title").html('<?=env('APP_NAME')?>');
+$("#breadcrumb-title").html('<?=$centro?>');
 $("#breadcrumb-title").append(' / Captura / Áreas');
 </script>
 
@@ -131,7 +131,7 @@ $display4 = ($count4 == 0)?'none':'table';
                   Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="cantidad2" name="cantidad" placeholder="Cantidad" value="">
+                  <input class="form-control m-input" type="number" id="cantidad2" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
             </div>
@@ -195,7 +195,7 @@ $display4 = ($count4 == 0)?'none':'table';
                   Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="cantidad3" name="cantidad" placeholder="Cantidad" value="">
+                  <input class="form-control m-input" type="number" id="cantidad3" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
             </div>
@@ -259,7 +259,7 @@ $display4 = ($count4 == 0)?'none':'table';
                   Cantidad
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="cantidad4" name="cantidad" placeholder="Cantidad" value="">
+                  <input class="form-control m-input" type="number" id="cantidad4" name="cantidad" placeholder="Cantidad" value="">
                 </div>
               </div>
             </div>
