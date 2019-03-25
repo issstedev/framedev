@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call('LoadEstablecimientoSaludSeeder');
         $this->call('LoadLatLonEstablecimientoSeeder');
         $this->call('LoadLatLonSeeder');
+        $this->call('LoadZone1StatesTableSeede');
     }
 }
