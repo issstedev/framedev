@@ -6,6 +6,7 @@ use Helpme;
 use App\Models\Usuarios;
 use App\Models\Roles;
 use DB;
+use Session;
 
 class Login extends Model
 {
@@ -411,6 +412,7 @@ class Login extends Model
         $_SESSION['token'] = Helpme::token(62);
         $_SESSION['user_token']=Helpme::token(62);
         $_SESSION['rol_token']=Helpme::token(62);
+        
         $array[0]=array('resp'=>"acceso_correcto");
       }
         self::MobileDetect();
@@ -453,9 +455,14 @@ class Login extends Model
 
   static function salir(){
     $id_login = self::getId_login();
+
+   
+
     self::closeSession($id_login, $_SESSION['id_usuario']);
     session_unset();
     unset($_SESSION);
+    Session::flush();
+
     if(session_destroy()){
       $array[]=array('resp'=>"correcto");
     }else{
