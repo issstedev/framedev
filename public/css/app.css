@@ -259,22 +259,22 @@ padding-top: 5px;
 }
 /*BARRA*/
 .m-aside-left.m-aside-left--skin-dark {
-    background-color: #55185d;
+    background-color: #5d0923;
 }
 /*LOGO*/
 .m-brand.m-brand--skin-dark {
-    background: #55185d;
+    background: #5d0923;
 }
 /*BOTONERA*/
 .m-aside-menu .m-menu__nav .m-menu__subnav {
-    background-color: #55185d;
+    background-color: #5d0923;
 }
 .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item .m-menu__submenu .m-menu__item>.m-menu__heading .m-menu__link-text, .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item .m-menu__submenu .m-menu__item>.m-menu__link .m-menu__link-text {
     color: #b98abf;
 }
 /*ENCABEZADO DE LISTA*/
 .m-aside-menu .m-menu__nav>.m-menu__item>.m-menu__link {
-    background-color: #491050;
+    background-color: #761b37;
 }
 .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item.m-menu__item--active>.m-menu__link .m-menu__link-text {
     color: #f9c5ff;
@@ -285,4 +285,26 @@ padding-top: 5px;
 /*ICONOS*/
 .m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item .m-menu__submenu .m-menu__item>.m-menu__link .m-menu__link-icon {
     color: #c77dff;
+}
+
+
+
+.m-stack.m-stack--desktop.m-stack--ver>.m-stack__item.m-stack__item--fluid {
+    background-color: #5d0923;
+}
+
+.m-header-menu > h5 {
+    color: #FFF;
+}
+
+#m_aside_left{
+  box-shadow: 2px 2px 5px #000;
+}
+
+.m-stack__item m-brand  m-brand--skin-dark {
+  box-shadow: 2px 2px 5px #000;
+}
+
+.m-brand__logo-wrapper > img{
+  height: 40px;
 }
