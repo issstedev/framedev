@@ -12,13 +12,9 @@
 */
 
 
-
-Route::group( ['middleware' => 'auth' ], function()
-{
-   
-
 Route::get('/ubicacion', 'Inicio@ubicacion');
 
+ 
 Route::group(['prefix' => 'susmx'], function() {
 
         Route::get('/mapas', 'MapsController@index');
@@ -30,12 +26,18 @@ Route::group(['prefix' => 'susmx'], function() {
 
 
 });
+
+/* Session para autenticacion laravel
+Route::group( ['middleware' => 'auth' ], function()
+{
+  //
+
    
 });
 
+*/
 
 
-Route::get('/', 'MapsController@index');
 
 
 
@@ -47,6 +49,21 @@ Route::group(['prefix' => 'estadistica'], function(){
         Route::get('/comunicaciones', 'Estadistica@comunicaciones');
         Route::get('/inventario', 'Estadistica@inventario');
         Route::get('/inf_hospitalaria', 'Estadistica@inf_hospitalaria');
+        Route::post('/add_contacto', 'Estadistica@add_contacto');
+        Route::post('/add_consultorio', 'Estadistica@add_consultorio');
+        Route::post('/add_camas', 'Estadistica@add_camas');
+        Route::post('/add_camasno', 'Estadistica@add_camasno');
+        Route::post('/add_instalaciones', 'Estadistica@add_instalaciones');
+        Route::post('/add_medicos', 'Estadistica@add_medicos');
+        Route::post('/add_servicios', 'Estadistica@add_servicios');
+        Route::post('/add_otras_profesiones', 'Estadistica@add_otras_profesiones');
+        Route::post('/add_administrativo', 'Estadistica@add_administrativo');
+        Route::post('/add_otro_personal', 'Estadistica@add_otro_personal');
+        Route::post('/add_enfermeras', 'Estadistica@add_enfermeras');
+        Route::post('/add_enlace',  'Estadistica@add_enlace');
+        Route::post('/add_server',  'Estadistica@add_server');
+        Route::post('/add_computo', 'Estadistica@add_computo');
+        Route::post('/add_inventario', 'Estadistica@add_inventario');
 });
 
 Route::group(['prefix' => 'inventarios'], function(){
@@ -167,7 +184,7 @@ Route::group(['prefix' => 'inicio'], function(){
 });
 
 Route::group(['prefix' => 'login'], function(){
-        Route::get('/', 'Login@index')->name('login');
+        Route::get('/', 'Login@index');
         Route::post('/logear', 'Login@logear');
         Route::any('/recuperar_datos', 'Login@recuperar_datos');
         Route::get('/403', 'Login@error403');

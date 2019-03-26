@@ -19,7 +19,7 @@ class Inicio extends Controller
   public function __construct(Entidad $entidad, EstablecimientoSalud $establecimiento)
   {
       $this->middleware('permiso:Inicio|index', ['only' => ['index','load_start']]);
-      $this->middleware('permiso:Inicio|ubicacion', ['only' => ['index','load_start']]);
+
 
     $this->entidad = $entidad;
     $this->establecimiento = $establecimiento;
