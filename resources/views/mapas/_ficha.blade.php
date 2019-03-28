@@ -26,58 +26,56 @@
                             <i class="flaticon-interface-3 m--font-warning"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                              <span class="m-list-search__result-category m-list-search__result-category--first">
-                            CLUES
-                            </span> {{$establecimiento->clues}}
+                            <b>CLUES: </b>{{$establecimiento->clues}}
                             </span>
                             <br>
                             <span class="m-list-search__result-item-icon">
                             <i class="flaticon-share m--font-success"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                            INSTITUCION:{{$establecimiento->nombre_de_la_institucion}}
+                            <b>INSTITUCIÓN:</b>{{$establecimiento->nombre_de_la_institucion}}
                             </span>
                             <br>
                             <span class="m-list-search__result-item-icon">
                             <i class="flaticon-share m--font-success"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                            TIPO:{{$establecimiento->nombre_de_tipologia}}
+                            <b>TIPO:</b>{{$establecimiento->nombre_de_tipologia}}
                             </span>
                             <br>
                             <span class="m-list-search__result-item-icon">
                             <i class="flaticon-share m--font-success"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                            INICIO:{{$establecimiento->fecha_de_inicio_de_operacion}}
+                            <b>INICIO:</b>{{$establecimiento->fecha_de_inicio_de_operacion}}
                             </span>
                             <br>
                             <span class="m-list-search__result-item-icon">
                             <i class="flaticon-share m--font-success"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                            ENTIDAD:{{$establecimiento->nombre_de_la_entidad}}
+                            <b>ENTIDAD:</b>{{$establecimiento->nombre_de_la_entidad}}
                             </span>
                             <br>
                             <span class="m-list-search__result-item-icon">
                             <i class="flaticon-share m--font-success"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                            MUNICIPIO:{{$establecimiento->nombre_del_municipio}}
+                            <b>MUNICIPIO:</b>{{$establecimiento->nombre_del_municipio}}
                             </span>
                             <br>
                             <span class="m-list-search__result-item-icon">
                             <i class="flaticon-share m--font-success"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                            <b>JURISDICCION:{{$establecimiento->nombre_de_la_jurisdiccion}}
+                            <b>JURISDICCION:</b>{{$establecimiento->nombre_de_la_jurisdiccion}}
                             </span>
                             <br>
                             <span class="m-list-search__result-item-icon">
                             <i class="flaticon-share m--font-success"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                            DIRECCIÓN:{{$establecimiento->direccion()}}
+                            <b>DIRECCIÓN:</b>{{$establecimiento->direccion()}}
                             </span>
                             <br>
                         </div>
