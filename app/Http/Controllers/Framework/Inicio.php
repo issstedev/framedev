@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Roles;
+use App\Models\Framework\Roles;
 use App\Models\Framework\Usuarios;
 use Helpme;
 use App\EstablecimientoSalud;
