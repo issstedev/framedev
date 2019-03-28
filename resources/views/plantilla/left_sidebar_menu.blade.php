@@ -229,7 +229,7 @@
                       <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/rhumanos');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Recursos Humanos</span></a></li>
 
                       <?php } if(Helpme::tiene_permiso('Estadistica|comunicaciones')){ ?>
-                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/comunicaciones');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Comunicaciones y Tic's</span></a></li>
+                      <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/comunicaciones');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Comunicaciones</span></a></li>
 
                       <?php } if(Helpme::tiene_permiso('Estadistica|inventario')){ ?>
                       <li class="m-menu__item " aria-haspopup="true"><a href="javascript:;" onclick="carga_archivo('contenedor_principal','<?=env('APP_URL ')?>estadistica/inventario');" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Inventario</span></a></li>
@@ -243,6 +243,15 @@
 
           </ul>
         </div>
+      </li>
+         <li class="m-menu__item  m-menu__item--active" aria-haspopup="true"  m-menu-submenu-toggle="hover">
+        <a  href="{{url('ubicacion')}}" class="m-menu__link m-menu__toggle">
+          <i class="m-menu__link-icon flaticon-network"></i>
+          <span class="m-menu__link-text">
+            Ubicaciones
+          </span>
+          <i class="m-menu__ver-arrow la la-angle-right"></i>
+        </a>
       </li>
       <?php } ?>
 

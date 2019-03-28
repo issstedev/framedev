@@ -107,6 +107,13 @@ class EstablecimientoSalud extends Model
     return $this->hasMany('App\Models\Inventarios\Estadistica', 'id_establecimiento', 'id');
 }
 
+public function contactos()
+{
+
+    return $this->hasMany('App\Models\Inventarios\Contacto', 'id_establecimiento', 'id');
+  
+}
+
     
 
     //

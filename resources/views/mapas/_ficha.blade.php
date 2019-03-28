@@ -68,7 +68,7 @@
                             <i class="flaticon-share m--font-success"></i>
                             </span>
                             <span class="m-list-search__result-item-text">
-                            <b>JURISDICCION:</b>{{$establecimiento->nombre_de_la_jurisdiccion}}
+                            <b>JURISDICCIÓN:</b>{{$establecimiento->nombre_de_la_jurisdiccion}}
                             </span>
                             <br>
                             <span class="m-list-search__result-item-icon">
@@ -81,6 +81,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class= "row">
+                   @include('mapas._recursosContactos', ['establecimiento'=> $establecimiento] ) 
             </div>
         </div>
     </div>

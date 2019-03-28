@@ -179,8 +179,8 @@ Mapper::informationWindow(42, -97, ['hello']);
 
 
 		$establecimiento= $this->establecimiento->find($id);
-		$display1=true;
-		return view('mapas.ficha', compact('establecimiento'));
+		
+		return view('mapas.ficha', compact('establecimiento',$id));
 
 	}	
 }

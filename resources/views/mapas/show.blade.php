@@ -1,14 +1,28 @@
   @extends('plantilla.master')
   @section('content')
        
-  		 <div class="m-content">
+	 
+
+       <div class="m-content">
+          <a href="{{url('ubicacion')}}" class="btn btn-success m-btn m-btn--custom m-btn--icon">
+                              <span>
+                                <i class="fa flaticon-delete"></i>
+                                <span>
+                                  Regresar
+                                </span>
+                              </span>
+                            </a>  
       <div class="m-portlet m-portlet--mobile">
 
    <div class="m-portlet__head">
                                 <div class="m-portlet__head-caption">
                                     <div class="m-portlet__head-title">
                                         <h3 class="m-portlet__head-text">
-                                           Buscar
+                                                                       <span class="m-list-search__result-category m-list-search__result-category--first">
+                            <b> ESTADO:</b>{{strtoupper($entidad->entidad)}}
+                            </span>
+
+                                        
                                         </h3>
                                     </div>
                                 </div>
@@ -39,8 +53,7 @@
         
       </div>
       <div class="col-lg-3 m--align-right">
-      <button type="submit" class="btn waves-effect waves-light red darken-4
-">Buscar</button>
+      <button type="submit" class="btn btn-success m-btn m-btn--custom m-btn--icon">Filtrar</button>
     </div>
 </div>
 
@@ -79,7 +92,19 @@
 
 <script type="text/javascript">
     $(document).ready( function () {
-        $('#table_establecimientos').DataTable();
+        $('#table_establecimientos').DataTable({
+
+          "language": {
+            "lengthMenu": "Muestra _MENU_ registros por pagina",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Mostrando pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "No records available",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search": "Buscar:",
+
+        }
+
+          });
     } );
 </script>
 
