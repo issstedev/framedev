@@ -165,16 +165,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(<?=env('APP_URL')?>assets/app/media/img//bg/bg-4.jpg)">
-						<div class="m-grid__item m-grid__item--middle">
-								<h3 class="m-login__welcome">
-										<?=env('APP_NAME')?>
-								</h3>
-								<p class="m-login__msg">
-										<?=env('SLOGAN_NAME')?>
-								</p>
-						</div>
-				</div>
+				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(<?=env('APP_URL')?>assets/app/media/img//bg/bg-4.jpg)"></div>
 			</div>
 		</div>
 		<!-- end:: Page -->
