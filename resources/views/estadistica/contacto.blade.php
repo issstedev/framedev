@@ -41,7 +41,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   Nombre
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre de la unidad médica" value="">
+                  <input class="form-control m-input" type="text" id="nombres" name="nombres" placeholder="Nombre de la unidad médica" value="{{Session::get('ubicacion')->nombre_de_la_unidad}}">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -49,7 +49,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   CLUES
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="clues" name="clues" placeholder="CLUES" value="">
+                  <input class="form-control m-input" type="text" id="clues" name="clues" placeholder="CLUES" value="{{Session::get('ubicacion')->clues}}">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -57,7 +57,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   Jurisdicción
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="jurisdiccion" name="jurisdiccion" placeholder="Jurisdicción" value="">
+                  <input class="form-control m-input" type="text" id="jurisdiccion" name="jurisdiccion" placeholder="Jurisdicción" value="{{Session::get('ubicacion')->nombre_de_la_jurisdiccion}}">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -65,7 +65,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   Teléfono
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="telefono" name="telefono" placeholder="Correo" value="">
+                  <input class="form-control m-input" type="text" id="telefono" name="telefono" placeholder="Correo" value="{{Session::get('ubicacion')->direccion()}}">
                 </div>
               </div>
 
@@ -75,7 +75,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   Dirección
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="text" id="direccion" name="direccion" placeholder="Dirección" value="">
+                  <input class="form-control m-input" type="text" id="direccion" name="direccion" placeholder="Dirección" value="{{Session::get('ubicacion')->direccion()}}">
                 </div>
               </div>
 
@@ -109,7 +109,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   Longitud
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="number" id="longitud" name="longitud" placeholder="Longitud" value="">
+                  <input class="form-control m-input" type="number" id="longitud" name="longitud" placeholder="Longitud" value="{{Session::get('ubicacion')->lon}}">
                 </div>
               </div>
               <div class="form-group m-form__group row">
@@ -117,7 +117,7 @@ $("#breadcrumb-title").append(' / Captura / Contacto');
                   Latitud
                 </label>
                 <div class="col-7">
-                  <input class="form-control m-input" type="number" id="latitud" name="latitud" placeholder="Latitud" value="">
+                  <input class="form-control m-input" type="number" id="latitud" name="latitud" placeholder="Latitud" value="{{Session::get('ubicacion')->lat}}">
                 </div>
               </div>
             </div>
