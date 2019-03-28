@@ -26,14 +26,7 @@
 		<div class="m-grid m-grid--hor m-grid--root m-page">
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--singin" id="m_login">
 				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(<?=env('APP_URL')?>assets/app/media/img//bg/bg-4.jpg)">
-						<div class="m-grid__item m-grid__item--middle">
-								<h3 class="m-login__welcome">
-										<?=env('APP_NAME')?>
-								</h3>
-								<p class="m-login__msg">
-										<?=env('SLOGAN_NAME')?>
-								</p>
-						</div>
+						<div class="m-grid__item m-grid__item--middle">	</div>
 				</div>
 			</div>
 		</div>
