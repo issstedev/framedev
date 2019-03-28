@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Catalogo;
-use App\Models\Estadistica as ModelEstadistica;
+use App\Models\Framework\Catalogo;
+use App\Models\Inventarios\Estadistica as ModelEstadistica;
 use App\EstablecimientoSalud;
 use Helpme;
 
@@ -59,13 +59,13 @@ class Estadistica extends Controller
     $camas_no_censables = Catalogo::selectCatalog('camas_no_censables',null);
     $instalaciones = Catalogo::selectCatalog('instalaciones',null);
 
-    $list_consultorios = ModelEstadistica::get_estadisticas(22);
+    $list_consultorios = ModelEstadistica::get_estadisticas(22, $_SESSION['ubicacion']);
     $count1 = count($list_consultorios);
-    $list_camas = ModelEstadistica::get_estadisticas(23);
+    $list_camas = ModelEstadistica::get_estadisticas(23, $_SESSION['ubicacion']);
     $count2 = count($list_camas);
-    $list_noCensables = ModelEstadistica::get_estadisticas(24);
+    $list_noCensables = ModelEstadistica::get_estadisticas(24, $_SESSION['ubicacion']);
     $count3 = count($list_noCensables);
-    $list_instalaciones = ModelEstadistica::get_estadisticas(25);
+    $list_instalaciones = ModelEstadistica::get_estadisticas(25, $_SESSION['ubicacion']);
     $count4 = count($list_instalaciones);
     $centro = $this->nombre_centro->nombre_de_la_institucion;
 
@@ -95,17 +95,17 @@ class Estadistica extends Controller
     $otro_personal = Catalogo::selectCatalog('otro_personal',null);
     $enfermeras = Catalogo::selectCatalog('enfermeras',null);
 
-    $list_medicos = ModelEstadistica::get_estadisticas(26);
+    $list_medicos = ModelEstadistica::get_estadisticas(26, $_SESSION['ubicacion']);
     $count1 = count($list_medicos);
-    $list_servicios_auxiliares = ModelEstadistica::get_estadisticas(27);
+    $list_servicios_auxiliares = ModelEstadistica::get_estadisticas(27, $_SESSION['ubicacion']);
     $count2 = count($list_servicios_auxiliares);
-    $list_otras_profesiones = ModelEstadistica::get_estadisticas(28);
+    $list_otras_profesiones = ModelEstadistica::get_estadisticas(28, $_SESSION['ubicacion']);
     $count3 = count($list_otras_profesiones);
-    $list_administrativo = ModelEstadistica::get_estadisticas(29);
+    $list_administrativo = ModelEstadistica::get_estadisticas(29, $_SESSION['ubicacion']);
     $count4 = count($list_administrativo);
-    $list_otro_personal = ModelEstadistica::get_estadisticas(30);
+    $list_otro_personal = ModelEstadistica::get_estadisticas(30, $_SESSION['ubicacion']);
     $count5 = count($list_otro_personal);
-    $list_enfermeras = ModelEstadistica::get_estadisticas(94);
+    $list_enfermeras = ModelEstadistica::get_estadisticas(94, $_SESSION['ubicacion']);
     $count6 = count($list_enfermeras);
     $centro = $this->nombre_centro->nombre_de_la_institucion;
 
@@ -138,11 +138,11 @@ class Estadistica extends Controller
     $servidores = Catalogo::selectCatalog('servidores_en_sitio',null);
     $computo = Catalogo::selectCatalog('computo',null);
 
-    $list_enlaces = ModelEstadistica::get_estadisticas(31);
+    $list_enlaces = ModelEstadistica::get_estadisticas(31, $_SESSION['ubicacion']);
     $count1 = count($list_enlaces);
-    $list_servidores = ModelEstadistica::get_estadisticas(32);
+    $list_servidores = ModelEstadistica::get_estadisticas(32, $_SESSION['ubicacion']);
     $count2 = count($list_servidores);
-    $list_computo = ModelEstadistica::get_estadisticas_computo(33);
+    $list_computo = ModelEstadistica::get_estadisticas_computo(33, $_SESSION['ubicacion']);
     $count3 = count($list_computo);
 
     $centro = $this->nombre_centro->nombre_de_la_institucion;
@@ -165,7 +165,7 @@ class Estadistica extends Controller
   {
     $equipo_medico = Catalogo::selectCatalog('equipo_medico',null);
 
-    $list_equipo_medico = ModelEstadistica::get_estadisticas(34);
+    $list_equipo_medico = ModelEstadistica::get_estadisticas(34, $_SESSION['ubicacion']);
     $count1 = count($list_equipo_medico);
     $centro = $this->nombre_centro->nombre_de_la_institucion;
     return view('estadistica/inventario',compact(

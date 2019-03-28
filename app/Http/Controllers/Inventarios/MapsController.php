@@ -6,9 +6,10 @@ use App\Entidad;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 use App\Models\Roles;
 use Illuminate\Http\Request;
-use App\Models\Usuarios;
+use App\Models\Framework\Usuarios;
 use Helpme;
 use Session;
+use App\Models\Inventarios\Estadistica as ModelEstadistica;
 
 
 class MapsController extends Controller
@@ -175,9 +176,10 @@ Mapper::informationWindow(42, -97, ['hello']);
 	}	
 
 		public function ficha($id){
-		
+
+
 		$establecimiento= $this->establecimiento->find($id);
-		
+		$display1=true;
 		return view('mapas.ficha', compact('establecimiento'));
 
 	}	

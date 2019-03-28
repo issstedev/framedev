@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Inventarios;
 use Illuminate\Database\Eloquent\Model;
 use Helpme;
 use DB;
@@ -15,12 +15,12 @@ class Estadistica extends Model
       return DB::table('contacto')->where('id_establecimiento','=',$_SESSION['ubicacion'])->get();
     }
 
-    static function get_estadisticas($padre){
+    static function get_estadisticas($padre, $id_establecimiento){
       return DB::table('estadisticas')
           ->join('cm_catalogo AS cat','estadisticas.cat_fr_estadisticas','=','cat.id_cat')
           ->select('id','cat.etiqueta as descripcion','cantidad')
           ->where('cat.id_padre','=',$padre)
-          ->where('id_establecimiento','=',$_SESSION['ubicacion'])
+          ->where('id_establecimiento','=',$id_establecimiento)
           ->get();
     }
 
@@ -81,14 +81,40 @@ class Estadistica extends Model
         );
       }
 
-      static function get_estadisticas_computo($padre){
+      static function get_estadisticas_computo($padre, $id){
         return DB::table('estadisticas')
             ->join('cm_catalogo AS cat','estadisticas.cat_fr_estadisticas','=','cat.id_cat')
             ->join('computo AS comp','estadisticas.id','=','comp.id_estadisticas')
             ->select('estadisticas.id','cat.etiqueta as descripcion','estadisticas.cantidad', 'comp.marca as marca', 'comp.servicetag as servicetag')
             ->where('cat.id_padre','=',$padre)
-            ->where('id_establecimiento','=',$_SESSION['ubicacion'])
+            ->where('id_establecimiento','=',$id)
             ->get();
       }
+
+
+
+
+
+
+
+
+
+  public function catalogo(){
+    return $this->belongsTo('App\Models\Framework\Catalogo', 'cat_fr_estadisticas');
+  }
+
+
+    public function establecimiento(){
+    return $this->belongsTo('App\EstablecimientoSalud', 'id_establecimiento');
+  }
+
+
+    public function usuario(){
+    return $this->belongsTo('App\Models\Framework\Usuarios', 'user_alta');
+  }
+
+
+
+
 
 }
