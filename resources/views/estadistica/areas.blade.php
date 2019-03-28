@@ -87,28 +87,9 @@ $display4 = ($count4 == 0)?'none':'table';
                 </div>
               </div>
             </div>
-          </form>
-          <div class="col s12 m6 l6">
-              <table style="display:{{$display1}}" id="areas_table_1" class="table m-table m-table--head-separator-danger" cellspacing="0" width="100%">
-                  <thead>
-                      <tr>
-                          <th>ID</th>
-                          <th>Nombre</th>
-                          <th>Cantidad</th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                  @foreach ($list_consultorios as $clave => $consultorio)
-                      <tr>
-                        <td>{{++$clave}}</td>
-                        <td>{{strtoupper($consultorio->descripcion)}}</td>
-                        <td>{{strtoupper($consultorio->cantidad)}}</td>
-                      </tr>
-                  @endforeach
-                  </tbody>
-              </table>
-          </div>
+          </form>                  
+ @include('estadistica._listadoAreas', ['list_consultorios'=> $list_consultorios, 'display1'=> $display1 ]) 
+  
         </div>
         <div class="tab-pane" id="areas_tab_2">
           <form class="m-form m-form--fit m-form--label-align-right" id="areas_camas">

@@ -138,9 +138,11 @@ class Login extends Controller
     public function sign_all_out()
     {
         $whosLogin = ModelLogin::whoisLogged();
+        
 
         foreach ($whosLogin as $logged){
             ModelLogin::signout($logged['id_usuario']);
+
         }
     }
 }

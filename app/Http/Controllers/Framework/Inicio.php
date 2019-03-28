@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Roles;
-use App\Models\Usuarios;
+use App\Models\Framework\Usuarios;
 use Helpme;
 use App\EstablecimientoSalud;
 use App\Entidad;
@@ -45,6 +45,12 @@ class Inicio extends Controller
             $usuario_name = $usuario_menu_top['nombres'];
 
     }
+           $usuario =Usuarios::find($_SESSION['id_usuario']);
+       Session::put('avatar_usr_circ',  $avatar_usr_circ);
+       Session::put('usuario',  $usuario);
+       Session::put('rol',  $rol);
+       Session::put('id_rol',  $id_rol);
+       Session::put('usuario_menu_top',  $usuario_menu_top);
 
     $datos = [
         'avatar_usr_circ' => $avatar_usr_circ,

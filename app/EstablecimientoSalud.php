@@ -88,5 +88,26 @@ class EstablecimientoSalud extends Model
            return $mapa;
     }
 
+
+
+  public function scopeEstadisticaConsultorios($query)
+    {
+
+       return $query->whereHas('estadisticas', function ($query) {
+            $query->whereHas('catalogo', function($query){
+                        $query->where('catalogo','consultorios');
+                    });
+        });
+
+  }
+
+
+    public function estadisticas()
+{
+    return $this->hasMany('App\Models\Inventarios\Estadistica', 'id_establecimiento', 'id');
+}
+
+    
+
     //
 }

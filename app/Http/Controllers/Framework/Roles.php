@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Roles as ModelRoles;
-use App\Models\Catalogo;
+use App\Models\Framework\Roles as ModelRoles;
+use App\Models\Framework\Catalogo;
 use Helpme;
 
 class Roles extends Controller

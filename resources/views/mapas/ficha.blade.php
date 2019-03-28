@@ -1,5 +1,7 @@
-@extends('plantilla.master')
+ @extends('plantilla.master')
 @section('content')
-Hola mundo
-@include('mapas._ficha', ['establecimiento'=> $establecimiento ] )
-@endsection
+
+ @include('mapas._ficha', ['establecimiento'=> $establecimiento ] ) 
+
+ @include('mapas._fichaDetalle', ['establecimiento'=> $establecimiento ] ) 
+ @endsection
