@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Usuarios as ModelUsuarios;
-use App\Models\Roles;
-use App\Models\Viewlogins;
-use App\Models\Viewusuarios;
-use App\Models\Ubicacion;
+use App\Models\Framework\Usuarios as ModelUsuarios;
+use App\Models\Framework\Roles;
+use App\Models\Framework\Viewlogins;
+use App\Models\Framework\Viewusuarios;
+use App\Models\Framework\Ubicacion;
 use Helpme;
 
 class Usuarios extends Controller
