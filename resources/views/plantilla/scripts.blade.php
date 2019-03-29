@@ -1,3 +1,4 @@
+<script>var app_url = '<?=env('APP_URL')?>';</script>
 <!--Inicio::Base Scripts -->
 <script src="<?=env('APP_URL')?>assets/vendors/perfect-scrollbar/dist/perfect-scrollbar.js" type="text/javascript"></script>
 
@@ -47,7 +48,7 @@
 <script src="<?=env('APP_URL')?>assets/demo/default/custom/components/forms/widgets/bootstrap-select.js" type="text/javascript"></script>
 
 <!--mis Librerias-->
-<script>var app_url = '<?=env('APP_URL')?>';</script>
+
 <script src="<?=env('APP_URL')?>assets/js/controllers.js"></script>
 <script src="<?=env('APP_URL')?>assets/js/generales.js"></script>
 <script src="<?=env('APP_URL')?>assets/js/inicio.js"></script>

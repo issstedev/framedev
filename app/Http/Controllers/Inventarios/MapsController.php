@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\EstablecimientoSalud;
 use App\Entidad;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
-use App\Models\Roles;
+use App\Models\Framework\Roles;
 use Illuminate\Http\Request;
 use App\Models\Framework\Usuarios;
 use Helpme;
@@ -51,18 +51,18 @@ class MapsController extends Controller
                 'cluster' => true
             ]);
 		foreach ($entidades as $entidad) {
-			 $content = '<b>' .strtoupper($entidad->entidad). 
+			 $content = '<b>' .strtoupper($entidad->entidad).
 
 			            '<br> Total de Camas
-			            <br> Total de Establecimientos	
+			            <br> Total de Establecimientos
 			             </b>
-			 			 <a href="mapas/'.$entidad->id_entidad.'" class="secondary-content"><i class="mdi-content-send"></i></a>'	
+			 			 <a href="mapas/'.$entidad->id_entidad.'" class="secondary-content"><i class="mdi-content-send"></i></a>'
 			                    ;
-			 Mapper::informationWindow($entidad->lat, $entidad->lon, $content, ['markers' => [ 'animation' => 'DROP', 
+			 Mapper::informationWindow($entidad->lat, $entidad->lon, $content, ['markers' => [ 'animation' => 'DROP',
 
 			 		 'scale' => 10000
 			          ]]);
-			   				
+
 
 		}
 
@@ -77,8 +77,8 @@ class MapsController extends Controller
 
 	public function show($id)
 	{
-	
-  
+
+
 
 		if ($id != 33){
 		$entidad = $this->entidad->find($id);
@@ -90,7 +90,7 @@ class MapsController extends Controller
 		$establecimientos= $this->establecimiento->tipoInstitucion('ISSSTE');
 		//$totalCamas = $this->establecimiento->tipoInstitucion('ISSSTE');
 		$totalConsultorios= $this->establecimiento->totalConsultorios($id);
-		}	
+		}
 		if($establecimientos->count()!=0){
 	     Mapper::map($establecimientos->first()->lat, $establecimientos->first()->lat,
             [
@@ -107,14 +107,14 @@ class MapsController extends Controller
 				if (!empty($establecimiento->lat)  or !empty($establecimiento->lon)){
 					$content=$this->fillContentMapa($establecimiento);
     			Mapper::informationWindow($establecimiento->lat, $establecimiento->lon, $content);
-	  
+
 
 				}
 
 			}
-		$mapa=Mapper::render();	
+		$mapa=Mapper::render();
 
-		}	
+		}
 
 		return view('mapas.show', compact('entidad', 'establecimientos', 'mapa', 'totalConsultorios', 'datos'));
 	//	return response()->json($establecimientos);
@@ -124,7 +124,7 @@ class MapsController extends Controller
 
 	public function search(Request $request, $id)
 	{
-		$datos = $this->datos;  
+		$datos = $this->datos;
 		$entidad = $this->entidad->find($id);
 		$cveInstitucion=$request->input('clave_de_la_institucion');
 		$nivelAtencion= $request->input('nivel_atencion');
@@ -142,7 +142,7 @@ class MapsController extends Controller
     		}
 		 }
 		$mapa=Mapper::render();
-		
+
 		}
 		return view('mapas.show', compact('entidad', 'establecimientos', 'mapa'));
 
@@ -150,7 +150,7 @@ class MapsController extends Controller
 
 	public function pintaMapa(){
 //configuaración
-		
+
 Mapper::map(40, -100, ['zoom' => 4, 'marker' => false]);
 Mapper::informationWindow(40, -99, ['hello']);
 Mapper::informationWindow(41, -98, ['hello']);
@@ -162,7 +162,7 @@ Mapper::informationWindow(42, -97, ['hello']);
 	private function fillContentMapa($establecimiento){
 		$content= '<b>' .$establecimiento->clave_de_la_institucion.'-'.$establecimiento->nombre_de_la_unidad . '</b>'.
 			   				'<br> Consultorios'.$establecimiento->total_de_consultorios.'</br>'.'<br> Camas'.$establecimiento->total_de_camas.'</br>'.'<b> '.$establecimiento->estatus_de_operacion.'-id'.$establecimiento->id.'</b>';
-		return $content;	   				
+		return $content;
 	}
 
 
@@ -173,14 +173,14 @@ Mapper::informationWindow(42, -97, ['hello']);
 		Session::put('ubicacion',  $establecimiento);
 	return redirect()->action('Inicio@index');
 
-	}	
+	}
 
 		public function ficha($id){
 
 
 		$establecimiento= $this->establecimiento->find($id);
-		
+
 		return view('mapas.ficha', compact('establecimiento',$id));
 
-	}	
+	}
 }

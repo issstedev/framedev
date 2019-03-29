@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Controllers as ModelController;
+use App\Models\Framework\Controllers as ModelController;
 
 class Controllers extends Controller
 {

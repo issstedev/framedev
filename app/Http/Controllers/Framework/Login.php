@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Login as ModelLogin;
-use App\Models\Usuarios;
-use App\Models\Viewlog;
-use App\Models\Viewauditoria;
+use App\Models\Framework\Login as ModelLogin;
+use App\Models\Framework\Usuarios;
+use App\Models\Framework\Viewlog;
+use App\Models\Framework\Viewauditoria;
 use Helpme;
 
 class Login extends Controller
@@ -138,7 +138,7 @@ class Login extends Controller
     public function sign_all_out()
     {
         $whosLogin = ModelLogin::whoisLogged();
-        
+
 
         foreach ($whosLogin as $logged){
             ModelLogin::signout($logged['id_usuario']);

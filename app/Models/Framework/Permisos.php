@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Framework;
 use Illuminate\Database\Eloquent\Model;
 use LiveControl\EloquentDataTable\DataTable as DT;
 use LiveControl\EloquentDataTable\ExpressionWithName;
@@ -15,7 +15,7 @@ class Permisos extends Model
 
 
   static function importarMetodo($metododata){
-    
+
       $id_metodo = DB::table('fw_metodos')->insertGetId([
         'id_metodo' => $metododata->id_metodo,
         'controlador' => $metododata->controlador,

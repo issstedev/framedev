@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Controllers;
-use App\Models\Roles;
-use App\Models\Accesos;
-use App\Models\Permisos;
-use App\Models\Usuarios;
+use App\Models\Framework\Controllers;
+use App\Models\Framework\Roles;
+use App\Models\Framework\Accesos;
+use App\Models\Framework\Permisos;
+use App\Models\Framework\Usuarios;
 use Helpme;
 use DB;
 

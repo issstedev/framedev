@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Middleware;
-use App\Models\Config;
+use App\Models\Framework\Config;
 use Closure;
 use Session;
 

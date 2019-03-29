@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Permisos as ModelPermisos;
+use App\Models\Framework\Permisos as ModelPermisos;
 use Helpme;
 
 class Permisos extends Controller

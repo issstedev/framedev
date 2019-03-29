@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Framework;
 use Illuminate\Database\Eloquent\Model;
 use LiveControl\EloquentDataTable\DataTable as DT;
 use LiveControl\EloquentDataTable\ExpressionWithName;
