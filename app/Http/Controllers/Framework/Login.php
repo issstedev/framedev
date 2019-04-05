@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Framework;
 use Illuminate\Http\Request;
 use App\Models\Framework\Login as ModelLogin;
 use App\Models\Framework\Usuarios;
 use App\Models\Framework\Viewlog;
 use App\Models\Framework\Viewauditoria;
 use Helpme;
-
+use App\Http\Controllers\Controller;
 class Login extends Controller
 {
     public function __construct()

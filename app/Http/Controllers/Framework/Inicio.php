@@ -1,8 +1,11 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Framework;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Framework\Roles;
 use App\Models\Framework\Usuarios;
+use App\Models\Framework\Login;
+
 use Helpme;
 use App\EstablecimientoSalud;
 use App\Entidad;
@@ -80,7 +83,25 @@ class Inicio extends Controller
             $avatar_usr_circ = (empty ($perfil_menu_top['avatar'])) ? 'img/avatar.jpg' : 'tmp/'.Helpme::duplicatePublic($perfil_menu_top['avatar'],'perfiles');
             $usuario_name = $usuario_menu_top['nombres'];
 
-    }
+    }/*else{
+      $_SESSION['id_usuario']=1;
+      $usuario =Usuarios::find($_SESSION['id_usuario']);
+      $_SESSION['id_rol']=$usuario->rol;
+      $id_usuario = $_SESSION['id_usuario'];
+      $id_rol = $_SESSION['id_rol'];
+      $rol = Roles::rol();
+            $usuario_menu_top = Usuarios::datos_usuario($id_usuario);
+            $perfil_menu_top  = Usuarios::perfil_usuario($id_usuario);
+            $avatar_usr_circ = (empty ($perfil_menu_top['avatar'])) ? 'img/avatar.jpg' : 'tmp/'.Helpme::duplicatePublic($perfil_menu_top['avatar'],'perfiles');
+            $usuario_name = $usuario_menu_top['nombres'];
+      Login::permisos($_SESSION['id_rol']);
+      $_SESSION['token'] = Helpme::token(62);
+        $_SESSION['user_token']=Helpme::token(62);
+        $_SESSION['rol_token']=Helpme::token(62);
+        
+      
+
+    }*/
 
        $usuario =Usuarios::find($_SESSION['id_usuario']);
        Session::put('avatar_usr_circ',  $avatar_usr_circ);

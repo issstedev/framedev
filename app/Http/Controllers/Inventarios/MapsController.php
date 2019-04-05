@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inventarios;
+use App\Http\Controllers\Controller;
 use App\EstablecimientoSalud;
 use App\Entidad;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;

@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inventarios;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Framework\Catalogo;
 use App\Models\Inventarios\Estadistica as ModelEstadistica;

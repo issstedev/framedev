@@ -2,8 +2,8 @@ var SessionTimeout = function () {
 
     var handlesessionTimeout = function () {
         $.sessionTimeout({
-            warnAfter: 10000,
-            redirAfter: 10200
+            warnAfter: 10000000,
+            redirAfter: 30000000
         });
     }
     return {

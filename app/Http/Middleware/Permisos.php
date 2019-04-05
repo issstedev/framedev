@@ -18,28 +18,28 @@ class Permisos
 
           if(!isset($_SESSION['token'])){
               return redirect()->intended(env('APP_URL').'/login');
-              //return redirect()->action('Login@index');
+              //return redirect()->action('Framework\Login@index');
               exit();
           }
 
           if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&($_SESSION['tyc'] != 'SI')){
-              return redirect()->action('Login@tyc');
+              return redirect()->action('Framework\Login@tyc');
               exit();
           }
 
           if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&($_SESSION['pass_chge'] == 10)){
-              return redirect()->action('Login@pass_chge');
+              return redirect()->action('Framework\Login@pass_chge');
               exit();
           }
 
           if((isset($_SESSION['token']))&&(in_array($rol,$_SESSION['permisos']))&&(!isset($_SESSION['ubicacion']) )){
-              return redirect()->action('Inicio@ubicacion');
+              return redirect()->action('Framework\Inicio@ubicacion');
               exit();
           }
 
 
           if((isset($_SESSION['token']))&&(!in_array($rol,$_SESSION['permisos']))){
-              return redirect()->action('Login@error403');
+              return redirect()->action('Framework\Login@error403');
               exit();
           }
 
