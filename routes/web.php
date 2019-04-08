@@ -16,46 +16,46 @@ Route::get('/ubicacion', 'Framework\Inicio@ubicacion');
 
 Route::group(['prefix' => 'susmx'], function() {
 
-        Route::get('/mapas', 'Framework\MapsController@index');
-        Route::get('mapas/{id}', 'Framework\MapsController@show')->name('mapasShow');
-        Route::post('/mapas/buscar/{id}', 'Framework\MapsController@search')->name('buscar');
-        Route::get('/mapa/demo', 'Framework\MapsController@pintaMapa');
-        Route::get('/mapa/ficha/{id}', 'Framework\MapsController@ficha');
-        Route::get('/mapa/inicio/{id}', 'Framework\MapsController@inicio');
+        Route::get('/mapas', 'Inventarios\MapsController@index');
+        Route::get('mapas/{id}', 'Inventarios\MapsController@show')->name('mapasShow');
+        Route::post('/mapas/buscar/{id}', 'Inventarios\MapsController@search')->name('buscar');
+        Route::get('/mapa/demo', 'Inventarios\MapsController@pintaMapa');
+        Route::get('/mapa/ficha/{id}', 'Inventarios\MapsController@ficha');
+        Route::get('/mapa/inicio/{id}', 'Inventarios\MapsController@inicio');
 
 
 });
 
 Route::group(['prefix' => 'estadistica'], function(){
-        Route::get('/', 'Framework\Estadistica@index');
-        Route::get('/contacto', 'Framework\Estadistica@contacto');
-        Route::get('/areas', 'Framework\Estadistica@areas');
-        Route::get('/rhumanos', 'Framework\Estadistica@rhumanos');
-        Route::get('/comunicaciones', 'Framework\Estadistica@comunicaciones');
-        Route::get('/inventario', 'Framework\Estadistica@inventario');
-        Route::get('/inf_hospitalaria', 'Framework\Estadistica@inf_hospitalaria');
-        Route::post('/add_contacto', 'Framework\Estadistica@add_contacto');
-        Route::post('/add_consultorio', 'Framework\Estadistica@add_consultorio');
-        Route::post('/add_camas', 'Framework\Estadistica@add_camas');
-        Route::post('/add_camasno', 'Framework\Estadistica@add_camasno');
-        Route::post('/add_instalaciones', 'Framework\Estadistica@add_instalaciones');
-        Route::post('/add_medicos', 'Framework\Estadistica@add_medicos');
-        Route::post('/add_servicios', 'Framework\Estadistica@add_servicios');
-        Route::post('/add_otras_profesiones', 'Framework\Estadistica@add_otras_profesiones');
-        Route::post('/add_administrativo', 'Framework\Estadistica@add_administrativo');
-        Route::post('/add_otro_personal', 'Framework\Estadistica@add_otro_personal');
-        Route::post('/add_enfermeras', 'Framework\Estadistica@add_enfermeras');
-        Route::post('/add_enlace',  'Estadistica@add_enlace');
-        Route::post('/add_server',  'Estadistica@add_server');
-        Route::post('/add_computo', 'Framework\Estadistica@add_computo');
-        Route::post('/add_inventario', 'Framework\Estadistica@add_inventario');
+        Route::get('/', 'Inventarios\Estadistica@index');
+        Route::get('/contacto', 'Inventarios\Estadistica@contacto');
+        Route::get('/areas', 'Inventarios\Estadistica@areas');
+        Route::get('/rhumanos', 'Inventarios\Estadistica@rhumanos');
+        Route::get('/comunicaciones', 'Inventarios\Estadistica@comunicaciones');
+        Route::get('/inventario', 'Inventarios\Estadistica@inventario');
+        Route::get('/inf_hospitalaria', 'Inventarios\Estadistica@inf_hospitalaria');
+        Route::post('/add_contacto', 'Inventarios\Estadistica@add_contacto');
+        Route::post('/add_consultorio', 'Inventarios\Estadistica@add_consultorio');
+        Route::post('/add_camas', 'Inventarios\Estadistica@add_camas');         
+        Route::post('/add_camasno', 'Inventarios\Estadistica@add_camasno');
+        Route::post('/add_instalaciones', 'Inventarios\Estadistica@add_instalaciones');
+        Route::post('/add_medicos', 'Inventarios\Estadistica@add_medicos');
+        Route::post('/add_servicios', 'Inventarios\Estadistica@add_servicios');
+        Route::post('/add_otras_profesiones', 'Inventarios\Estadistica@add_otras_profesiones');
+        Route::post('/add_administrativo', 'Inventarios\Estadistica@add_administrativo');
+        Route::post('/add_otro_personal', 'Inventarios\Estadistica@add_otro_personal');
+        Route::post('/add_enfermeras', 'Inventarios\Estadistica@add_enfermeras');
+        Route::post('/add_enlace',  'Inventarios\Estadistica@add_enlace');
+        Route::post('/add_server',  'Inventarios\Estadistica@add_server');
+        Route::post('/add_computo', 'Inventarios\Estadistica@add_computo');
+        Route::post('/add_inventario', 'Inventarios\Estadistica@add_inventario');
 });
 
 Route::group(['prefix' => 'inventarios'], function(){
-        Route::get('/', 'Framework\inventarios@index');
-        Route::get('/computo', 'Framework\inventarios@computo');
-        Route::get('/telefonia', 'Framework\inventarios@telefonia');
-        Route::get('/red', 'Framework\inventarios@red');
+        Route::get('/', 'Inventarios\inventarios@index');
+        Route::get('/computo', 'Inventarios\inventarios@computo');
+        Route::get('/telefonia', 'Inventarios\inventarios@telefonia');
+        Route::get('/red', 'Inventarios\inventarios@red');
 });
 
 Route::group(['prefix' => 'webhook'], function(){
